@@ -8,8 +8,8 @@ import './develop/index.css';
 
 
 const App = () => {
-  return <View style={{ with: 100, height: 30, backgroundColor: 'red' }}>
-    <View style={{ with: 20, height: 200, backgroundColor: 'blue' }}>
+  return <View style={{  height: 130, backgroundColor: 'red' }}>
+    <View style={{ width: 20, height: 200, backgroundColor: 'blue' }}>
 
 
     </View>
