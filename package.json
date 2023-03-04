@@ -1,0 +1,70 @@
+{
+  "name": "revas",
+  "version": "1.0.3",
+  "description": "Build Apps on Canvas, with React and Flexible CSS, inspired by react-canvas",
+  "repository": "https://github.com/pinqy520/revas",
+  "homepage": "https://pinqy520.github.io/demo/revas-pwa",
+  "author": "Huang Qi",
+  "license": "MIT",
+  "main": "dist/revas.js",
+  "module": "dist/revas.es.js",
+  "typings": "dist/types/revas/index.d.ts",
+  "dependencies": {
+    "@types/react-reconciler": "^0.18.0",
+    "bezier-easing": "^2.1.0",
+    "css-layout": "^1.1.1",
+    "react-reconciler": "^0.26.1",
+    "tslib": "^2.0.0",
+    "yoga-layout-wasm": "^1.9.3-alpha.7"
+  },
+  "keywords": [
+    "react",
+    "canvas",
+    "react-canvas",
+    "react-native"
+  ],
+  "peerDependencies": {
+    "react": "^17.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^12.0.0",
+    "@types/react": "^17.0.0",
+    "react": "^17.0.0",
+    "react-scripts": "4.0.1",
+    "rimraf": "^3.0.2",
+    "rollup": "^1.31.1",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-json": "^4.0.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-sourcemaps": "^0.5.0",
+    "rollup-plugin-typescript2": "^0.26.0",
+    "typescript": "^4.0.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "prebuild": "rimraf dist",
+    "build": "tsc --module commonjs && rollup -c rollup.config.ts",
+    "build:pwa": "rimraf build && react-scripts build",
+    "test": "react-scripts test",
+    "prepare": "npm run build",
+    "postpublish": "git push"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ]
+  },
+  "prettier": {
+    "singleQuote": true
+  }
+}
