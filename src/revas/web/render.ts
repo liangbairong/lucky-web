@@ -19,7 +19,7 @@ function getNodePosition(node: any): [number, number] {
     return [top, left];
 }
 
-function createRevasTouchEvent(e: TouchEvent): RevasTouchEvent {
+function createRevasTouchEvent(e: TouchEvent,dom:HTMLElement,option:any): RevasTouchEvent {
     e.preventDefault();
     e.stopPropagation();
     const touches: { [key: number]: RevasTouch } = {};
@@ -28,10 +28,12 @@ function createRevasTouchEvent(e: TouchEvent): RevasTouchEvent {
         const touch = e.changedTouches[key];
         if (touch && touch.target) {
             const [offsetTop, offsetLeft] = getNodePosition(touch.target);
+            const nx= touch.clientX / dom.clientWidth *option.width
+            const ny= touch.clientY / dom.clientHeight *option.height
             touches[touch.identifier] = {
                 identifier: touch.identifier,
-                x: touch.clientX - offsetLeft,
-                y: touch.clientY - offsetTop,
+                x: nx - offsetLeft,
+                y: ny - offsetTop,
             };
         }
     });
@@ -87,7 +89,7 @@ export function render(app: React.ReactNode, parent: HTMLElement, option: IOptio
     const dom = createCanvas(parent, scale, option.width, option.height);
     const canvas = new RevasCanvas(dom.getContext('2d')!);
     const container = new Container();
-    const destroyTouch = initTouch(dom, e => container.handleTouch(createRevasTouchEvent(e)));
+    const destroyTouch = initTouch(dom, e => container.handleTouch(createRevasTouchEvent(e,dom,option)));
     const fiber = renderer.createContainer(container, false, false);
 
     canvas.transform.scale(scale, scale);

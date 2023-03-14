@@ -10,8 +10,10 @@ export default function Components(props: any) {
       <NavBar title="Component" {...props} />
       {/*@ts-ignore */}
       <ScrollView style={styles.container}>
-        <Panel label="View">
-          <View style={styles.row}>
+        <Panel label="View" >
+          <View style={styles.row} onTouchMove={e => {
+            console.log(e)
+          }}>
             <View style={styles.view.base} />
             <View style={[styles.view.base, styles.view.radius]} />
             <View style={[styles.view.base, styles.view.border]} />

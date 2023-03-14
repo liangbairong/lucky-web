@@ -8,7 +8,6 @@ function scaled(x: number, c: number, s = 1) {
 
 function findNodeByPoint(node: Node, x: number, y: number): Node | void {
   if (node.props.pointerEvents === 'none') return
-
   const children = node.children.slice().sort(sortByZIndexAscending).reverse()
   const style = getMergedStyleFromNode(node)
   const frame = getFrameFromNode(node)
@@ -23,7 +22,6 @@ function findNodeByPoint(node: Node, x: number, y: number): Node | void {
   y -= style.translateY || 0
   x = scaled(x, originX, scaleX)
   y = scaled(y, originY, scaleY)
-
   if (frame.x < x && frame.y < y
     && x <= frame.x + frame.width
     && y <= frame.y + frame.height) {

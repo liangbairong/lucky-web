@@ -1,7 +1,7 @@
 {
   "name": "dom-react-canvas",
-  "version": "0.0.1",
-  "description": "Build Apps on Canvas, with React and Flexible CSS, inspired by react-canvas",
+  "version": "0.0.2",
+  "description": "使用canvas来布局dom的框架，支持react 17以上的hook",
   "repository": "https://github.com/903529487/dom-react-canvas",
   "homepage": "https://github.com/903529487/dom-react-canvas",
   "author": "lbr",
@@ -46,8 +46,7 @@
     "build": "tsc --module commonjs && rollup -c rollup.config.ts",
     "build:pwa": "rimraf build && react-scripts build",
     "test": "react-scripts test",
-    "prepare": "npm run build",
-    "postpublish": "git push"
+    "prepare": "npm run build"
   },
   "eslintConfig": {
     "extends": "react-app"

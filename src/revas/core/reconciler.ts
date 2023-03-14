@@ -1,4 +1,4 @@
-import ReactReconciler, { DevToolsConfig } from 'react-reconciler';
+import ReactReconciler  from 'react-reconciler';
 import { version } from 'react';
 import { Node } from './Node';
 import { noop, now } from './utils';
