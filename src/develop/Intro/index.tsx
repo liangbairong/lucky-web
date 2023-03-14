@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View } from '../../revas';
+import { View } from '../../domReactCanvas';
 import NavBar from './Navbar';
 import Entry from './Entry';
 import About from './About';

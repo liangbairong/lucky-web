@@ -1,14 +1,14 @@
 {
   "name": "dom-react-canvas",
-  "version": "0.0.4",
+  "version": "1.0.0",
   "description": "使用canvas来布局dom的框架，支持react 17以上的hook",
   "repository": "https://github.com/903529487/dom-react-canvas",
   "homepage": "https://github.com/903529487/dom-react-canvas",
   "author": "lbr",
   "license": "MIT",
-  "main": "dist/revas.js",
-  "module": "dist/revas.es.js",
-  "typings": "dist/types/revas/index.d.ts",
+  "main": "dist/domReactCanvas.js",
+  "module": "dist/domReactCanvas.es.js",
+  "typings": "dist/types/domReactCanvas/index.d.ts",
   "dependencies": {
     "@types/react-reconciler": "^0.18.0",
     "bezier-easing": "^2.1.0",

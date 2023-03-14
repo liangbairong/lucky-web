@@ -7,7 +7,7 @@ import json from 'rollup-plugin-json';
 const pkg = require('./package.json');
 
 const BASE_CONFIG = {
-  input: 'src/revas/index.ts',
+  input: 'src/domReactCanvas/index.ts',
   output: [
     { file: pkg.main, format: 'cjs', sourcemap: true },
     { file: pkg.module, format: 'es', sourcemap: true },
@@ -15,7 +15,7 @@ const BASE_CONFIG = {
   // Indicate here external modules you don't wanna include in your bundle (i.e.: 'lodash')
   external: Object.keys({ ...pkg.dependencies, ...pkg.peerDependencies }).concat(['yoga-layout-wasm/asm']),
   watch: {
-    include: 'src/revas/**',
+    include: 'src/domReactCanvas/**',
   },
   plugins: [
     // Allow json resolution
@@ -38,7 +38,7 @@ export default [
   BASE_CONFIG,
   {
     ...BASE_CONFIG,
-    input: 'src/revas/common.ts',
-    output: [{ file: 'dist/revas.common.js', format: 'cjs', sourcemap: true }],
+    input: 'src/domReactCanvas/common.ts',
+    output: [{ file: 'dist/domReactCanvas.common.js', format: 'cjs', sourcemap: true }],
   },
 ];

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, RevasTouchEvent, AnimatedValue } from '../../revas'
+import { View, RevasTouchEvent, AnimatedValue } from '../../domReactCanvas'
 
 export default class Interactable extends React.Component<any, any> {
 

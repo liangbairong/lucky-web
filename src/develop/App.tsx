@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, Text, AnimatedValue, timing, AnimatedTiming, Touchable, withContext } from '../revas';
+import { View, Text, AnimatedValue, timing, AnimatedTiming, Touchable, withContext } from '../domReactCanvas';
 import Intro from './Intro';
 import Timeline from './Timeline';
 import MusicApp from './Music';

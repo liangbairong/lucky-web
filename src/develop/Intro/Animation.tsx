@@ -9,7 +9,7 @@ import {
   AnimatedTiming,
   Easing,
   withContext
-} from '../../revas';
+} from '../../domReactCanvas';
 import NavBar from './Navbar';
 import Panel from './Panel';
 

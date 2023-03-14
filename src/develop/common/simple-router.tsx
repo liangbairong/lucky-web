@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, AnimatedValue, timing } from '../../revas';
+import { View, AnimatedValue, timing } from '../../domReactCanvas';
 
 export interface SimpleRouterProps {
   width: number;

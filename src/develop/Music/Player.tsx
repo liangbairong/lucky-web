@@ -11,7 +11,7 @@ import {
   LinearGradient,
   AnimatedTiming,
   withContext
-} from '../../revas';
+} from '../../domReactCanvas';
 import { ABS_FULL, DEFAULT_TEXT, ROW_CENTER, CENTER_AREA } from './styles';
 export interface PlayerProps {
   music: any;

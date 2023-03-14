@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Touchable, Text, View, Image } from '../../revas';
+import { Touchable, Text, View, Image } from '../../domReactCanvas';
 
 export interface EntryProps {
   label: string;

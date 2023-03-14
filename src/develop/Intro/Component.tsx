@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, Text, Image, ScrollView, Touchable, LinearGradient } from '../../revas';
+import { View, Text, Image, ScrollView, Touchable, LinearGradient } from '../../domReactCanvas';
 import NavBar from './Navbar';
 import Panel, { PanelItem } from './Panel';
 import logo from './logo.png';

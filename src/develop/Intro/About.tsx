@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, Image, Touchable } from '../../revas';
+import { Text, View, Image, Touchable } from '../../domReactCanvas';
 import Interactable from './Interactable';
 import Back from '../common/back';
 import logo from './logo.png';
