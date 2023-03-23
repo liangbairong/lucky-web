@@ -119,6 +119,7 @@ function drawContent(
   const useFrame = hasBG || hasBorder || hasClip || style.path;
   const usePath = hasRadius || hasClip || style.path;
 
+  console.log('frame--',frame)
   if (useFrame) {
     const { context: ctx } = canvas;
     if (usePath) {

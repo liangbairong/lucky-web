@@ -11,9 +11,7 @@ export default function Components(props: any) {
       {/*@ts-ignore */}
       <ScrollView style={styles.container}>
         <Panel label="View" >
-          <View style={styles.row} onTouchMove={e => {
-            console.log(e)
-          }}>
+          <View style={styles.row} >
             <View style={styles.view.base} />
             <View style={[styles.view.base, styles.view.radius]} />
             <View style={[styles.view.base, styles.view.border]} />
@@ -120,7 +118,7 @@ const styles = {
     text: {
       color: '#fff',
       fontWeight: '600',
-      fontSize: 14,
+      fontSize: 24,
       textAlign: 'center',
     },
   },
@@ -133,7 +131,7 @@ const styles = {
     base: {
       flex: 1,
       textAlign: 'center',
-      lineHeight: 20,
+      lineHeight: 50, fontSize: 34,
     },
     weight: {
       fontWeight: '800',
@@ -144,11 +142,12 @@ const styles = {
     serif: {
       fontFamily: 'serif',
     },
+    // 文字描边
     shadow: {
-      textShadowOffsetX: 2,
-      textShadowOffsetY: 2,
-      textShadowBlur: 1,
-      textShadowColor: 'rgba(0, 0, 0, 0.5)',
+      textShadowOffsetX: 0,  // 偏斜量x
+      textShadowOffsetY: 0,// 偏斜量x
+      textShadowBlur: 10,  // 粗细
+      textShadowColor: 'red',  //颜色
     },
   },
   view: {
@@ -186,7 +185,7 @@ const styles = {
     text: {
       color: '#fff',
       fontWeight: '600',
-      fontSize: 14,
+      fontSize: 24,
       textAlign: 'center',
     },
   },

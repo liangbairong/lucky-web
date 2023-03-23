@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, Text, AnimatedValue, timing, AnimatedTiming, Touchable, withContext } from '../domReactCanvas';
+import { View, Text, AnimatedValue,Input, timing, AnimatedTiming, Touchable, withContext } from '../domReactCanvas';
 import Intro from './Intro';
 import Timeline from './Timeline';
 import MusicApp from './Music';
@@ -22,6 +22,7 @@ export default class App extends React.Component {
     return (
       <SimpleRouter ref={this.router} width={this.context.clientWidth}>
         <View style={styles.container}>
+          <Input/>
           <Text style={styles.title}>Revas Examples</Text>
           <View style={styles.cards}>
             <Card
@@ -31,20 +32,20 @@ export default class App extends React.Component {
               text="Overview"
               tap={this.push(Intro)}
             />
-            <Card
-              color="#F759AB"
-              shadowColor="rgba(247, 89, 171, 0.5)"
-              height={cardHeight}
-              text="Timeline App"
-              tap={this.push(Timeline)}
-            />
-            <Card
-              color="#597EF7"
-              shadowColor="rgba(89, 126, 247, 0.5)"
-              height={cardHeight}
-              text="Music App"
-              tap={this.push(MusicApp)}
-            />
+            {/*<Card*/}
+            {/*  color="#F759AB"*/}
+            {/*  shadowColor="rgba(247, 89, 171, 0.5)"*/}
+            {/*  height={cardHeight}*/}
+            {/*  text="Timeline App"*/}
+            {/*  tap={this.push(Timeline)}*/}
+            {/*/>*/}
+            {/*<Card*/}
+            {/*  color="#597EF7"*/}
+            {/*  shadowColor="rgba(89, 126, 247, 0.5)"*/}
+            {/*  height={cardHeight}*/}
+            {/*  text="Music App"*/}
+            {/*  tap={this.push(MusicApp)}*/}
+            {/*/>*/}
             {/*@ts-ignore */}
             <Touchable style={styles.extra} onPress={this.open}>
               <Text style={styles.extraText}>Revas + THREE.js</Text>

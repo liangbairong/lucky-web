@@ -5,6 +5,7 @@ import Touchable from './components/Touchable';
 import ScrollView from './components/ScrollView';
 import ListView from './components/ListView';
 import LinearGradient from './components/LinearGradient';
+import Input from './components/Input';
 import renderer from './core/reconciler';
 
 export * from './components/View';
@@ -14,6 +15,7 @@ export * from './components/Touchable';
 export * from './components/ScrollView';
 export * from './components/ListView';
 export * from './components/LinearGradient';
+export * from './components/Input';
 export * from './components/Context';
 
 export * from './core/utils';
@@ -25,4 +27,4 @@ export * from './core/Canvas';
 export * from './components/common/Scroller';
 
 export { renderer };
-export { View, Text, Image, Touchable, ScrollView, ListView, LinearGradient };
+export { View, Text, Image, Touchable, ScrollView, ListView, LinearGradient,Input };
