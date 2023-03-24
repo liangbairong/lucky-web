@@ -6,9 +6,9 @@
   "homepage": "https://github.com/903529487/lucky-web",
   "author": "lbr",
   "license": "MIT",
-  "main": "dist/quick-web.js",
-  "module": "dist/quick-web.es.js",
-  "typings": "dist/types/quick-web/index.d.ts",
+  "main": "dist/lucky-web.js",
+  "module": "dist/lucky-web.es.js",
+  "typings": "dist/types/lucky-web/index.d.ts",
   "dependencies": {
     "@types/react-reconciler": "^0.18.0",
     "bezier-easing": "^2.1.0",
