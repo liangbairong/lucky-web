@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, Text, ScrollView } from '../../quick-web';
+import { View, Text, ScrollView } from '../../lucky-web';
 import NavBar from './Navbar';
 import Panel, { PanelItem } from './Panel';
 

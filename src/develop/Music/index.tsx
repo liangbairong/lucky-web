@@ -8,7 +8,7 @@ import {
   RevasScrollEvent,
   AnimatedValue,
   withContext
-} from '../../quick-web';
+} from '../../lucky-web';
 import { ABS_FULL, DEFAULT_TEXT } from './styles';
 import { MUSICS, MusicItemData } from './data';
 import Player from './Player';

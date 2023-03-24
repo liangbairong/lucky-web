@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, AnimatedValue, timing } from '../../quick-web';
+import { View, AnimatedValue, timing } from '../../lucky-web';
 
 export interface SimpleRouterProps {
   width: number;

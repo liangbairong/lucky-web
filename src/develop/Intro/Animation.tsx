@@ -9,7 +9,7 @@ import {
   AnimatedTiming,
   Easing,
   withContext
-} from '../../quick-web';
+} from '../../lucky-web';
 import NavBar from './Navbar';
 import Panel from './Panel';
 

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Touchable, Text, View, Image} from '../../quick-web';
+import {Touchable, Text, View, Image} from '../../lucky-web';
 
 export interface EntryProps {
     label: string;

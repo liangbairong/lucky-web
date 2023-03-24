@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, Image, Touchable } from '../../quick-web';
+import { Text, View, Image, Touchable } from '../../lucky-web';
 import Interactable from './Interactable';
 import Back from '../common/back';
 import logo from './logo.png';

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, Text, Image, Touchable } from '../../quick-web';
+import { View, Text, Image, Touchable } from '../../lucky-web';
 import navback from './navback.png';
 
 export interface NavBarProps {
