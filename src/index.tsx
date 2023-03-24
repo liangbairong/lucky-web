@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, View,ScrollView } from './domReactCanvas';
+import { render, View,ScrollView } from './quick-web';
 import App from './develop/App';
 // import * as serviceWorker from './develop/serviceWorker';
 

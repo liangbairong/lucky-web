@@ -1,14 +1,14 @@
 {
-  "name": "dom-react-canvas",
+  "name": "quick-web",
   "version": "1.0.0",
-  "description": "使用canvas来布局dom的框架，支持react 17以上的hook",
+  "description": "quick-web是基于react使用canvas来布局dom的框架，支持react 16以上的hook",
   "repository": "https://github.com/903529487/dom-react-canvas",
   "homepage": "https://github.com/903529487/dom-react-canvas",
   "author": "lbr",
   "license": "MIT",
-  "main": "dist/domReactCanvas.js",
-  "module": "dist/domReactCanvas.es.js",
-  "typings": "dist/types/domReactCanvas/index.d.ts",
+  "main": "dist/quick-web.js",
+  "module": "dist/quick-web.es.js",
+  "typings": "dist/types/quick-web/index.d.ts",
   "dependencies": {
     "@types/react-reconciler": "^0.18.0",
     "bezier-easing": "^2.1.0",
@@ -18,7 +18,8 @@
     "yoga-layout-wasm": "^1.9.3-alpha.7"
   },
   "keywords": [
-    "react",
+    "web",
+    "quick-web",
     "canvas",
     "react-canvas",
     "react-native"

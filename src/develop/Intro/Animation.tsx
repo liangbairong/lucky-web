@@ -9,7 +9,7 @@ import {
   AnimatedTiming,
   Easing,
   withContext
-} from '../../domReactCanvas';
+} from '../../quick-web';
 import NavBar from './Navbar';
 import Panel from './Panel';
 

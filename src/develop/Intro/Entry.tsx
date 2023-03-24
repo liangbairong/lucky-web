@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Touchable, Text, View, Image} from '../../domReactCanvas';
+import {Touchable, Text, View, Image} from '../../quick-web';
 
 export interface EntryProps {
     label: string;

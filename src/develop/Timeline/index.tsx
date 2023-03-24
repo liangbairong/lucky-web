@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Text, Image, View, RevasScrollEvent, AnimatedValue, ListView, withContext } from '../../domReactCanvas';
+import { Text, Image, View, RevasScrollEvent, AnimatedValue, ListView, withContext } from '../../quick-web';
 import { DATA } from './data';
 import Back from '../common/back';
 

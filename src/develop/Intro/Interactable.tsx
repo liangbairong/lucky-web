@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, RevasTouchEvent, AnimatedValue } from '../../domReactCanvas'
+import { View, RevasTouchEvent, AnimatedValue } from '../../quick-web'
 
 export default class Interactable extends React.Component<any, any> {
 

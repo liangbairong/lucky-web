@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, Text } from '../../domReactCanvas';
+import { View, Text } from '../../quick-web';
 
 export interface PanelItemProps {
   label: string;

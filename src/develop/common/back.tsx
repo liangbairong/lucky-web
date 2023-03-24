@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Touchable, Image } from '../../domReactCanvas';
+import { Touchable, Image } from '../../quick-web';
 import backIcon from '../back.png';
 
 export default function Back(props: any) {
