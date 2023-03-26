@@ -60,8 +60,8 @@ export class Container {
     }
     this._ready = false;
     const { _root, canvas } = this;
-    console.log('_root--',_root)
-    console.log('canvas--',canvas)
+    // console.log('_root--',_root)
+    // console.log('canvas--',canvas)
     if (canvas) {
       // if not unmounted
       if (this._reflow) {

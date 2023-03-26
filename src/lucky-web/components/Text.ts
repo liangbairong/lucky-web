@@ -6,6 +6,10 @@ import { RevasCanvas } from '../core/Canvas';
 
 export type TextProps = {
   numberOfLines?: number;
+  highlight?:{  //高亮属性
+    text?:string;
+    color?:string
+  }
 } & NodeProps;
 
 export default class Text extends React.Component<TextProps> {
@@ -21,15 +25,19 @@ export default class Text extends React.Component<TextProps> {
       const options = {
         numberOfLines: node.props.numberOfLines || 0,
         textStyle: getTextStyleFromNode(node),
+        highlight:node.props.highlight,
         frame: getFrameFromNode(node),
         content,
       };
       applyTextStyle(canvas, options);
       if (textPropsChanged(options, this._drawed)) {
+        console.log('-sss-')
         this._measured = measureText(canvas, options);
+        console.log( this._measured)
         this._drawed = options;
       }
       const [lines, height] = this._measured;
+      // console.log(lines)
       if (height !== this.state.height) {
         this.setState({ height });
       } else {
@@ -39,6 +47,29 @@ export default class Text extends React.Component<TextProps> {
   };
   render() {
     const { children, numberOfLines, ...others } = this.props as any;
+    // if(Array.isArray(children)){
+    //   const c:any=[]
+    //   children.forEach(item=>{
+    //     if(typeof item === "string"){
+    //       c.push(React.createElement('Text', {
+    //         content: item,
+    //         key:'Text-'+item,
+    //         customDrawer: this.drawText,
+    //         textStyle: others.style,
+    //         style: this.state,
+    //         numberOfLines,
+    //         $ready: Boolean(this._drawed),
+    //       }))
+    //     }else{
+    //       c.push(item)
+    //     }
+    //   })
+    //   return React.createElement(
+    //       'View',
+    //       others,
+    //       c
+    //   );
+    // }
     return React.createElement(
       'View',
       others,
@@ -46,6 +77,7 @@ export default class Text extends React.Component<TextProps> {
         content: children,
         customDrawer: this.drawText,
         textStyle: others.style,
+        highlight:others.highlight,
         style: this.state,
         numberOfLines,
         $ready: Boolean(this._drawed),
