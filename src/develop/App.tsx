@@ -22,7 +22,7 @@ export default class App extends React.Component {
         return (
             <SimpleRouter ref={this.router} width={this.context.clientWidth}>
                 <View style={styles.container}>
-                    <Input/>
+                    {/*<Input/>*/}
                     <View style={styles.cards}>
                         <Card
                             color="#9254DE"

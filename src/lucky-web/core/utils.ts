@@ -106,8 +106,8 @@ export function pushOpacity(canvas: RevasCanvas, opacity: number) {
 
 export type RevasAdapter = {
   createImage: () => HTMLImageElement;
-  createOffscreenCanvas?: (width: number, height: number) => RevasCanvas;
-  resetOffscreenCanvas?: (ctx: RevasCanvas, width: number, height: number) => RevasCanvas;
+  createOffscreenCanvas?: (width: number, height: number,deviceRatio:number) => RevasCanvas;
+  resetOffscreenCanvas?: (ctx: RevasCanvas, width: number, height: number,deviceRatio:number) => RevasCanvas;
 };
 
 export const adapter: RevasAdapter = {

@@ -28,8 +28,8 @@ function createRevasTouchEvent(e: TouchEvent,dom:HTMLElement,option:any): RevasT
         const touch = e.changedTouches[key];
         if (touch && touch.target) {
             const [offsetTop, offsetLeft] = getNodePosition(touch.target);
-            const nx= touch.clientX / dom.clientWidth *option.width
-            const ny= touch.clientY / dom.clientHeight *option.height
+            const nx= option.width ? touch.clientX / dom.clientWidth *option.width : touch.clientX
+            const ny= option.height ? touch.clientY / dom.clientHeight *option.height :  touch.clientY
             touches[touch.identifier] = {
                 identifier: touch.identifier,
                 x: nx - offsetLeft,

@@ -17,12 +17,12 @@ export function getCache(id: string) {
   return cache.get(id);
 }
 
-export function createCache(style: any, w: number, h: number, id: string): CachedCanvas {
+export function createCache(style: any, w: number, h: number, id: string, deviceRatio:number): CachedCanvas {
   if (ids.length >= MAX_SIZE) {
     const expiredId = ids.shift()!;
     const { canvas } = cache.get(expiredId)!;
     const cached: CachedCanvas = {
-      canvas: adapter.resetOffscreenCanvas!(canvas, w, h),
+      canvas: adapter.resetOffscreenCanvas!(canvas, w, h, deviceRatio),
       id,
       style,
     };
@@ -32,7 +32,7 @@ export function createCache(style: any, w: number, h: number, id: string): Cache
     return cached;
   } else {
     const cached: CachedCanvas = {
-      canvas: adapter.createOffscreenCanvas!(w, h),
+      canvas: adapter.createOffscreenCanvas!(w, h,deviceRatio),
       id,
       style,
     };

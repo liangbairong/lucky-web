@@ -90,7 +90,8 @@ function drawCache(canvas: RevasCanvas, node: Node, container: Container, style:
     if (!node.$ready && !node.props.forceCache) {
       return drawContent(canvas, node, container, style, frame, hasClip);
     }
-    cached = createCache(style, w, h, cachedId);
+    // @ts-ignore
+    cached = createCache(style, w, h, cachedId, <number>container?._root?.props?.deviceRatio);
     cached.canvas.transform.translate(-x, -y);
     drawContent(cached.canvas, node, container, style, frame, hasClip);
     cached.canvas.transform.translate(x, y);
