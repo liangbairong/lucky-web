@@ -4,6 +4,7 @@ import {
   ScrollView,
   Touchable,
   Text,
+  Animate,
   AnimatedValue,
   timing,
   AnimatedTiming,
@@ -21,6 +22,16 @@ export default function Animation(props: any) {
       <ScrollView style={styles.container}>
         <AnimateTypeExample />
         <AnimateEaseExample />
+        <Panel label="Animate组件用法">
+          <Animate initValue={1} afterValue={0.0001} loop={true} animateName={'opacity'}>
+            <View style={{
+              width: 500,
+              height: 100,
+              backgroundColor: '#ccc',
+            }}>
+            </View>
+          </Animate>
+        </Panel>
       </ScrollView>
     </View>
   );
@@ -148,20 +159,20 @@ const styles = {
   button: {
     container: {
       flex: 1,
-      height: 30,
+      height: 50,
       marginRight: 15,
       justifyContent: 'center',
       backgroundColor: '#333',
     },
     text: {
       color: '#fff',
-      fontSize: 12,
+      fontSize: 32,
       textAlign: 'center',
     },
   },
   box: {
-    width: 50,
-    height: 50,
+    width: 150,
+    height: 150,
     backgroundColor: '#D8D8D8',
   },
 };

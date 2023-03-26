@@ -6,6 +6,7 @@ import ScrollView from './components/ScrollView';
 import ListView from './components/ListView';
 import LinearGradient from './components/LinearGradient';
 import Input from './components/Input';
+import Animate from './components/Animate';
 import renderer from './core/reconciler';
 
 export * from './components/View';
@@ -16,6 +17,7 @@ export * from './components/ScrollView';
 export * from './components/ListView';
 export * from './components/LinearGradient';
 export * from './components/Input';
+export * from './components/Animate';
 export * from './components/Context';
 
 export * from './core/utils';
@@ -27,4 +29,4 @@ export * from './core/Canvas';
 export * from './components/common/Scroller';
 
 export { renderer };
-export { View, Text, Image, Touchable, ScrollView, ListView, LinearGradient,Input };
+export { View, Text, Image, Touchable, ScrollView, ListView, LinearGradient,Input,Animate };

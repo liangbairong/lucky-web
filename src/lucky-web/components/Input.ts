@@ -5,16 +5,10 @@ import {AnimatedValue,timing,Easing} from "../core/Animated";
 
 export default function Input(props: NodeProps) {
     const an = useRef(new AnimatedValue(1));
-
     useEffect(() => {
-        console.log('asas')
         const input = document.createElement('input');
-
         document.body.appendChild(input)
-
-
         startAnimated()
-
     }, [])
 
 

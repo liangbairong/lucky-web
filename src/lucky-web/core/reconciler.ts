@@ -172,7 +172,7 @@ const RevasReconciler = ReactReconciler({
 RevasReconciler.injectIntoDevTools({
   bundleType: isDev ? 1 : 0,
   version: version,
-  rendererPackageName: 'revas-react',
+  rendererPackageName: 'lucky-web',
 
   // could not get this typed.
   // The above `DevToolsConfig` is a generic expecting an `Instance`

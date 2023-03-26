@@ -21,7 +21,7 @@ export default function NavBar(props: NavBarProps) {
 
 const styles = {
   container: {
-    height: 50,
+    height: 80,
     backgroundColor: '#333',
     justifyContent: 'center',
     zIndex: 100,
@@ -29,16 +29,16 @@ const styles = {
   title: {
     textAlign: 'center',
     color: '#fff',
-    fontSize: 17,
+    fontSize: 37,
     fontWeight: '600',
   },
   icon: {
-    width: 9,
-    height: 14,
+    width: 20,
+    height: 34,
   },
   back: {
     position: 'absolute',
-    left: 0,
+    left: 20,
     top: 0,
     bottom: 0,
     width: 40,

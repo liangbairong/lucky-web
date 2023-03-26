@@ -6,6 +6,7 @@ import json from 'rollup-plugin-json';
 
 const pkg = require('./package.json');
 
+console.log(Object.keys({ ...pkg.dependencies, ...pkg.peerDependencies }).concat(['yoga-layout-wasm/asm']))
 const BASE_CONFIG = {
   input: 'src/lucky-web/index.ts',
   output: [

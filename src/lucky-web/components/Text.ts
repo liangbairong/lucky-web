@@ -31,9 +31,7 @@ export default class Text extends React.Component<TextProps> {
       };
       applyTextStyle(canvas, options);
       if (textPropsChanged(options, this._drawed)) {
-        console.log('-sss-')
         this._measured = measureText(canvas, options);
-        console.log( this._measured)
         this._drawed = options;
       }
       const [lines, height] = this._measured;

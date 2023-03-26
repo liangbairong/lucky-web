@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {View, Text, AnimatedValue, Input, timing, AnimatedTiming, Touchable, withContext} from '../lucky-web';
+import {View, Text, AnimatedValue, Input, Animate, timing, AnimatedTiming, Touchable, withContext} from '../lucky-web';
 import Intro from './Intro';
 import Timeline from './Timeline';
 import MusicApp from './Music';
@@ -21,50 +21,16 @@ export default class App extends React.Component {
         const cardHeight = this.context.clientHeight / 7;
         return (
             <SimpleRouter ref={this.router} width={this.context.clientWidth}>
-                <Text style={{
-                    width: 400,
-                    backgroundColor: '#ccc',
-                    textAlign: 'left',
-                    fontSize:30
-
-                }}
-                      highlight={{
-                          text: 'dd试试',
-                          color: 'blue'
-                      }}
-                      onLayout={(Frame) => {
-                          console.log(Frame)
-                      }}
-                >dddeeee sas{'dd试试'}家居设计js撒假数据实际上仅仅是dddff计算机视觉</Text>
                 <View style={styles.container}>
                     <Input/>
-                    <View style={{
-                        // flex: 1,
-                        width: 500,
-                        height: 100,
-                        // alignItems: 'flex-start',
-                        // padding: 20,
-                        backgroundColor: '#ccc',
-                        justifyCenter: 'center'
-                    }}>
-                        {/*<Text style={{*/}
-                        {/*    // width:'auto'*/}
-                        {/*    textAlign:'left'*/}
-                        {/*}}*/}
-                        {/*onLayout={(Frame)=>{*/}
-                        {/*    console.log(Frame)*/}
-                        {/*}}*/}
-                        {/*>{'dd<span>标签内容</span>122'}</Text>*/}
-                    </View>
-
                     <View style={styles.cards}>
-                        {/*<Card*/}
-                        {/*    color="#9254DE"*/}
-                        {/*    shadowColor="rgba(146, 84, 222, 0.5)"*/}
-                        {/*    height={cardHeight}*/}
-                        {/*    text="Overview"*/}
-                        {/*    tap={this.push(Intro)}*/}
-                        {/*/>*/}
+                        <Card
+                            color="#9254DE"
+                            shadowColor="rgba(146, 84, 222, 0.5)"
+                            height={cardHeight}
+                            text="Overview"
+                            tap={this.push(Intro)}
+                        />
                         {/*<Card*/}
                         {/*  color="#F759AB"*/}
                         {/*  shadowColor="rgba(247, 89, 171, 0.5)"*/}

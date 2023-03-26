@@ -25,7 +25,7 @@ function measureLines(canvas: RevasCanvas, chars: readonly string[], boxWidth: n
     if (force || text) {
       let c=null
       //处理高亮属性
-      let textCon=highlight.text
+      let textCon=highlight?.text
       if(textCon && text.indexOf(textCon)!==-1){
         const arr = text.split(textCon)
         const w1=  canvas.context.measureText(arr[0]).width;
@@ -38,7 +38,7 @@ function measureLines(canvas: RevasCanvas, chars: readonly string[], boxWidth: n
           {
             text:textCon,
             width:w1,
-            color:highlight.color
+            color:highlight?.color
           },
           {
             text:arr[1],
