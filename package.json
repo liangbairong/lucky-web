@@ -47,7 +47,8 @@
     "build": "tsc --module commonjs && rollup -c rollup.config.ts",
     "build:pwa": "rimraf build && react-scripts build",
     "test": "react-scripts test",
-    "prepare": "npm run build"
+    "prepare": "npm run build",
+    "npmpublish": "npm publish"
   },
   "eslintConfig": {
     "extends": "react-app"
