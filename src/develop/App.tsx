@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {View, Text, AnimatedValue, Input, Animate, timing, AnimatedTiming, Touchable, withContext} from '../lucky-web';
+import {View, Text, AnimatedValue,ScrollView, Input, Animate, timing, AnimatedTiming, Touchable, withContext} from '../lucky-web';
 import Intro from './Intro';
 import Timeline from './Timeline';
 import MusicApp from './Music';
@@ -22,7 +22,49 @@ export default class App extends React.Component {
         return (
             <SimpleRouter ref={this.router} width={this.context.clientWidth}>
                 <View style={styles.container}>
-                    {/*<Input/>*/}
+                    {/*<Input style={{marginTop:1000}}/>*/}
+                    {/*@ts-ignore*/}
+                    <ScrollView style={{
+                        height:300,
+                        backgroundColor:'#ccc',
+                        overflow:'hidden'
+                    }}>
+                        <View style={{
+                            backgroundColor:'red',
+                            height:40,
+                        }} onTouchStart={()=>{
+                            console.log('aasas')
+                        }}></View>
+                        <Card
+                            color="#9254DE"
+                            shadowColor="rgba(146, 84, 222, 0.5)"
+                            height={cardHeight}
+                            text="Overview"
+                            tap={this.push(Intro)}
+                        />
+                        <Card
+                            color="#9254DE"
+                            shadowColor="rgba(146, 84, 222, 0.5)"
+                            height={cardHeight}
+                            text="Overview"
+                            tap={this.push(Intro)}
+                        />
+                        <Card
+                            color="#9254DE"
+                            shadowColor="rgba(146, 84, 222, 0.5)"
+                            height={cardHeight}
+                            text="Overview"
+                            tap={this.push(Intro)}
+                        />
+                        <Card
+                            color="#9254DE"
+                            shadowColor="rgba(146, 84, 222, 0.5)"
+                            height={cardHeight}
+                            text="Overview"
+                            tap={this.push(Intro)}
+                        />
+                    </ScrollView>
+
                     <View style={styles.cards}>
                         <Card
                             color="#9254DE"

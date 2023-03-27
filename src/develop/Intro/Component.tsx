@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {View, Text, Image, ScrollView, Touchable, LinearGradient} from '../../lucky-web';
+import {View, Text, Image, ScrollView, Touchable, LinearGradient, Input} from '../../lucky-web';
 import NavBar from './Navbar';
 import Panel, {PanelItem} from './Panel';
 import logo from './logo.png';
@@ -10,6 +10,16 @@ export default function Components(props: any) {
             <NavBar title="Component" {...props} />
             {/*@ts-ignore */}
             <ScrollView style={styles.container}>
+
+                <Input style={{marginTop:10}} key={'222'}/>
+                {/*@ts-ignore */}
+                <Touchable  style={{
+                    backgroundColor:'red',
+                    height:40,
+                    
+                }} onPress={() => alert('Enjoy!~🎉')}>
+                    <Text>Go</Text>
+                </Touchable>
                 <Panel label="View">
                     <View style={styles.row}>
                         <View style={styles.view.base}/>
@@ -55,6 +65,9 @@ export default function Components(props: any) {
                     </View>
                 </Panel>
                 <Panel label="Touchable">
+
+
+
                     {/*@ts-ignore */}
                     <Touchable style={styles.button.container} onPress={() => alert('press')}>
                         <Text style={styles.button.text}>Button</Text>
