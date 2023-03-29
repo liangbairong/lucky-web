@@ -11,15 +11,15 @@ export default function Components(props: any) {
             {/*@ts-ignore */}
             <ScrollView style={styles.container}>
 
-                <Input style={{marginTop:10}} key={'222'}/>
-                {/*@ts-ignore */}
-                <Touchable  style={{
-                    backgroundColor:'red',
-                    height:40,
-                    
-                }} onPress={() => alert('Enjoy!~🎉')}>
-                    <Text>Go</Text>
-                </Touchable>
+                {/*<Input style={{marginTop:10}} key={'222'}/>*/}
+                {/*/!*@ts-ignore *!/*/}
+                {/*<Touchable  style={{*/}
+                {/*    backgroundColor:'red',*/}
+                {/*    height:40,*/}
+                {/*    */}
+                {/*}} onPress={() => alert('Enjoy!~🎉')}>*/}
+                {/*    <Text>Go</Text>*/}
+                {/*</Touchable>*/}
                 <Panel label="View">
                     <View style={styles.row}>
                         <View style={styles.view.base}/>

@@ -11,11 +11,11 @@ const app = render(<App />, document.getElementById('canvas')!, { devicePixelRat
 
 // eslint-disable-next-line
 // const app = render(<App />, document.getElementById('canvas')!, {  });
-// window.addEventListener('resize', () => {
-//   requestAnimationFrame(() => {
-//     app.update();
-//   });
-// });
+window.addEventListener('resize', () => {
+  requestAnimationFrame(() => {
+    app.update();
+  });
+});
 
 
 

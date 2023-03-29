@@ -4,6 +4,7 @@ import NavBar from './Navbar';
 import Entry from './Entry';
 import About from './About';
 import Components from './Component';
+import InputComponent from './InputComponent'
 import Style from './Style';
 import Animation from './Animation';
 import Gesture from './Gesture';
@@ -13,6 +14,7 @@ export default function Intro(props: any) {
     <View style={styles.container}>
       <NavBar {...props} title="Overview" />
       <View style={styles.entries}>
+        <Entry label="InputComponent" onPress={() => props.router.push(InputComponent)} />
         <Entry label="Component" onPress={() => props.router.push(Components)} />
         <Entry label="Style" onPress={() => props.router.push(Style)} />
         <Entry label="Animation" onPress={() => props.router.push(Animation)} />
