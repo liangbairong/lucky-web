@@ -12,7 +12,7 @@
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
-  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+<!--  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />-->
   <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
@@ -23,42 +23,112 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
   <title>demo</title>
-  <script src="%PUBLIC_URL%/touch-emulator.js"></script>
-  <script src="%PUBLIC_URL%/stats.min.js"></script>
+<!--  <script src="%PUBLIC_URL%/touch-emulator.js"></script>-->
+<!--  <script src="%PUBLIC_URL%/stats.min.js"></script>-->
   <!-- <script src="//cdn.jsdelivr.net/npm/eruda"></script>
   <script>eruda.init();</script>
   <script>
     window.onerror = function (e) { console.log(JSON.stringify(arguments)) }
   </script> -->
+  <style>
+    /**{*/
+    /*    margin: 0;*/
+    /*    padding: 0;*/
+    /*}*/
+    .loading-box{
+      position: fixed;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 99;
+
+    }
+    .loading{
+      width: 14vw;
+      height: 3vw;
+      margin: auto;
+      transform: scale(0.5);
+      display: flex;
+      justify-content: space-around;
+    }
+    .loading span{
+      display: inline-block;
+      width: 1.1vw;
+      height: 100%;
+      margin: 0 0.2vw;
+      border-radius: 0.5vw;
+      background: #8124ff;
+      -webkit-animation: load 1s ease infinite;
+    }
+    @-webkit-keyframes load{
+      0%,100%{
+        height: 20px;
+        margin: 0 2px;
+        background: #8124ff;
+      }
+      50%{
+        height: 50px;
+        margin: -15px 2px;
+        background: #fd075e;
+      }
+    }
+    .loading span:nth-child(2){
+      -webkit-animation-delay:0.2s;
+    }
+    .loading span:nth-child(3){
+      -webkit-animation-delay:0.4s;
+    }
+    .loading span:nth-child(4){
+      -webkit-animation-delay:0.6s;
+    }
+    .loading span:nth-child(5){
+      -webkit-animation-delay:0.8s;
+    }
+  </style>
+
 </head>
 
 <body>
-  <div id="canvas">
+
+<div class="loading-box">
+  <div class="loading">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
   </div>
+</div>
+
+  <div id="canvas"></div>
 </body>
-<script type="text/javascript">
-  TouchEmulator();
-  if (location.host.indexOf(':') > 0) {
-    const stats = new Stats();
-    stats.showPanel(0); // 0: fps, 1: ms, 2: mb, 3+: custom
-    stats.dom.setAttribute('style', `
-    position: fixed;
-    top: 1px;
-    right: 1px;
-    cursor: pointer;
-    opacity: 0.9;
-    z-index: 10000;`)
-    document.body.appendChild(stats.dom);
+<!--<script type="text/javascript">-->
+<!--  TouchEmulator();-->
+<!--  if (location.host.indexOf(':') > 0) {-->
+<!--    const stats = new Stats();-->
+<!--    stats.showPanel(0); // 0: fps, 1: ms, 2: mb, 3+: custom-->
+<!--    stats.dom.setAttribute('style', `-->
+<!--    position: fixed;-->
+<!--    top: 1px;-->
+<!--    right: 1px;-->
+<!--    cursor: pointer;-->
+<!--    opacity: 0.9;-->
+<!--    z-index: 10000;`)-->
+<!--    document.body.appendChild(stats.dom);-->
 
-    const animate = () => {
-      stats.begin();
+<!--    const animate = () => {-->
+<!--      stats.begin();-->
 
-      // monitored code goes here
-      stats.end()
-      requestAnimationFrame(animate);
-    }
-    requestAnimationFrame(animate);
-  }
-</script>
+<!--      // monitored code goes here-->
+<!--      stats.end()-->
+<!--      requestAnimationFrame(animate);-->
+<!--    }-->
+<!--    requestAnimationFrame(animate);-->
+<!--  }-->
+<!--</script>-->
 
 </html>

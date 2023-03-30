@@ -100,9 +100,9 @@ export function render(app: React.ReactNode, parent: HTMLElement, option: IOptio
         get $() {
             return dom;
         },
-        update(next = app, callback = noop) {
-            dom.width = option.width || dom.clientWidth * scale;
-            dom.height = option.height || dom.clientHeight * scale;
+        update(params:any={}, next = app, callback = noop) {
+            dom.width =params.width || option.width || dom.clientWidth * scale;
+            dom.height =params.height || option.height || dom.clientHeight * scale;
             clearCache();
 
             canvas.transform.scale(scale, scale);
