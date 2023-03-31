@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+import {RevasCanvas} from "./Canvas";
 
 export class Frame {
   constructor(public x = 0, public y = 0, public width = 0, public height = 0) {}
@@ -52,6 +53,7 @@ export interface NodeProps extends BaseProps {
   onTouchMove?: RevasTouchEventListener;
   onTouchEnd?: RevasTouchEventListener;
   onLayout?: (frame: Frame) => any;
+  customDrawer?:(canvas: RevasCanvas, node: Node)=>void;
   pointerEvents?: 'auto' | 'none' | 'box-none';
   $ready?: boolean;
 }

@@ -123,6 +123,7 @@ export default function Input(props: IInput) {
 
     const childList: any = [
         React.createElement(Text, {
+            key:'input-'+text,
             style: {
                 width: '100%',
                 // backgroundColor: '#ccc',
