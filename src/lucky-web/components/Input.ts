@@ -8,16 +8,17 @@ import Animate from "./Animate";
 import canvasUtils from "./common/canvasUtils";
 
 export type IInput = {
+    value?:string
     onGetValue?: Function;
 } & BaseProps;
 
 const click = new Click()
 
 export default function Input(props: IInput) {
-    const {style} = props;
+    const {style,value} = props;
     const labelRef = useRef<any>(null)
     const [isShowLabel, setIsShowLabel] = useState<boolean>(false)
-    const [text, setText] = useState<string>('')
+    const [text, setText] = useState<string>(value || '')
     //容器宽度
     const [boxWidth, setBoxWidth] = useState<number>(style?.width || 400)
     const [textWidth, setTextWidth] = useState<number>(0)
@@ -30,6 +31,7 @@ export default function Input(props: IInput) {
 
         input.current = document.createElement('input');
         input.current.id = 'input-' + Date.now()
+        input.current.value=text
         document.body.appendChild(input.current)
         input.current.addEventListener('input', getValue)
         input.current.addEventListener('focus', showLabel)
@@ -42,6 +44,23 @@ export default function Input(props: IInput) {
             input.current = null
         }
     }, [])
+
+    //计算光标位置
+    useEffect(()=>{
+        const charWidth = canvasUtils.getActualWidthOfChars(text, {
+            size: style.fontSize || 30
+        })
+        if (oldW.current !== charWidth) {
+            if (boxWidth - 20 < charWidth) {
+                setTextLeft(charWidth - boxWidth + 20 + 2)
+                setTextWidth(boxWidth - 20)
+            } else {
+                setTextLeft(0)
+                setTextWidth(charWidth)
+            }
+            oldW.current = charWidth
+        }
+    },[text])
 
 
     const getValue = (e: any) => {
@@ -58,24 +77,7 @@ export default function Input(props: IInput) {
 
 
     const _customDrawer = (canvas: RevasCanvas, node: Node) => {
-        requestAnimationFrame(() => {
-            //有动画会一直执行，需要做新旧数据判断处理
-            const charWidth = canvasUtils.getActualWidthOfChars(text, {
-                size: style.fontSize || 30
-            })
-            if (oldW.current !== charWidth) {
-                if (boxWidth - 20 < charWidth) {
-                    setTextLeft(charWidth - boxWidth + 20 + 2)
-                    setTextWidth(boxWidth - 20)
-                } else {
-                    setTextLeft(0)
-                    setTextWidth(charWidth)
-                }
-                oldW.current = charWidth
-            }
-
-        })
-
+        //有动画会一直执行，需要做新旧数据判断处理
         if (input.current) {
             if (node.frame.y !== oldY.current) {
                 console.log(node)

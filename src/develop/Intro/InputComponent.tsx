@@ -15,7 +15,7 @@ const InputComponent=(props:any)=>{
             }}/>
         </Panel>
         <Panel label="Input">
-            <Input style={{marginTop:10}} key={'222'} onGetValue={(text:string)=>{
+            <Input style={{marginTop:10}} value="ddsdsd" key={'222'} onGetValue={(text:string)=>{
                 console.log(text)
             }}/>
         </Panel>
