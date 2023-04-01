@@ -1,6 +1,6 @@
 import * as React from 'react'
 import {NodeProps} from '../core/Node'
-import {useEffect, useRef} from "react";
+import {useEffect, useRef, useImperativeHandle} from "react";
 import {AnimatedValue, timing, Easing} from "../core/Animated";
 
 export type IAnimateProps = {
@@ -8,31 +8,40 @@ export type IAnimateProps = {
     afterValue: number;
     duration?: number;
     animateName: string;
-    loop?:boolean;
-    ease?:any
+    loop?: boolean;
+    ease?: any
 } & NodeProps;
 
 export default function Animate(props: IAnimateProps) {
     const {
+        cRef,
         initValue,
         afterValue,
         duration = 1000,
         animateName,
         loop = false,
-        ease=Easing.out(),
+        ease = Easing.linear,
         children,
         style,
         ...others
     } = props as any;
     const val = useRef(new AnimatedValue(initValue));
-    const timingRef=useRef<any>(null)
-
+    const timingRef = useRef<any>(null)
+    useImperativeHandle(cRef, () => ({
+        start,
+        stop
+    }));
     useEffect(() => {
+        console.log('重新渲染')
         start()
+
+        return () => {
+            stop()
+        }
     }, [initValue, afterValue])
 
     const start = () => {
-        timingRef?.current && timingRef.current.stop();
+        stop()
         val.current.setValue(initValue);
         timingRef.current = timing(val.current, {
             to: afterValue,
@@ -40,6 +49,10 @@ export default function Animate(props: IAnimateProps) {
             ease,
             loop
         }).start();
+    }
+
+    const stop = () => {
+        timingRef?.current && timingRef.current.stop();
     }
 
     return React.createElement(

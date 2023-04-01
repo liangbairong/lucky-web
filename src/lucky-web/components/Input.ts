@@ -1,59 +1,45 @@
 import * as React from 'react'
 import {Node, BaseProps, RevasTouchEvent} from '../core/Node'
-import {useEffect, useRef, useState} from "react";
+import {useCallback, useEffect, useRef, useState} from "react";
 import {RevasCanvas} from "../core/Canvas";
 import Click from "./common/click";
 import Text from "./Text";
-// import {AnimatedValue,timing,Easing} from "../core/Animated";
-const click = new Click()
-
-
-function getActualWidthOfChars(text: string, options: any = {}) {
-    const {
-        size = 30,
-        family = "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue'"
-    } = options;
-    const canvas = document.createElement("canvas");
-    const ctx: any = canvas.getContext("2d");
-    ctx.font = `${size}px ${family}`;
-    const metrics = ctx.measureText(text);
-    const actual = Math.abs(metrics.actualBoundingBoxLeft) + Math.abs(metrics.actualBoundingBoxRight);
-    return Math.max(metrics.width, actual);
-}
+import Animate from "./Animate";
+import canvasUtils from "./common/canvasUtils";
 
 export type IInput = {
     onGetValue?: Function;
 } & BaseProps;
 
+const click = new Click()
+
 export default function Input(props: IInput) {
-    const op = useRef(0.001);
-    const op2 = useRef(true);
     const {style} = props;
+    const labelRef = useRef<any>(null)
     const [isShowLabel, setIsShowLabel] = useState<boolean>(false)
     const [text, setText] = useState<string>('')
     //容器宽度
     const [boxWidth, setBoxWidth] = useState<number>(style?.width || 400)
     const [textWidth, setTextWidth] = useState<number>(0)
     const [textLeft, setTextLeft] = useState<number>(0)
-    const old = useRef(0);
+    const oldY = useRef(0);
+    const oldW = useRef(0);
     const input = useRef<any>(null)
 
-
-    // const [op,setOp]=useState(0)
     useEffect(() => {
-        // setBoxWidth(true)
-
 
         input.current = document.createElement('input');
         input.current.id = 'input-' + Date.now()
         document.body.appendChild(input.current)
-        // startAnimated()
         input.current.addEventListener('input', getValue)
         input.current.addEventListener('focus', showLabel)
         input.current.addEventListener('blur', hideLabel)
         return () => {
             input.current.removeEventListener('input', getValue)
+            input.current.removeEventListener('focus', showLabel)
+            input.current.removeEventListener('blur', hideLabel)
             document.body.removeChild(input.current)
+            input.current = null
         }
     }, [])
 
@@ -61,47 +47,40 @@ export default function Input(props: IInput) {
     const getValue = (e: any) => {
         setText(e.target.value)
         props.onGetValue && props.onGetValue(e.target.value)
-    }
-    const showLabel = () => {
-        setIsShowLabel(true)
-    }
-    const hideLabel = () => {
-        setIsShowLabel(false)
-    }
 
-    const startAnimated = () => {
-        setInterval(() => {
-            op.current = op2.current ? 0.001 : 1
-            op2.current = !op2.current
-            // const a=Object.assign(op,{
-            //     value:op.value ? 0 : 1
-            // })
-            console.log(op.current)
-            // setOp(op)
-            // console.log(a.value)
-        }, 500)
     }
+    const showLabel = useCallback(() => {
+        setIsShowLabel(true)
+    }, [])
+    const hideLabel = useCallback(() => {
+        setIsShowLabel(false)
+    }, [])
+
 
     const _customDrawer = (canvas: RevasCanvas, node: Node) => {
-        setTimeout(() => {
-            // const charWidth = canvas.context.measureText(text).width;
-            const charWidth = getActualWidthOfChars(text, {
+        requestAnimationFrame(() => {
+            //有动画会一直执行，需要做新旧数据判断处理
+            const charWidth = canvasUtils.getActualWidthOfChars(text, {
                 size: style.fontSize || 30
             })
-            if (boxWidth - 20 < charWidth) {
-                setTextLeft(charWidth - boxWidth + 20 + 2)
-                setTextWidth(boxWidth - 20)
-            } else {
-                setTextLeft(0)
-                setTextWidth(charWidth)
+            if (oldW.current !== charWidth) {
+                if (boxWidth - 20 < charWidth) {
+                    setTextLeft(charWidth - boxWidth + 20 + 2)
+                    setTextWidth(boxWidth - 20)
+                } else {
+                    setTextLeft(0)
+                    setTextWidth(charWidth)
+                }
+                oldW.current = charWidth
             }
-        }, 10)
+
+        })
 
         if (input.current) {
-            if (node.frame.y !== old.current) {
+            if (node.frame.y !== oldY.current) {
                 console.log(node)
                 input.current.style.position = "fixed";
-                old.current = node.frame.y
+                oldY.current = node.frame.y
                 input.current.style.top = node.frame.y * (document.body.clientWidth / 750) + "px"
                 input.current.style.left = "-100%"
             }
@@ -111,19 +90,13 @@ export default function Input(props: IInput) {
 
 
     const onPress = () => {
-        console.log('aa')
         input.current.focus()
-        // op.current =
-        // text='23'
-        // setText('23')
-        // setOp(op ? 0 : 1)
-        console.log(op)
     };
 
 
     const childList: any = [
         React.createElement(Text, {
-            key:'input-'+text,
+            key: 'InputText',
             style: {
                 width: '100%',
                 // backgroundColor: '#ccc',
@@ -139,10 +112,16 @@ export default function Input(props: IInput) {
     ]
 
     if (isShowLabel) {
+        //光标
         childList.push(
-            React.createElement('View', {
+            React.createElement(Animate, {
+                key: 'InputLabel',
+                cRef: labelRef,
+                initValue: 1,
+                afterValue: 0,
+                loop: true,
+                animateName: 'opacity',
                 style: {
-                    // opacity: op.current,
                     width: 2,
                     height: '60%',
                     backgroundColor: '#000',

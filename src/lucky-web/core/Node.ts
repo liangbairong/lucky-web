@@ -56,4 +56,5 @@ export interface NodeProps extends BaseProps {
   customDrawer?:(canvas: RevasCanvas, node: Node)=>void;
   pointerEvents?: 'auto' | 'none' | 'box-none';
   $ready?: boolean;
+  cRef?:any
 }

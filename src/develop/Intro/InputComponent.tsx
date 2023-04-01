@@ -14,6 +14,26 @@ const InputComponent=(props:any)=>{
                 console.log(text)
             }}/>
         </Panel>
+        <Panel label="Input">
+            <Input style={{marginTop:10}} key={'222'} onGetValue={(text:string)=>{
+                console.log(text)
+            }}/>
+        </Panel>
+        <Panel label="Input">
+            <Input style={{marginTop:10}} key={'222'} onGetValue={(text:string)=>{
+                console.log(text)
+            }}/>
+        </Panel>
+        <Panel label="Input">
+            <Input style={{marginTop:10}} key={'222'} onGetValue={(text:string)=>{
+                console.log(text)
+            }}/>
+        </Panel>
+        <Panel label="Input">
+            <Input style={{marginTop:10}} key={'222'} onGetValue={(text:string)=>{
+                console.log(text)
+            }}/>
+        </Panel>
     </View>
 }
 export default InputComponent

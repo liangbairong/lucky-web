@@ -7,7 +7,6 @@ export default class Click{
     public touchStart = (e: RevasTouchEvent,onPressIn:Function) => {
         this._tid = Object.keys(e.touches)[0];
         this._start = e.touches[this._tid];
-        // this._style.opacity.setValue(this.props.activeOpacity!);
         onPressIn && onPressIn();
     };
 
@@ -18,8 +17,6 @@ export default class Click{
                 onPress && onPress();
             }
         }
-        // this._style.opacity.setValue(1);
         onPressOut && onPressOut();
     };
-
 }
