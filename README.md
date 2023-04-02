@@ -3,7 +3,7 @@
 ## Install
 
 ``` bash
-$ npm i dom-react-canvas -S
+$ npm i lucky-web -S
 ```
 ## 使用
 
