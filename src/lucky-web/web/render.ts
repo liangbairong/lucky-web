@@ -50,7 +50,6 @@ function createCanvas(parent: HTMLElement, scale: number, w: number, h: number,)
 }
 
 function createRoot(app: React.ReactNode, dom: HTMLElement, canvas: RevasCanvas, w: number, h: number, scale: number) {
-    console.log(canvas)
     return createElement(
         Root,
         {
@@ -89,7 +88,6 @@ export function render(app: React.ReactNode, parent: HTMLElement, option: IOptio
     const container = new Container();
     const destroyTouch = initTouch(dom, e => container.handleTouch(createRevasTouchEvent(e,dom,option)));
     const fiber = renderer.createContainer(container, false, false);
-    console.log(fiber)
     canvas.transform.scale(scale, scale);
     renderer.updateContainer(createRoot(app, dom, canvas, option.width, option.height, option.devicePixelRatio), fiber, parentComponent, callback);
 

@@ -32,7 +32,6 @@ export default function Animate(props: IAnimateProps) {
         stop
     }));
     useEffect(() => {
-        console.log('重新渲染')
         start()
 
         return () => {

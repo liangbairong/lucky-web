@@ -62,7 +62,6 @@ export default function drawImage(canvas: RevasCanvas, node: Node, flags: any) {
       width: actualSize.width * scale,
       height: actualSize.height * scale,
     };
-    console.log(scaledSize)
 
     // Clip the image to rectangle (sx, sy, sw, sh).
     const sw = Math.round(actualSize.width);
@@ -85,7 +84,6 @@ export default function drawImage(canvas: RevasCanvas, node: Node, flags: any) {
       width: actualSize.width * scale,
       height: actualSize.height * scale,
     };
-    console.log(scaledSize)
 
     // Clip the image to rectangle (sx, sy, sw, sh).
     const sw = Math.round(actualSize.width);
@@ -94,7 +92,6 @@ export default function drawImage(canvas: RevasCanvas, node: Node, flags: any) {
     // Scale the image to dimensions (dw, dh).
     const dw = Math.round(scaledSize.width);
     const dh = Math.round(scaledSize.height);
-    console.log(height/actualSize.height)
 
     const num=Math.ceil(height/actualSize.height)+1
     // Draw the image on the canvas at coordinates (dx, dy).
