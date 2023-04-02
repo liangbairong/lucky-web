@@ -7,7 +7,7 @@ export type ImageViewProps = {
   src: string;
 } & NodeProps;
 
-const DEFAULT_STYLE = { path: true };
+const DEFAULT_STYLE = { path: true,overflow: 'hidden' };
 
 export default function ImageView(props: ImageViewProps) {
   const { src, style } = props;

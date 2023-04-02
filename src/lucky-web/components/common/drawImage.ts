@@ -32,7 +32,8 @@ export default function drawImage(canvas: RevasCanvas, node: Node, flags: any) {
     canvas.context.clip();
   }
 
-  if (style.resizeMode === 'contain') {
+  if (style.mode === 'contain') {
+    //显示完整
     const scale = Math.min(width / actualSize.width, height / actualSize.height) || 1;
 
     const scaledSize = {
@@ -53,7 +54,58 @@ export default function drawImage(canvas: RevasCanvas, node: Node, flags: any) {
     const dy = Math.round((height - scaledSize.height) / 2 + y);
 
     canvas.context.drawImage(image, 0, 0, sw, sh, dx, dy, dw, dh);
+  }else if (style.mode === 'over') {
+    //铺满模式，宽高拉伸铺满
+    const scale = Math.min(width / actualSize.width, height / actualSize.height) || 1;
+
+    const scaledSize = {
+      width: actualSize.width * scale,
+      height: actualSize.height * scale,
+    };
+    console.log(scaledSize)
+
+    // Clip the image to rectangle (sx, sy, sw, sh).
+    const sw = Math.round(actualSize.width);
+    const sh = Math.round(actualSize.height);
+
+    // Scale the image to dimensions (dw, dh).
+    const dw = Math.round(scaledSize.width);
+    const dh = Math.round(height);
+
+    // Draw the image on the canvas at coordinates (dx, dy).
+    const dx = Math.round((width - scaledSize.width) / 2 + x);
+    const dy = Math.round((0) / 2 + y);
+
+    canvas.context.drawImage(image, 0, 0, sw, sh, dx, dy, dw, dh);
+  }else if(style.mode === 'repeat'){
+    //宽度100%，高度重复
+    const scale = Math.min(width / actualSize.width, height / actualSize.height) || 1;
+
+    const scaledSize = {
+      width: actualSize.width * scale,
+      height: actualSize.height * scale,
+    };
+    console.log(scaledSize)
+
+    // Clip the image to rectangle (sx, sy, sw, sh).
+    const sw = Math.round(actualSize.width);
+    const sh = Math.round(actualSize.height);
+
+    // Scale the image to dimensions (dw, dh).
+    const dw = Math.round(scaledSize.width);
+    const dh = Math.round(scaledSize.height);
+    console.log(height/actualSize.height)
+
+    const num=Math.ceil(height/actualSize.height)+1
+    // Draw the image on the canvas at coordinates (dx, dy).
+    const dx = Math.round((width - scaledSize.width) / 2 + x);
+    for(let i=0;i<num;i++){
+      const dy = Math.round((actualSize.height*i) / 2 + y);
+      canvas.context.drawImage(image, 0, 0, sw, sh, dx, dy, dw, dh);
+    }
+
   } else {
+    //高度100%，宽度截取
     const scale = Math.max(width / actualSize.width, height / actualSize.height) || 1;
 
     const scaledSize = {
