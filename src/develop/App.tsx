@@ -3,6 +3,10 @@ import {View, Text, AnimatedValue,ScrollView, Input, Animate, timing, AnimatedTi
 import Intro from './Intro';
 import Timeline from './Timeline';
 import MusicApp from './Music';
+
+
+import Top from './top'
+
 import SimpleRouter from './common/simple-router';
 
 @withContext
@@ -29,6 +33,13 @@ export default class App extends React.Component {
                             height={cardHeight}
                             text="Overview"
                             tap={this.push(Intro)}
+                        />
+                        <Card
+                          color="#F759AB"
+                          shadowColor="rgba(247, 89, 171, 0.5)"
+                          height={cardHeight}
+                          text="top"
+                          tap={this.push(Top)}
                         />
                         {/*<Card*/}
                         {/*  color="#F759AB"*/}
