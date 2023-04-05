@@ -2,7 +2,7 @@ const style = {
   main: {
     flex: 1,
     // height:700,
-    width: 750,
+    width: '100%',
     // overflow:'hidden',
     backgroundColor: 'rgba(49, 24, 124, 1)'
   },
