@@ -75,7 +75,9 @@ class Handler {
     if (_offset !== this.offset) {
       this.offset = _offset;
     } else if (this._last < 0) {
-      this.velocity = 0;
+      // this.velocity = 0
+      // TODO:做顺滑处理
+      // this.velocity =this.velocity -0.5 > 0 ? this.velocity -0.5 : 0;
     }
   }
 }
@@ -153,6 +155,7 @@ export default class Scroller {
 
   touchStart = (e: RevasTouchEvent) => {
     if (!this._tid) {
+      this.cancel()
       this._tid = Object.keys(e.touches)[0];
       this._timestamp = e.timestamp;
       const { x, y } = e.touches[this._tid];

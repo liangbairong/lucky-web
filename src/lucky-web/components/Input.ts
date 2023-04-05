@@ -78,9 +78,8 @@ export default function Input(props: IInput) {
 
     const _customDrawer = (canvas: RevasCanvas, node: Node) => {
         //有动画会一直执行，需要做新旧数据判断处理
-        if (input.current) {
-            if (node.frame.y !== oldY.current) {
-                console.log(node)
+        if (input?.current) {
+            if (node?.frame?.y !== oldY?.current) {
                 input.current.style.position = "fixed";
                 oldY.current = node.frame.y
                 input.current.style.top = node.frame.y * (document.body.clientWidth / 750) + "px"

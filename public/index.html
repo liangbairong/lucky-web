@@ -8,6 +8,10 @@
   <meta name="theme-color" content="#000000" />
   <meta name="description" content="Web site created using create-react-app" />
   <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+
+
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
@@ -87,6 +91,17 @@
     }
     .loading span:nth-child(5){
       -webkit-animation-delay:0.8s;
+    }
+
+
+    canvas {
+      overflow-clip-margin: content-box;
+      overflow: clip;
+    }
+    body, div, canvas {
+      image-rendering: optimizeSpeed;
+      -webkit-image-rendering: optimizeSpeed;
+      -webkit-interpolation-mode: nearest-neighbor;
     }
   </style>
 

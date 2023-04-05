@@ -77,7 +77,7 @@ const App = () => {
 
   return (
     //  @ts-ignore
-    <ScrollView style={style.main} paging={113}>
+    <ScrollView style={style.main} paging={0}>
       <View style={style.header}>
         <Image src={header} style={style.headerImg} />
       </View>
