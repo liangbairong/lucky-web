@@ -4,6 +4,8 @@ import style from './style'
 import Box from './box'
 import Anchor from './anchor'
 import header from '../images/header.png';
+import Carousel from "./Carousel";
+
 const list:any = [
   {
     title: '戰隊名稱',
@@ -81,7 +83,7 @@ const App = () => {
       <View style={style.header}>
         <Image src={header} style={style.headerImg} />
       </View>
-
+      {/*<Carousel/>*/}
 
       <View style={style.list}>
         {
