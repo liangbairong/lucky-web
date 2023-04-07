@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1,minimum-scale=1,user-scalable=no">
   <meta name="theme-color" content="#000000" />
   <meta name="description" content="Web site created using create-react-app" />
-  <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+  <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo.png" />
 
 
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -27,9 +27,9 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
   <title>demo</title>
-<!--  <script src="%PUBLIC_URL%/touch-emulator.js"></script>-->
-<!--&lt;!&ndash;  帧数监听&ndash;&gt;-->
-<!--  <script src="%PUBLIC_URL%/stats.min.js"></script>-->
+  <script src="%PUBLIC_URL%/touch-emulator.js"></script>
+<!--  帧数监听-->
+  <script src="%PUBLIC_URL%/stats.min.js"></script>
   <!-- <script src="//cdn.jsdelivr.net/npm/eruda"></script>
   <script>eruda.init();</script>
   <script>
@@ -123,29 +123,29 @@
 
   <div id="canvas"></div>
 </body>
-<!--<script type="text/javascript">-->
-<!--  TouchEmulator();-->
-<!--  if (location.host.indexOf(':') > 0) {-->
-<!--    const stats = new Stats();-->
-<!--    stats.showPanel(0); // 0: fps, 1: ms, 2: mb, 3+: custom-->
-<!--    stats.dom.setAttribute('style', `-->
-<!--    position: fixed;-->
-<!--    top: 1px;-->
-<!--    right: 1px;-->
-<!--    cursor: pointer;-->
-<!--    opacity: 0.9;-->
-<!--    z-index: 10000;`)-->
-<!--    document.body.appendChild(stats.dom);-->
+<script type="text/javascript">
+  TouchEmulator();
+  if (location.host.indexOf(':') > 0) {
+    const stats = new Stats();
+    stats.showPanel(0); // 0: fps, 1: ms, 2: mb, 3+: custom
+    stats.dom.setAttribute('style', `
+    position: fixed;
+    top: 1px;
+    right: 1px;
+    cursor: pointer;
+    opacity: 0.9;
+    z-index: 10000;`)
+    document.body.appendChild(stats.dom);
 
-<!--    const animate = () => {-->
-<!--      stats.begin();-->
+    const animate = () => {
+      stats.begin();
 
-<!--      // monitored code goes here-->
-<!--      stats.end()-->
-<!--      requestAnimationFrame(animate);-->
-<!--    }-->
-<!--    requestAnimationFrame(animate);-->
-<!--  }-->
-<!--</script>-->
+      // monitored code goes here
+      stats.end()
+      requestAnimationFrame(animate);
+    }
+    requestAnimationFrame(animate);
+  }
+</script>
 
 </html>
