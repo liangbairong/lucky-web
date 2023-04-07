@@ -1,8 +1,8 @@
 import * as React from 'react';
-import {View, Text, AnimatedValue,ScrollView, Input, Animate, timing, AnimatedTiming, Touchable, withContext} from '../lucky-web';
+import {View, Text, AnimatedValue, timing, AnimatedTiming, Touchable, withContext} from '../lucky-web';
 import Intro from './Intro';
-import Timeline from './Timeline';
-import MusicApp from './Music';
+// import Timeline from './Timeline';
+// import MusicApp from './Music';
 
 
 import Top from './top'
@@ -22,10 +22,18 @@ export default class App extends React.Component {
     };
 
     render() {
-        const cardHeight = this.context.clientHeight / 7;
+        const cardHeight = 100;
         return (
             <SimpleRouter ref={this.router} width={this.context.clientWidth}>
                 <View style={styles.container}>
+                    <Text style={{
+                        fontSize: 50, color: '#F759AB',
+                        textShadowOffsetX: 10,  // 偏斜量x
+                        textShadowOffsetY: 10,// 偏斜量x
+                        textShadowBlur: 5,  // 粗细
+                        textShadowColor: '#9254DE',  //颜色
+                        textAlign: 'center', marginBottom: 50
+                    }}>Lucky-web</Text>
                     <View style={styles.cards}>
                         <Card
                             color="#9254DE"
@@ -35,11 +43,11 @@ export default class App extends React.Component {
                             tap={this.push(Intro)}
                         />
                         <Card
-                          color="#F759AB"
-                          shadowColor="rgba(247, 89, 171, 0.5)"
-                          height={cardHeight}
-                          text="top"
-                          tap={this.push(Top)}
+                            color="#F759AB"
+                            shadowColor="rgba(247, 89, 171, 0.5)"
+                            height={cardHeight}
+                            text="Top"
+                            tap={this.push(Top)}
                         />
                         {/*<Card*/}
                         {/*  color="#F759AB"*/}

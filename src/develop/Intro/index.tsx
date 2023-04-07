@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View } from '../../lucky-web';
+import { View,ScrollView } from '../../lucky-web';
 import NavBar from './Navbar';
 import Entry from './Entry';
 import About from './About';
@@ -14,7 +14,8 @@ export default function Intro(props: any) {
   return (
     <View style={styles.container}>
       <NavBar {...props} title="Overview" />
-      <View style={styles.entries}>
+      {/*@ts-ignore*/}
+      <ScrollView style={styles.entries}>
         <Entry label="InputComponent" onPress={() => props.router.push(InputComponent)} />
         <Entry label="ImageComponent" onPress={() => props.router.push(ImageComponent)} />
         <Entry label="Component" onPress={() => props.router.push(Components)} />
@@ -22,7 +23,7 @@ export default function Intro(props: any) {
         <Entry label="Animation" onPress={() => props.router.push(Animation)} />
         <Entry label="Gesture" onPress={() => props.router.push(Gesture)} />
         <Entry label="About" onPress={() => props.router.push(About)} />
-      </View>
+      </ScrollView>
     </View>
   );
 }

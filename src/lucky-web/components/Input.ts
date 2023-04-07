@@ -4,19 +4,18 @@ import {useCallback, useEffect, useRef, useState} from "react";
 import {RevasCanvas} from "../core/Canvas";
 import Click from "./common/click";
 import Text from "./Text";
-import Animate from "./Animate";
 import canvasUtils from "./common/canvasUtils";
 
 export type IInput = {
-    value?:string
+    value?: string
     onGetValue?: Function;
 } & BaseProps;
 
 const click = new Click()
 
 export default function Input(props: IInput) {
-    const {style,value} = props;
-    const labelRef = useRef<any>(null)
+    const {style, value} = props;
+    const [op, setOp] = useState({opacity: 1})
     const [isShowLabel, setIsShowLabel] = useState<boolean>(false)
     const [text, setText] = useState<string>(value || '')
     //容器宽度
@@ -28,10 +27,9 @@ export default function Input(props: IInput) {
     const input = useRef<any>(null)
 
     useEffect(() => {
-
         input.current = document.createElement('input');
         input.current.id = 'input-' + Date.now()
-        input.current.value=text
+        input.current.value = text
         document.body.appendChild(input.current)
         input.current.addEventListener('input', getValue)
         input.current.addEventListener('focus', showLabel)
@@ -45,8 +43,22 @@ export default function Input(props: IInput) {
         }
     }, [])
 
+    // 定时器光标
+    const intervalRef = useRef<any>(null)
+    useEffect(() => {
+        if(isShowLabel){
+            intervalRef.current = setInterval(() => {
+                setOp({opacity: op.opacity ? 0 : 1})
+            }, 500)
+        }
+
+        return () => {
+            intervalRef?.current && clearInterval(intervalRef.current)
+        }
+    }, [op,isShowLabel])
+
     //计算光标位置
-    useEffect(()=>{
+    useEffect(() => {
         const charWidth = canvasUtils.getActualWidthOfChars(text, {
             size: style.fontSize || 30
         })
@@ -60,17 +72,17 @@ export default function Input(props: IInput) {
             }
             oldW.current = charWidth
         }
-    },[text])
+    }, [text])
 
 
     const getValue = (e: any) => {
         setText(e.target.value)
         props.onGetValue && props.onGetValue(e.target.value)
-
     }
     const showLabel = useCallback(() => {
         setIsShowLabel(true)
     }, [])
+
     const hideLabel = useCallback(() => {
         setIsShowLabel(false)
     }, [])
@@ -115,21 +127,16 @@ export default function Input(props: IInput) {
     if (isShowLabel) {
         //光标
         childList.push(
-            React.createElement(Animate, {
+            React.createElement('InputLabel', {
                 key: 'InputLabel',
-                cRef: labelRef,
-                initValue: 1,
-                afterValue: 0,
-                loop: true,
-                animateName: 'opacity',
-                style: {
+                style: [{
                     width: 2,
                     height: '60%',
                     backgroundColor: '#000',
                     position: 'absolute',
                     left: textWidth ? textWidth + 10 : 10,
                     top: '20%',
-                },
+                }, op],
             }),
         )
     }
@@ -150,7 +157,6 @@ export default function Input(props: IInput) {
                 borderWidth: 1,
                 borderColor: '#999',
                 borderRadius: 5,
-                // backgroundColor: 'red',
                 overflow: 'hidden',
                 flexDirection: 'row',
                 alignItems: 'center',

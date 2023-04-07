@@ -11,6 +11,7 @@ const Carousel = () => {
     })
     const start = (e: RevasTouchEvent) => {
         // console.log(e)
+        console.log('33')
         if (!_tid?.current) {
             _tid.current = Object.keys(e.touches)[0];
             const {x, y} = e.touches[_tid.current];
@@ -21,6 +22,7 @@ const Carousel = () => {
     const move = (e: RevasTouchEvent) => {
         if (_tid?.current && e.touches[_tid?.current]) {
             const {x, y} = e.touches[_tid.current];
+            console.log(x - startX.current)
             setSty({left: x - startX.current})
             // console.log(moveX.current)
         }
@@ -28,6 +30,7 @@ const Carousel = () => {
 
     const end = (e: RevasTouchEvent) => {
         console.log(e)
+        _tid.current=null
     }
 
     return (

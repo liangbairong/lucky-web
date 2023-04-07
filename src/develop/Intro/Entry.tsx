@@ -26,11 +26,12 @@ const styles = {
     },
     label: {
         color: '#191919',
-        fontSize: 25,
+        fontSize: 30,
         fontWeight: '600'
     },
     line: {
         position: 'absolute',
+        width: 710,
         left: 20, right: 0, bottom: 0, height: 1,
         backgroundColor: '#000',
         opacity: 0.2

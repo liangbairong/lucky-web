@@ -38,15 +38,13 @@ const styles = {
     padding: 20,
   },
   label: {
-    fontSize:32,
+    fontSize:40,
     fontWeight: '600',
     color: '#000',
-    opacity: 0.5,
   },
   line: {
     height: 1,
-    backgroundColor: '#000',
-    opacity: 0.05,
+    backgroundColor: '#ccc',
     marginTop: 10,
     marginBottom: 15,
   },
