@@ -2,6 +2,7 @@ import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
 import sourceMaps from 'rollup-plugin-sourcemaps';
 import typescript from 'rollup-plugin-typescript2';
+import { terser } from "rollup-plugin-terser";
 import json from 'rollup-plugin-json';
 
 const pkg = require('./package.json');
@@ -19,6 +20,7 @@ const BASE_CONFIG = {
     include: 'src/lucky-web/**',
   },
   plugins: [
+    terser(), //压缩、 删除 debugger 语句和函数。包括 assert.equal、console.log 等等。
     // Allow json resolution
     json(),
     // Compile TypeScript files
