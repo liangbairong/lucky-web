@@ -38,7 +38,7 @@ const styles = {
     padding: 20,
   },
   label: {
-    fontSize:40,
+    fontSize:32,
     fontWeight: '600',
     color: '#000',
   },

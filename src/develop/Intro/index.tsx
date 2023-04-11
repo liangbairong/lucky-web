@@ -4,6 +4,7 @@ import NavBar from './Navbar';
 import Entry from './Entry';
 import About from './About';
 import Components from './Component';
+import TextComponent from "./TextComponent";
 import InputComponent from './InputComponent'
 import ImageComponent from "./ImageComponent";
 import Style from './Style';
@@ -16,8 +17,9 @@ export default function Intro(props: any) {
       <NavBar {...props} title="Overview" />
       {/*@ts-ignore*/}
       <ScrollView style={styles.entries}>
-        <Entry label="InputComponent" onPress={() => props.router.push(InputComponent)} />
-        <Entry label="ImageComponent" onPress={() => props.router.push(ImageComponent)} />
+        <Entry label="Text" onPress={() => props.router.push(TextComponent)} />
+        <Entry label="Input" onPress={() => props.router.push(InputComponent)} />
+        <Entry label="Image" onPress={() => props.router.push(ImageComponent)} />
         <Entry label="Component" onPress={() => props.router.push(Components)} />
         <Entry label="Style" onPress={() => props.router.push(Style)} />
         <Entry label="Animation" onPress={() => props.router.push(Animation)} />
