@@ -3,10 +3,11 @@ import {View, Text, Image, ScrollView, Touchable, LinearGradient, Input, RevasCa
 import NavBar from './Navbar';
 import Panel, {PanelItem} from './Panel';
 import logo from './logo.png'
-const style={
-    font:{
-        fontSize:28,
-        marginBottom:10
+
+const style = {
+    font: {
+        fontSize: 28,
+        marginBottom: 10
     }
 }
 const styles = {
@@ -19,8 +20,8 @@ const styles = {
     text: {
         base: {
             flex: 1,
-            textAlign: 'center',
-            lineHeight: 50, fontSize: 34,
+            // textAlign: 'center',
+            lineHeight: 50, fontSize: 44,
         },
         weight: {
             fontWeight: '800',
@@ -31,40 +32,40 @@ const styles = {
         serif: {
             fontFamily: 'serif',
         },
-        // 文字描边
-        shadow: {
-            textShadowOffsetX: 1,  // 偏斜量x
-            textShadowOffsetY: 1,// 偏斜量x
-            textShadowBlur: 5,  // 粗细
-            textShadowColor: 'red',  //颜色
-            fontWeight: '600',
-            color:'#ffd445',
-            fontSize:50
-        },
+
     },
 };
 const TextComponent = (props: any) => {
-    return <View style={{flex:1}}>
-        <NavBar title="Image" {...props} />
+    return <View style={{flex: 1}}>
+        <NavBar title="Text" {...props} />
         {/*@ts-ignore*/}
-        <ScrollView style={{flex:1,width:'100%'}}>
+        <ScrollView style={{flex: 1, width: '100%'}}>
             <Panel label="默认">
                 <Text style={styles.text.base}>default style</Text>
-
-                <View style={styles.row}>
-                    <Text style={styles.text.base}>default style</Text>
-                    <Text style={[styles.text.base, styles.text.weight]}>fontWeight</Text>
-                    <Text style={[styles.text.base, styles.text.color]}>color: red</Text>
-                </View>
-                <View style={styles.row}>
-                    <Text style={styles.text.base}>textAlign: center</Text>
-                </View>
-                <View style={styles.row}>
-                    <Text style={[styles.text.base, styles.text.serif]}>fontFamily: serif</Text>
-                </View>
+                <Text style={styles.text.base}>default style</Text>
+                <Text style={[styles.text.base, styles.text.weight]}>fontWeight</Text>
+                <Text style={[styles.text.base, styles.text.color]}>color: red</Text>
+                <Text style={[styles.text.base, {
+                    textAlign: 'center',
+                }]}>textAlign: center</Text>
+                <Text style={[styles.text.base, styles.text.serif]}>fontFamily: serif</Text>
+            </Panel>
+            <Panel label="文字阴影">
+                <Text style={[styles.text.base, {
+                    textShadowOffsetX: 4,  // 偏斜量x
+                    textShadowOffsetY: 4,// 偏斜量x
+                    textShadowBlur: 2,  // 模糊度
+                    textShadowColor: 'red',  //颜色
+                    color: '#ffd445',
+                }]}>textShadow</Text>
             </Panel>
             <Panel label="文字描边">
-                <Text style={[styles.text.base, styles.text.shadow]}>textShadow</Text>
+                <Text style={[styles.text.base, {
+                    textBorderColor: 'red',
+                    textBorderWidth: 4,
+                    color: '#fff',
+                    fontWeight: '800',
+                }]}>文字描边</Text>
             </Panel>
             <Panel label="颜色高亮">
                 <Text style={{

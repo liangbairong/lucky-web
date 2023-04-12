@@ -28,9 +28,9 @@ export default class App extends React.Component {
                 <View style={styles.container}>
                     <Text style={{
                         fontSize: 50, color: '#F759AB',
-                        textShadowOffsetX: 10,  // 偏斜量x
-                        textShadowOffsetY: 10,// 偏斜量x
-                        textShadowBlur: 5,  // 粗细
+                        textShadowOffsetX: 8,  // 偏斜量x
+                        textShadowOffsetY: 8,// 偏斜量x
+                        textShadowBlur: 8,
                         textShadowColor: '#9254DE',  //颜色
                         textAlign: 'center', marginBottom: 50
                     }}>Lucky-web</Text>

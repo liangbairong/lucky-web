@@ -93,6 +93,21 @@ export function setShadow(canvas: RevasCanvas, color: string, x = 0, y = 0, blur
   return noop;
 }
 
+
+export function setTextBorder(canvas: RevasCanvas, textBorderWidth=1, textBorderColor:string) {
+  if (textBorderColor) {
+    const { context: ctx } = canvas;
+    const { lineWidth,strokeStyle } = ctx;
+    ctx.lineWidth = textBorderWidth;
+    ctx.strokeStyle = textBorderColor;
+    return function resetTextBorder() {
+      ctx.lineWidth = lineWidth;
+      ctx.strokeStyle = strokeStyle;
+    };
+  }
+  return noop;
+}
+
 export function pushOpacity(canvas: RevasCanvas, opacity: number) {
   if (opacity !== null && opacity < 1 && opacity >= 0) {
     const cachedOpacity = canvas.context.globalAlpha || 1;

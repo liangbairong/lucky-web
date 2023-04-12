@@ -35,7 +35,6 @@ export default class Text extends React.Component<TextProps> {
         this._drawed = options;
       }
       const [lines, height] = this._measured;
-      // console.log(lines)
       if (height !== this.state.height) {
         this.setState({ height });
       } else {
@@ -45,29 +44,6 @@ export default class Text extends React.Component<TextProps> {
   };
   render() {
     const { children, numberOfLines, ...others } = this.props as any;
-    // if(Array.isArray(children)){
-    //   const c:any=[]
-    //   children.forEach(item=>{
-    //     if(typeof item === "string"){
-    //       c.push(React.createElement('Text', {
-    //         content: item,
-    //         key:'Text-'+item,
-    //         customDrawer: this.drawText,
-    //         textStyle: others.style,
-    //         style: this.state,
-    //         numberOfLines,
-    //         $ready: Boolean(this._drawed),
-    //       }))
-    //     }else{
-    //       c.push(item)
-    //     }
-    //   })
-    //   return React.createElement(
-    //       'View',
-    //       others,
-    //       c
-    //   );
-    // }
     return React.createElement(
       'View',
       others,
