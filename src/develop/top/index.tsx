@@ -83,10 +83,10 @@ const App = (props: any) => {
             <NavBar title="Top" {...props}/>
             {/*@ts-ignore*/}
             <ScrollView style={style.main} paging={0}>
-                <View style={style.header}>
-                    <Image src={header} style={style.headerImg}/>
-                </View>
-                <Carousel/>
+                {/*<View style={style.header}>*/}
+                {/*    <Image src={header} style={style.headerImg}/>*/}
+                {/*</View>*/}
+                {/*<Carousel/>*/}
 
                 <View style={style.list}>
                     {
