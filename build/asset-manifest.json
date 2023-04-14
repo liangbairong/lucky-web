@@ -1,23 +1,22 @@
 {
   "files": {
     "main.css": "/lucky-web/static/css/main.73ed3d38.chunk.css",
-    "main.js": "/lucky-web/static/js/main.e43e4936.chunk.js",
-    "main.js.map": "/lucky-web/static/js/main.e43e4936.chunk.js.map",
+    "main.js": "/lucky-web/static/js/main.b90d1397.chunk.js",
+    "main.js.map": "/lucky-web/static/js/main.b90d1397.chunk.js.map",
     "runtime-main.js": "/lucky-web/static/js/runtime-main.605f45cc.js",
     "runtime-main.js.map": "/lucky-web/static/js/runtime-main.605f45cc.js.map",
-    "static/js/2.0ff0b266.chunk.js": "/lucky-web/static/js/2.0ff0b266.chunk.js",
-    "static/js/2.0ff0b266.chunk.js.map": "/lucky-web/static/js/2.0ff0b266.chunk.js.map",
+    "static/js/2.3a428c47.chunk.js": "/lucky-web/static/js/2.3a428c47.chunk.js",
+    "static/js/2.3a428c47.chunk.js.map": "/lucky-web/static/js/2.3a428c47.chunk.js.map",
     "index.html": "/lucky-web/index.html",
     "static/css/main.73ed3d38.chunk.css.map": "/lucky-web/static/css/main.73ed3d38.chunk.css.map",
-    "static/js/2.0ff0b266.chunk.js.LICENSE.txt": "/lucky-web/static/js/2.0ff0b266.chunk.js.LICENSE.txt",
+    "static/js/2.3a428c47.chunk.js.LICENSE.txt": "/lucky-web/static/js/2.3a428c47.chunk.js.LICENSE.txt",
     "static/media/anchor-bg.a7d6efa8.png": "/lucky-web/static/media/anchor-bg.a7d6efa8.png",
-    "static/media/header.6e676992.png": "/lucky-web/static/media/header.6e676992.png",
-    "static/media/logo.514db5a0.png": "/lucky-web/static/media/logo.514db5a0.png"
+    "static/media/logo.c2d24bda.png": "/lucky-web/static/media/logo.c2d24bda.png"
   },
   "entrypoints": [
     "static/js/runtime-main.605f45cc.js",
-    "static/js/2.0ff0b266.chunk.js",
+    "static/js/2.3a428c47.chunk.js",
     "static/css/main.73ed3d38.chunk.css",
-    "static/js/main.e43e4936.chunk.js"
+    "static/js/main.b90d1397.chunk.js"
   ]
 }
