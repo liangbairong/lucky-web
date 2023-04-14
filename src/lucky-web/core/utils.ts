@@ -128,3 +128,15 @@ export type RevasAdapter = {
 export const adapter: RevasAdapter = {
   createImage: () => new Image(),
 };
+
+//兼容性requestIdleCallback
+export const _requestIdleCallback = (callback: Function) => {
+  const start = Date.now()
+  requestAnimationFrame(() => {
+    if (Date.now() - start < 16.6) {
+      callback && callback()
+    } else {
+      _requestIdleCallback(callback)
+    }
+  })
+}

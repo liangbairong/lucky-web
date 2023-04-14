@@ -18,6 +18,11 @@ function _updateLayout(node: Node): [Function, YogaNode] {
     const { left, top, width, height } = yoga.getComputedLayout();
     node.frame = new Frame(x + left, y + top, width, height);
     node.props.onLayout && node.props.onLayout(node.frame);
+    // if(node.frame.y<1200){
+    //   node.isNoRender=false
+    // }else{
+    //   node.isNoRender=true
+    // }
     for (let i = 0; i < children.length; i++) {
       children[i](node.frame.x, node.frame.y);
     }

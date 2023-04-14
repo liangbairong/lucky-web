@@ -23,10 +23,15 @@ function getRadius(style: any) {
 export function drawNode(canvas: RevasCanvas, node: Node, container: Container) {
   const style = getMergedStyleFromNode(node, container.draw);
   const frame = getFrameFromNode(node);
-
   if (style.opacity <= 0) {
     return;
   }
+
+  if(node.isNoRender){
+    return;
+  }
+
+  // console.log(node)
 
   // flags
   const hasTransform =

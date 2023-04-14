@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {View, Text, Image, ScrollView, Touchable, LinearGradient, Input, RevasCanvas, Node} from '../../lucky-web';
+import {View, Text, Image, ScrollView, ListView, LinearGradient, Input, RevasCanvas, Node} from '../../lucky-web';
 import NavBar from './Navbar';
 import Panel, {PanelItem} from './Panel';
 import logo from './logo.png'
@@ -36,6 +36,8 @@ const styles = {
     },
 };
 const TextComponent = (props: any) => {
+    //@ts-ignore
+    const num=[...new Array(1000).keys()]
     return <View style={{flex: 1}}>
         <NavBar title="Text" {...props} />
         {/*@ts-ignore*/}
@@ -67,18 +69,45 @@ const TextComponent = (props: any) => {
                     fontWeight: '800',
                 }]}>文字描边</Text>
             </Panel>
-            <Panel label="颜色高亮">
-                <Text style={{
-                    textAlign: 'left',
-                    fontSize: 30,
-                    color: '#000'
-                }}
-                      highlight={{
-                          text: 'dd试试',
-                          color: 'blue'
-                      }}
-                >dddeeee sas{'dd试试'}家居设计js撒假数据实际上仅仅是dddff计算机视觉</Text>
-            </Panel>
+            {
+                //  @ts-ignore
+                [...new Array(2).keys()].map((item,i)=>{
+                    return (
+                        <Panel label="颜色高亮" key={i}>
+                            <Text style={{
+                                textAlign: 'left',
+                                fontSize: 30,
+                                color: '#000'
+                            }}
+
+                                  customDrawer={()=>{
+                                      console.log(i)
+                                  }}
+                            >text {i}</Text>
+                        </Panel>
+                    )
+                })
+            }
+            {/*@ts-ignore*/}
+            <ListView
+                style={{height:600,backgroundColor:'#ccc',overflow:'hidden'}}
+                data={num}
+                itemHeight={80} renderItem={(item, index) => (
+                <Panel label="颜色高亮" key={index}>
+                    <Text style={{
+                        textAlign: 'left',
+                        fontSize: 30,
+                        color: '#000'
+                    }}
+
+                          customDrawer={()=>{
+                              console.log(index)
+                          }}
+                    >text {index}</Text>
+                </Panel>
+
+            )} />
+
 
         </ScrollView>
     </View>

@@ -8,6 +8,8 @@ export class Frame {
 export class Node<T = any> {
   public readonly children: Node[] = [];
   public frame = new Frame();
+  public isNoRender:boolean =false;
+  public views?: any;
   public parent?: Node;
   constructor(public readonly type: string, public props: NodeProps & T) {}
   get $ready() {

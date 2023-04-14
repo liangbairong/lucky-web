@@ -72,6 +72,8 @@ class Handler {
   change(move: number) {
     const _offset = clamp(this.offset + move, 0, this.max > 0 ? this.max : 0);
     // check validate
+    // console.log(_offset)
+    // console.log('max'+this.max)
     if (_offset !== this.offset) {
       this.offset = _offset;
     } else if (this._last < 0) {
