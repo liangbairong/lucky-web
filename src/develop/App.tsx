@@ -39,7 +39,7 @@ export default class App extends React.Component {
                             color="#9254DE"
                             shadowColor="rgba(146, 84, 222, 0.5)"
                             height={cardHeight}
-                            text="Overview"
+                            text="Component"
                             tap={this.push(Intro)}
                         />
                         <Card

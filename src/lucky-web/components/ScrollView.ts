@@ -93,7 +93,7 @@ export default class ScrollView extends React.Component<ScrollViewProps> {
     };
 
     //预留距离 避免滑动太快 看到空白
-    private previewHeight: number = 300
+    private previewHeight: number = 600
     private _dg = (node: Node) => {
         if (node) {
             node.isNoRender = !(this.scrollY + this._height + this.previewHeight > node.frame.y && this.scrollY - this.previewHeight < node.frame.y + node.frame.height);

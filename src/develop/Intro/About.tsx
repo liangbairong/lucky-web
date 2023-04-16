@@ -8,14 +8,14 @@ export default function About(props: any) {
   return (
     <View style={styles.container}>
       <Interactable style={styles.card} cache>
-        <Text style={styles.title}>Drag and Move! </Text>
+        <Text style={styles.title}>lucky-web</Text>
         <Image style={styles.logo} src={logo} />
         <Text style={styles.text} numberOfLines={3}>
           lucky-web让你可以用React和CSS，在Canvas上绘制高性能交互界面，基于React 17和Yoga Layout～
         </Text>
         {/*@ts-ignore */}
         <Touchable style={styles.btn} onPress={() => props.router.pop()}>
-          <Text style={styles.btnText}>Go</Text>
+          <Text style={styles.btnText}>返回</Text>
         </Touchable>
       </Interactable>
       <Back {...props} />
@@ -27,7 +27,7 @@ const styles = {
   container: {
     flex: 1,
     justifyContent: 'center',
-    backgroundColor: '#9254DE',
+    backgroundColor: '#e89245',
   },
   card: {
     padding: 20,
@@ -55,9 +55,9 @@ const styles = {
   },
   text: {
     fontSize: 34,
-    lineHeight: 40,
+    lineHeight: 45,
     textAlign: 'center',
-    padding: 10,
+    padding: 20,
     color: '#333',
   },
   logo: {
@@ -68,7 +68,7 @@ const styles = {
   btn: {
     justifyContent: 'center',
     height: 80,
-    backgroundColor: '#9254DE',
+    backgroundColor: '#e1e75e',
   },
   btnText: {
     fontSize: 30,
