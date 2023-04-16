@@ -2,7 +2,6 @@ import * as React from 'react';
 import {View, Text, Image, ScrollView, Touchable, LinearGradient, Input} from '../../lucky-web';
 import NavBar from './Navbar';
 import Panel, {PanelItem} from './Panel';
-import logo from './logo.png';
 
 export default function Components(props: any) {
     return (
@@ -11,68 +10,6 @@ export default function Components(props: any) {
             {/*@ts-ignore */}
             <ScrollView style={styles.container}>
 
-                {/*<Input style={{marginTop:10}} key={'222'}/>*/}
-                {/*/!*@ts-ignore *!/*/}
-                {/*<Touchable  style={{*/}
-                {/*    backgroundColor:'red',*/}
-                {/*    height:40,*/}
-                {/*    */}
-                {/*}} onPress={() => alert('Enjoy!~🎉')}>*/}
-                {/*    <Text>Go</Text>*/}
-                {/*</Touchable>*/}
-                <Panel label="View">
-                    <View style={styles.row}>
-                        <View style={styles.view.base}/>
-                        <View style={[styles.view.base, styles.view.radius]}/>
-                        <View style={[styles.view.base, styles.view.border]}/>
-                        <View style={[styles.view.base, styles.view.shadow]}/>
-                    </View>
-                </Panel>
-                <Panel label="Text" cache>
-                    <View style={styles.row}>
-                        <Text style={styles.text.base}>default style</Text>
-                        <Text style={[styles.text.base, styles.text.weight]}>fontWeight</Text>
-                        <Text style={[styles.text.base, styles.text.color]}>color: red</Text>
-                    </View>
-                    <View style={styles.row}>
-                        <Text style={styles.text.base}>textAlign: center</Text>
-                    </View>
-                    <View style={styles.row}>
-                        <Text style={[styles.text.base, styles.text.serif]}>fontFamily: serif</Text>
-                        <Text style={[styles.text.base, styles.text.shadow]}>textShadow</Text>
-                    </View>
-
-                    <Text>颜色高亮</Text>
-                    <Text style={{
-                        textAlign: 'left',
-                        fontSize: 30,
-                        color: 'red'
-                    }}
-                          highlight={{
-                              text: 'dd试试',
-                              color: 'blue'
-                          }}
-                    >dddeeee sas{'dd试试'}家居设计js撒假数据实际上仅仅是dddff计算机视觉</Text>
-                </Panel>
-                <Panel label="Image" cache>
-                    <View style={styles.rowLeft}>
-                        <PanelItem label="contain">
-                            <Image style={[styles.view.base, styles.image.contain]} src={logo}/>
-                        </PanelItem>
-                        <PanelItem label="cover">
-                            <Image style={styles.view.base} src={logo}/>
-                        </PanelItem>
-                    </View>
-                </Panel>
-                <Panel label="Touchable">
-
-
-
-                    {/*@ts-ignore */}
-                    <Touchable style={styles.button.container} onPress={() => alert('press')}>
-                        <Text style={styles.button.text}>Button</Text>
-                    </Touchable>
-                </Panel>
                 <Panel label="ScrollView">
                     {/*@ts-ignore */}
                     <ScrollView horizontal style={styles.scrollView.container}>

@@ -69,46 +69,6 @@ const TextComponent = (props: any) => {
                     fontWeight: '800',
                 }]}>文字描边</Text>
             </Panel>
-            {
-                //  @ts-ignore
-                [...new Array(2).keys()].map((item,i)=>{
-                    return (
-                        <Panel label="颜色高亮" key={i}>
-                            <Text style={{
-                                textAlign: 'left',
-                                fontSize: 30,
-                                color: '#000'
-                            }}
-
-                                  customDrawer={()=>{
-                                      console.log(i)
-                                  }}
-                            >text {i}</Text>
-                        </Panel>
-                    )
-                })
-            }
-            {/*@ts-ignore*/}
-            <ListView
-                style={{height:600,backgroundColor:'#ccc',overflow:'hidden'}}
-                data={num}
-                itemHeight={80} renderItem={(item, index) => (
-                <Panel label="颜色高亮" key={index}>
-                    <Text style={{
-                        textAlign: 'left',
-                        fontSize: 30,
-                        color: '#000'
-                    }}
-
-                          customDrawer={()=>{
-                              console.log(index)
-                          }}
-                    >text {index}</Text>
-                </Panel>
-
-            )} />
-
-
         </ScrollView>
     </View>
 }

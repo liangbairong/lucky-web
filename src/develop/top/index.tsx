@@ -67,35 +67,38 @@ const list: any = [
     }
 ]
 
-for(let i=0;i<200;i++){
-    list.push({
-        title: '參謀'+i,
-        child: [
-            {
-                name: 'AKA丐幫酒桃',
-                anchorId: '12267904'
-            },
-            {
-                name: '榮譽總會長',
-                anchorId: '11599454'
-            },
-            {
-                name: '籃子',
-                anchorId: '11728934'
-            }
-        ]
-    })
-}
+
 const App = (props: any) => {
     const [newList, setNewList] = useState([])
 
     useEffect(() => {
+        for(let i=0;i<100;i++){
+            list.push({
+                title: '參謀'+i,
+                child: [
+                    {
+                        name: 'AKA丐幫酒桃',
+                        anchorId: '12267904'
+                    },
+                    {
+                        name: '榮譽總會長',
+                        anchorId: '11599454'
+                    },
+                    {
+                        name: '籃子',
+                        anchorId: '11728934'
+                    }
+                ]
+            })
+        }
         list.forEach((item: any) => {
             item.child.forEach((item2: any) => {
                 item2.img = `https://showme-livecdn.elelive.net/avatar/${item2?.anchorId}?1=1`
             })
         })
         setNewList(list)
+
+
     }, [list])
 
     return (

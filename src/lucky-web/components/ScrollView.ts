@@ -36,7 +36,7 @@ export default class ScrollView extends React.Component<ScrollViewProps> {
 
     private _scroller = new Scroller(e => {
         const {x = 0, y = 0} = this._offset;
-        console.log('y', e.y)
+        // console.log('y', e.y)
         this.scrollY = e.y
         this.props.horizontal ?
             this._innerStyle.translateX.setValue(x - e.x) :
