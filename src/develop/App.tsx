@@ -46,7 +46,7 @@ export default class App extends React.Component {
                             color="#F759AB"
                             shadowColor="rgba(247, 89, 171, 0.5)"
                             height={cardHeight}
-                            text="Top"
+                            text="ScrollView 性能测试"
                             tap={this.push(Top)}
                         />
                         {/*<Card*/}
@@ -149,6 +149,8 @@ const styles = {
     },
     cards: {
         alignItems: 'center',
+        height:400,
+        marginTop:20
     },
     card: {
         width: 280,

@@ -3,8 +3,6 @@ import {View, ScrollView, Image, Text} from '../../lucky-web';
 import style from './style'
 import Box from './box'
 import Anchor from './anchor'
-import header from '../images/header.png';
-import Carousel from "./Carousel";
 import NavBar from "../Intro/Navbar";
 
 const list: any = [
@@ -66,50 +64,54 @@ const list: any = [
         ]
     }
 ]
-
+for(let i=0;i<100;i++){
+    list.push({
+        title: '參謀'+i,
+        child: [
+            {
+                name: 'AKA丐幫酒桃',
+                anchorId: '12267904'
+            },
+            {
+                name: '榮譽總會長',
+                anchorId: '11599454'
+            },
+            {
+                name: '籃子',
+                anchorId: '11728934'
+            }
+        ]
+    })
+}
 
 const App = (props: any) => {
     const [newList, setNewList] = useState([])
-
+    const [loading, setLoading] = useState(true)
     useEffect(() => {
-        for(let i=0;i<100;i++){
-            list.push({
-                title: '參謀'+i,
-                child: [
-                    {
-                        name: 'AKA丐幫酒桃',
-                        anchorId: '12267904'
-                    },
-                    {
-                        name: '榮譽總會長',
-                        anchorId: '11599454'
-                    },
-                    {
-                        name: '籃子',
-                        anchorId: '11728934'
-                    }
-                ]
+        setTimeout(()=>{
+            list.forEach((item: any) => {
+                item.child.forEach((item2: any) => {
+                    item2.img = `https://showme-livecdn.elelive.net/avatar/${item2?.anchorId}?1=1`
+                })
             })
-        }
-        list.forEach((item: any) => {
-            item.child.forEach((item2: any) => {
-                item2.img = `https://showme-livecdn.elelive.net/avatar/${item2?.anchorId}?1=1`
-            })
-        })
-        setNewList(list)
+            setNewList(list)
+            setLoading(false)
+        },500)
 
-
-    }, [list])
+    }, [])
 
     return (
         <View style={{flex: 1}}>
-            <NavBar title="Top" {...props}/>
+            <NavBar title="ScrollView 性能测试" {...props}/>
             {/*@ts-ignore*/}
-            <ScrollView style={style.main} paging={0}>
+            <ScrollView style={style.main} paging={0} virtualScrolling>
                 {/*<View style={style.header}>*/}
                 {/*    <Image src={header} style={style.headerImg}/>*/}
                 {/*</View>*/}
                 {/*<Carousel/>*/}
+                {
+                    loading &&  <Text style={style.loading}>Loading...</Text>
+                }
 
                 <View style={style.list}>
                     {

@@ -29,12 +29,12 @@ const styles = {
   title: {
     textAlign: 'center',
     color: '#fff',
-    fontSize: 37,
+    fontSize: 32,
     fontWeight: '600',
   },
   icon: {
-    width: 27,
-    height: 42,
+    width: 22,
+    height: 40,
   },
   back: {
     position: 'absolute',

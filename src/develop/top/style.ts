@@ -14,7 +14,12 @@ const style = {
     width: '100%'
   },
 
-
+  loading:{
+    fontSize:40,
+    color:'#fff',
+    padding:40,
+    textAlign:'center'
+  },
   box: {
     // height:700,
     minHeight:300,
