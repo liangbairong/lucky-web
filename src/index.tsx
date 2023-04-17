@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, View,ScrollView } from './lucky-web';
+import { render } from './lucky-web';
 import App from './develop/App';
 import './develop/index.css';
 
