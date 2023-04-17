@@ -5,6 +5,8 @@
 ``` bash
 $ npm i lucky-web -S
 ```
+## [demo](https://liangbairong.gitee.io/lucky-web/)
+
 
 ## 使用
 
