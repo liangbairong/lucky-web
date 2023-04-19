@@ -1,7 +1,7 @@
 import { RevasTouchEvent } from '../../core/Node';
 import { clamp, noop } from '../../core/utils';
 
-export type RevasScrollEventType = 'start' | 'scroll' | 'end' | 'none';
+export type RevasScrollEventType = 'start' | 'scroll' | 'end' | 'none' | 'loadMove';
 
 export interface RevasScrollEvent {
   type: RevasScrollEventType;
@@ -18,6 +18,8 @@ class Handler {
   velocity = 0;
   max = -1;
   paging = 0;
+
+  isBase=false;  //是否底部
 
   private _last = -1;
 
@@ -71,9 +73,11 @@ class Handler {
 
   change(move: number) {
     const _offset = clamp(this.offset + move, 0, this.max > 0 ? this.max : 0);
-    // check validate
-    // console.log(_offset)
-    // console.log('max'+this.max)
+    if(_offset===this.offset && _offset!==0){
+      this.isBase=true
+      return
+    }
+    this.isBase=false
     if (_offset !== this.offset) {
       this.offset = _offset;
     } else if (this._last < 0) {
@@ -132,6 +136,7 @@ export default class Scroller {
       }
     } else {
       if (this._y.velocity > 0) {
+
         e.scroll.x = false;
         stopPropagation();
       }
@@ -174,6 +179,10 @@ export default class Scroller {
       this.horizontal ? this._x.onMove(x, duration) : this._y.onMove(y, duration);
       this.emit('scroll');
       this._sign(e);
+
+      if(this._x.isBase || this._y.isBase){
+        this.emit('loadMove');
+      }
     }
   };
 

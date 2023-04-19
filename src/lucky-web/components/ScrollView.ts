@@ -13,6 +13,7 @@ export type ScrollViewProps = {
     onScroll?: (e: RevasScrollEvent) => any;
     onScrollStart?: (e: RevasScrollEvent) => any;
     onScrollEnd?: (e: RevasScrollEvent) => any;
+    onLoadMove?: (e: RevasScrollEvent) => any;
     paging?: boolean | number;
     offset?: ScrollViewOffset;
 } & NodeProps;
@@ -54,6 +55,8 @@ export default class ScrollView extends React.Component<ScrollViewProps> {
                 return this.props.onScrollStart && this.props.onScrollStart(e);
             case 'end':
                 return this.props.onScrollEnd && this.props.onScrollEnd(e);
+            case 'loadMove':
+                return this.props.onLoadMove && this.props.onLoadMove(e);
         }
     });
 
