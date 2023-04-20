@@ -130,23 +130,23 @@ export default class ScrollView extends React.Component<ScrollViewProps> {
                 _requestIdleCallback(() => {
                     // console.log('node', node)
                     node.views = {
-                        contentHeight: this._contentHeight,
                         height: this._height,
                         scrollY: this.scrollY,
                     }
-                    node = this._dg(node,this.props.horizontal)
-                })
-            }else if (node?.views?.scrollX !== this.scrollX) {
-                _requestIdleCallback(() => {
-                    // console.log('node', node)
-                    node.views = {
-                        contentHeight: this._contentHeight,
-                        height: this._height,
-                        scrollX: this.scrollX
-                    }
-                    node = this._dg(node,this.props.horizontal)
+                    // node = this._dg(node,this.props.horizontal)
                 })
             }
+            // else if (node?.views?.scrollX !== this.scrollX) {
+            //     _requestIdleCallback(() => {
+            //         // console.log('node', node)
+            //         node.views = {
+            //             contentHeight: this._contentHeight,
+            //             height: this._height,
+            //             scrollX: this.scrollX
+            //         }
+            //         node = this._dg(node,this.props.horizontal)
+            //     })
+            // }
         }
 
 

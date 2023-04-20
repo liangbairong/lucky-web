@@ -65,9 +65,11 @@ export class Container {
     if (canvas) {
       // if not unmounted
       if (this._reflow) {
+        // console.log('canvas--',canvas)
         updateLayout(_root!)();
         this._reflow = false;
       }
+      // console.log('33')
       canvas.context.clearRect(0, 0, this.width, this.height);
       drawNode(canvas, _root!, this);
       requestAnimationFrame(this.ready);

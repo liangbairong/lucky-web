@@ -1,39 +1,47 @@
-import type { YogaNode } from 'yoga-layout-wasm/asm';
-import { yoga as Yoga } from './init';
-import { Node, Frame } from '../Node';
+import type {YogaNode} from 'yoga-layout-wasm/asm';
+import {yoga as Yoga} from './init';
+import {Node, Frame} from '../Node';
 import apply from './style';
-import { AppContextType } from '../../components/Context';
+import {AppContextType} from '../../components/Context';
+
+function isScrollIn(node: any,item:any) {
+    if (node.type === 'ScrollContent') {
+        item.inScroll = true
+    }
+    if (node.parent) {
+        isScrollIn(node.parent,item)
+    }
+    return false
+}
 
 function _updateLayout(node: Node): [Function, YogaNode] {
-  const yoga = Yoga.Node.create();
-  const children: Function[] = [];
-  apply(yoga, node.props.style);
-  for (let i = 0; i < node.children.length; i++) {
-    const child = node.children[i];
-    const [f, y] = _updateLayout(child);
-    const index = children.push(f);
-    yoga.insertChild(y, index - 1);
-  }
-  function process(x = 0, y = 0) {
-    const { left, top, width, height } = yoga.getComputedLayout();
-    node.frame = new Frame(x + left, y + top, width, height);
-    node.props.onLayout && node.props.onLayout(node.frame);
-    // if(node.frame.y<1200){
-    //   node.isNoRender=false
-    // }else{
-    //   node.isNoRender=true
-    // }
-    for (let i = 0; i < children.length; i++) {
-      children[i](node.frame.x, node.frame.y);
+    const yoga = Yoga.Node.create();
+    const children: Function[] = [];
+    apply(yoga, node.props.style);
+    for (let i = 0; i < node.children.length; i++) {
+        const child = node.children[i];
+        const [f, y] = _updateLayout(child);
+        const index = children.push(f);
+        yoga.insertChild(y, index - 1);
     }
-    yoga.free();
-  }
-  return [process, yoga];
+
+    function process(x = 0, y = 0) {
+        const {left, top, width, height} = yoga.getComputedLayout();
+        node.frame = new Frame(x + left, y + top, width, height);
+        node.props.onLayout && node.props.onLayout(node.frame);
+        isScrollIn(node,node)
+        for (let i = 0; i < children.length; i++) {
+            children[i](node.frame.x, node.frame.y);
+        }
+        yoga.free();
+    }
+
+    return [process, yoga];
 }
 
 export function updateLayout(root: Node<AppContextType>) {
-  const [process, yoga] = _updateLayout(root);
-  const { clientWidth, clientHeight, RTL } = root.props;
-  yoga.calculateLayout(clientWidth, clientHeight, RTL ? Yoga.DIRECTION_RTL : Yoga.DIRECTION_LTR);
-  return process;
+    const [process, yoga] = _updateLayout(root);
+    const {clientWidth, clientHeight, RTL} = root.props;
+    yoga.calculateLayout(clientWidth, clientHeight, RTL ? Yoga.DIRECTION_RTL : Yoga.DIRECTION_LTR);
+    return process;
 }

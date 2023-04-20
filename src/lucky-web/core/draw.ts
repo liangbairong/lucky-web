@@ -20,19 +20,37 @@ function getRadius(style: any) {
   };
 }
 
+//预留距离 避免滑动太快 看到空白
+const previewDistance: number = 300
+let scrollContent:any=null
+
+const _dg = (node: Node,horizontal:boolean=false) => {
+  if (node && scrollContent) {
+    return !(scrollContent.scrollY + scrollContent.height + previewDistance > node.frame.y && scrollContent.scrollY - previewDistance < node.frame.y + node.frame.height);
+  }
+
+  return false
+}
+
 export function drawNode(canvas: RevasCanvas, node: Node, container: Container) {
   const style = getMergedStyleFromNode(node, container.draw);
   const frame = getFrameFromNode(node);
   if (style.opacity <= 0) {
     return;
   }
-
+  if(node.type==='ScrollContent'){
+    // console.log(node)
+    scrollContent=node.views
+  }
+  // @ts-ignore
+  if(node.inScroll){
+    if(_dg(node)){
+      return;
+    }
+  }
   if(node.isNoRender){
     return;
   }
-
-  // console.log(node)
-
   // flags
   const hasTransform =
     style.translateX || style.translateY || style.rotate || style.scaleX || style.scaleY || style.scale;
