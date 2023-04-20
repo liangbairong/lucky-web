@@ -1,6 +1,6 @@
 {
   "name": "lucky-web",
-  "version": "1.0.6",
+  "version": "1.0.6-experimental",
   "description": "lucky-web是基于react使用canvas来布局dom的框架，支持react 16以上的hook",
   "repository": "https://github.com/903529487/lucky-web",
   "homepage": "https://liangbairong.gitee.io/lucky-web",

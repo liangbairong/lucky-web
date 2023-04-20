@@ -64,7 +64,7 @@ const list: any = [
         ]
     }
 ]
-for(let i=0;i<100;i++){
+for(let i=0;i<200;i++){
     list.push({
         title: '參謀'+i,
         child: [
@@ -83,35 +83,52 @@ for(let i=0;i<100;i++){
         ]
     })
 }
-
+let state=true
 const App = (props: any) => {
     const [newList, setNewList] = useState([])
     const [loading, setLoading] = useState(true)
     useEffect(() => {
-        setTimeout(()=>{
-            list.forEach((item: any) => {
-                item.child.forEach((item2: any) => {
-                    item2.img = `https://showme-livecdn.elelive.net/avatar/${item2?.anchorId}?1=1`
-                })
+        list.forEach((item: any) => {
+            item.child.forEach((item2: any) => {
+                item2.img = `https://showme-livecdn.elelive.net/avatar/${item2?.anchorId}?1=1`
             })
-            setNewList(list)
-            setLoading(false)
-        },500)
+        })
+        setNewList(list)
+        setLoading(false)
+        // setTimeout(()=>{
+        //     list.forEach((item: any) => {
+        //         item.child.forEach((item2: any) => {
+        //             item2.img = `https://showme-livecdn.elelive.net/avatar/${item2?.anchorId}?1=1`
+        //         })
+        //     })
+        //     setNewList(list)
+        //     setLoading(false)
+        // },500)
 
     }, [])
+    const onLoadMove=()=>{
+        if(!state) return
+        state=false
+        setLoading(true)
+        setTimeout(()=>{
+            const a:any =[...list,...newList]
+            setNewList(a)
+            state=true
+            setLoading(false)
+        },1000)
+
+    }
 
     return (
         <View style={{flex: 1}}>
             <NavBar title="ScrollView 性能测试" {...props}/>
             {/*@ts-ignore*/}
-            <ScrollView style={style.main} paging={0} virtualScrolling>
+            <ScrollView style={style.main} paging={0} onLoadMove={onLoadMove} virtualScrolling>
                 {/*<View style={style.header}>*/}
                 {/*    <Image src={header} style={style.headerImg}/>*/}
                 {/*</View>*/}
                 {/*<Carousel/>*/}
-                {
-                    loading &&  <Text style={style.loading}>Loading...</Text>
-                }
+
 
                 <View style={style.list}>
                     {
@@ -126,7 +143,9 @@ const App = (props: any) => {
                         })
                     }
                 </View>
-
+                {
+                    loading &&  <Text style={style.loading}>Loading...</Text>
+                }
             </ScrollView>
         </View>
     )

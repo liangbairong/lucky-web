@@ -72,13 +72,13 @@ const unused: any = {
     // noop
   },
 };
-
+let time:any=null
 const RevasReconciler = ReactReconciler({
   supportsHydration: false,
   supportsPersistence: false,
   supportsMutation: true,
   isPrimaryRenderer: false,
-
+  supportsMicrotask:true,  //微任务中执行
   ...unused,
 
   createInstance(type: string, props: any) {
@@ -142,7 +142,15 @@ const RevasReconciler = ReactReconciler({
   },
 
   resetAfterCommit(container: Container) {
-    container.draw(true);
+    if(time) clearTimeout(time)
+    time=setTimeout(()=>{
+      time=null
+      container.draw(true);
+    },0)
+
+    // console.log('93993')
+    // container.draw(true);
+
   },
 
   resetTextContent: noop,
