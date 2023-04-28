@@ -9,7 +9,7 @@ export type ScrollViewOffset = { x?: number; y?: number };
 
 export type ScrollViewProps = {
     horizontal?: boolean;
-    virtualScrolling?:boolean; //是否开启虚拟滚动
+    virtualScrolling?: boolean; //是否开启虚拟滚动
     onScroll?: (e: RevasScrollEvent) => any;
     onScrollStart?: (e: RevasScrollEvent) => any;
     onScrollEnd?: (e: RevasScrollEvent) => any;
@@ -17,8 +17,6 @@ export type ScrollViewProps = {
     paging?: boolean | number;
     offset?: ScrollViewOffset;
 } & NodeProps;
-
-
 
 
 export default class ScrollView extends React.Component<ScrollViewProps> {
@@ -36,27 +34,59 @@ export default class ScrollView extends React.Component<ScrollViewProps> {
 
     private scrollY: number = 0; //滚动的y轴
     private scrollX: number = 0; //滚动的轴
+    private loadState = true;
+
+
+    // init(){
+    //     this._height = -1;
+    //     this._contentHeight = -1;
+    //     this._width = -1;
+    //     this._contentWidth = -1;
+    //     this._innerStyle = {
+    //         translateX: new AnimatedValue(0),
+    //         translateY: new AnimatedValue(0),
+    //         position: 'absolute',
+    //         animated: true,
+    //     };
+    //     this._offset = {x: 0, y: 0};
+    //
+    //     this.scrollY = 0; //滚动的y轴
+    //     this.scrollX = 0; //滚动的轴
+    //     this.loadState=true;
+    // }
 
     private _scroller = new Scroller(e => {
         const {x = 0, y = 0} = this._offset;
-        // console.log('y', e.y)
-        if(this.props.horizontal){
+        if (this.props.horizontal) {
             this.scrollX = e.x
-        }else{
+        } else {
             this.scrollY = e.y
         }
         this.props.horizontal ?
             this._innerStyle.translateX.setValue(x - e.x) :
             this._innerStyle.translateY.setValue(y - e.y);
+
+
         switch (e.type) {
             case 'scroll':
+                if (this._contentHeight - this._height === this.scrollY && this.loadState) {
+                    this.loadState = false;
+                    console.log('233')
+                    this._scroller.init()
+                    // this._scroller.cancel();
+                    setTimeout(() => {
+                        this.loadState = true
+                    }, 100)
+                    this.props.onLoadMove && this.props.onLoadMove(e);
+                }
+                // console.log(this.scrollY)
                 return this.props.onScroll && this.props.onScroll(e);
             case 'start':
                 return this.props.onScrollStart && this.props.onScrollStart(e);
             case 'end':
                 return this.props.onScrollEnd && this.props.onScrollEnd(e);
-            case 'loadMove':
-                return this.props.onLoadMove && this.props.onLoadMove(e);
+            // case 'loadMove':
+            //     return this.props.onLoadMove && this.props.onLoadMove(e);
         }
     });
 
@@ -92,6 +122,7 @@ export default class ScrollView extends React.Component<ScrollViewProps> {
     };
 
     private _checkLayout = () => {
+        console.log('_checkLayout')
         const maxX = this._contentWidth - this._width;
         const maxY = this._contentHeight - this._height;
         if ((maxX > 0 && maxX !== this._scroller.maxX) || (maxY > 0 && maxY !== this._scroller.maxY)) {
@@ -102,30 +133,30 @@ export default class ScrollView extends React.Component<ScrollViewProps> {
     };
 
     //预留距离 避免滑动太快 看到空白
-    private previewDistance: number = 600
-    private _dg = (node: Node,horizontal:boolean=false) => {
-        if (node) {
-            if(horizontal){
-                node.isNoRender = !(this.scrollX + this._width + this.previewDistance > node.frame.x && this.scrollX - this.previewDistance < node.frame.x + node.frame.width);
-            }else{
-                node.isNoRender = !(this.scrollY + this._height + this.previewDistance > node.frame.y && this.scrollY - this.previewDistance < node.frame.y + node.frame.height);
-            }
-
-            if (node?.children?.length > 0) {
-                for (let i = 0; i < node.children.length; i++) {
-                    this._dg(node.children[i],horizontal)
-                }
-            }
-        }
-
-        return node
-    }
+    // private previewDistance: number = 600
+    // private _dg = (node: Node,horizontal:boolean=false) => {
+    //     if (node) {
+    //         if(horizontal){
+    //             node.isNoRender = !(this.scrollX + this._width + this.previewDistance > node.frame.x && this.scrollX - this.previewDistance < node.frame.x + node.frame.width);
+    //         }else{
+    //             node.isNoRender = !(this.scrollY + this._height + this.previewDistance > node.frame.y && this.scrollY - this.previewDistance < node.frame.y + node.frame.height);
+    //         }
+    //
+    //         if (node?.children?.length > 0) {
+    //             for (let i = 0; i < node.children.length; i++) {
+    //                 this._dg(node.children[i],horizontal)
+    //             }
+    //         }
+    //     }
+    //
+    //     return node
+    // }
 
 
     private _customDrawer = (canvas: RevasCanvas, node: Node) => {
 
         //
-        if(this.props.virtualScrolling){
+        if (this.props.virtualScrolling) {
             if (node?.views?.scrollY !== this.scrollY) {
                 _requestIdleCallback(() => {
                     // console.log('node', node)
@@ -133,6 +164,7 @@ export default class ScrollView extends React.Component<ScrollViewProps> {
                         height: this._height,
                         scrollY: this.scrollY,
                     }
+
                     // node = this._dg(node,this.props.horizontal)
                 })
             }
@@ -162,6 +194,7 @@ export default class ScrollView extends React.Component<ScrollViewProps> {
             this._offset = offset;
             this._scroller.emit('none');
         }
+
 
         return React.createElement(
             'Scrollable',

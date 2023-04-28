@@ -33,11 +33,6 @@ const _dg = (node: Node,horizontal:boolean=false) => {
 }
 
 export function drawNode(canvas: RevasCanvas, node: Node, container: Container) {
-  const style = getMergedStyleFromNode(node, container.draw);
-  const frame = getFrameFromNode(node);
-  if (style.opacity <= 0) {
-    return;
-  }
   if(node.type==='ScrollContent'){
     // console.log(node)
     scrollContent=node.views
@@ -51,6 +46,13 @@ export function drawNode(canvas: RevasCanvas, node: Node, container: Container) 
   if(node.isNoRender){
     return;
   }
+
+  const style = getMergedStyleFromNode(node, container.draw);  //从节点获得合并样式
+  const frame = getFrameFromNode(node);
+  if (style.opacity <= 0) {
+    return;
+  }
+
   // flags
   const hasTransform =
     style.translateX || style.translateY || style.rotate || style.scaleX || style.scaleY || style.scale;

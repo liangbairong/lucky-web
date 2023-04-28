@@ -11,7 +11,7 @@ function isScrollIn(node: any,item:any) {
     if (node.parent) {
         isScrollIn(node.parent,item)
     }
-    return false
+    // return false
 }
 
 function _updateLayout(node: Node): [Function, YogaNode] {

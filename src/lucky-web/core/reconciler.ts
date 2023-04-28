@@ -142,11 +142,7 @@ const RevasReconciler = ReactReconciler({
   },
 
   resetAfterCommit(container: Container) {
-    if(time) clearTimeout(time)
-    time=setTimeout(()=>{
-      time=null
-      container.draw(true);
-    },0)
+    container.draw(true);
 
     // console.log('93993')
     // container.draw(true);

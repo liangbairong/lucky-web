@@ -6,6 +6,7 @@ import { drawNode } from './draw';
 import { getNodeByTouch, emitTouch } from './touch';
 import { RevasCanvas } from './Canvas';
 import { AppContextType } from '../components/Context';
+import {_requestIdleCallback} from "./utils";
 
 export class Container {
   private _ready = false;
@@ -65,14 +66,24 @@ export class Container {
     if (canvas) {
       // if not unmounted
       if (this._reflow) {
-        // console.log('canvas--',canvas)
-        updateLayout(_root!)();
-        this._reflow = false;
+        // console.log(this._reflow)
+
+        _requestIdleCallback(()=>{
+          console.log('canvas',canvas)
+          updateLayout(_root!)();
+          this._reflow = false;
+          canvas.context.clearRect(0, 0, this.width, this.height);
+          drawNode(canvas, _root!, this);
+          requestAnimationFrame(this.ready);
+        })
+
+
+      }else{
+        canvas.context.clearRect(0, 0, this.width, this.height);
+        drawNode(canvas, _root!, this);
+        requestAnimationFrame(this.ready);
       }
-      // console.log('33')
-      canvas.context.clearRect(0, 0, this.width, this.height);
-      drawNode(canvas, _root!, this);
-      requestAnimationFrame(this.ready);
+
     }
   };
 

@@ -23,6 +23,15 @@ class Handler {
 
   private _last = -1;
 
+
+  init(){
+    this.offset=0;
+    this.velocity=0;
+    this.max=-1;
+    this.paging=0;
+    this._last=-1
+  }
+
   capture(value: number) {
     if (this._last < 0) {
       this._last = value;
@@ -180,9 +189,10 @@ export default class Scroller {
       this.emit('scroll');
       this._sign(e);
 
-      if(this._x.isBase || this._y.isBase){
-        this.emit('loadMove');
-      }
+      // if(this._x.isBase || this._y.isBase){
+      //   console.log('233')
+      //   this.emit('loadMove');
+      // }
     }
   };
 
@@ -218,6 +228,16 @@ export default class Scroller {
       timestamp: this._timestamp,
       tid: this._tid,
     });
+  }
+
+
+  init(){
+    this.cancel()
+    this._timestamp = 0;
+    this._x.init()
+    this._y.init()
+    this._tid = '';
+    this.emit('scroll');
   }
 
   cancel() {
