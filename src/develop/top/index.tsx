@@ -110,10 +110,9 @@ const App = (props: any) => {
         setLoading(false)
     }, [])
     console.log('ren top')
-    const onLoadMove=useCallback(()=>{
+    const onLoadMove=()=>{
         if(!state) return
         state=false
-        console.log('00292992')
         setLoading(true)
         setTimeout(()=>{
             const a:any =[...newList,...JSON.parse(JSON.stringify(list)),]
@@ -121,9 +120,9 @@ const App = (props: any) => {
             setLoading(false)
             setNewList(a)
 
-        },0)
+        },1000)
 
-    },[newList])
+    }
 
 
 

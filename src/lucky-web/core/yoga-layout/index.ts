@@ -7,11 +7,12 @@ import {AppContextType} from '../../components/Context';
 function isScrollIn(node: any,item:any) {
     if (node.type === 'ScrollContent') {
         item.inScroll = true
+    }else{
+        item.inScroll = false
     }
     if (node.parent) {
         isScrollIn(node.parent,item)
     }
-    // return false
 }
 
 function _updateLayout(node: Node): [Function, YogaNode] {
