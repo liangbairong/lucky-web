@@ -77,7 +77,7 @@ let list: any = [
     //     ]
     // }
 ]
-for(let i=0;i<4;i++){
+for(let i=0;i<10;i++){
     list.push({
         title: '參謀'+i,
         child: [
