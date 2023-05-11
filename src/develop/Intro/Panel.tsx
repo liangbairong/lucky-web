@@ -53,7 +53,7 @@ const styles = {
   },
   itemText: {
     textAlign: 'center',
-    fontSize: 12,
+    fontSize: 25,
     marginTop: 2,
   },
 };

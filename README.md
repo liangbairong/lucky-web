@@ -28,18 +28,12 @@ const App = () => {
         </ScrollView >
 )
 }
-let height = document.body.clientHeight / (document.body.clientWidth / 750)
-
-const app = render(<App />, document.getElementById('canvas')!, {devicePixelRatio: 1, width: 750, height});
-
-window.addEventListener('resize', () => {
-    requestAnimationFrame(() => {
-        height = document.body.clientHeight / (document.body.clientWidth / 750)
-        app.update({width: 750, height});
-    });
-});
+const app = render(<App />, document.getElementById('canvas')!, {});
 
 ```
+
+
+
 
 ## 组件
 
@@ -73,12 +67,51 @@ window.addEventListener('resize', () => {
 | -: | - | - |
 | style | `TextStyle` | Inline css|
 | numberOfLines | `number` | 溢出隐藏，最多多少行 |
+| highlight | `{title:String,color:String}` | 文字高亮 |
 
 ```jsx
 <Text numberOfLines={1}>Hello World</Text>
 ```
 
-## CSS
+### Image
+
+#### ImageProps
+
+> extends ViewProps
+
+| Property | Type | Description |
+| -: | - | - |
+| style | ImageStyle | Inline css|
+| src | string | Image source url |
+
+```jsx
+<Image src="https://xx.xx.jpg" />
+```
+
+
+### ScrollView
+
+#### ScrollViewProps
+
+> extends ViewProps
+
+| Property | Type | Description |
+| -: | - | - |
+| horizontal | `boolean` | 滑动方向 |
+| onScroll | `(RevasScrollEvent): void` | 滑动回调 |
+| onScrollStart | `(RevasScrollEvent): void` | 滑动开始回调 |
+| onScrollEnd | `(RevasScrollEvent): void` | 滑动停止回调 |
+| paging | `boolean \| number` | 是否开启paging，paging长度 |
+| offset | `{x: number, y: number}` | 相对位移 |
+| virtualScrolling | `boolean` | 是否开启虚拟滚动 |
+
+```jsx
+<ScrollView>
+  
+</ScrollView>
+```
+
+## 支持的CSS属性
 
 | Category | Styles |
 | -: | - |

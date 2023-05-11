@@ -15,9 +15,7 @@ export default function Style(props: any) {
             <Box text="backgroundColor: yellow" style={styles.box.yellow} />
             <Box text="borderRadius: 10" style={styles.box.radius} />
             <Box text="shadowOffsetX|Y\shadowColor\shadowBlur" style={styles.box.shadow} />
-            <Box text="borderWidth\borderColor" style={styles.box.border} />
-          </Panel>
-          <Panel label="Layout">
+            <Box text="borderWidth\borderColor" style={[styles.box.border,{marginBottom:30}]} />
             <View style={styles.row}>
               <PanelItem label="padding" style={styles.container}>
                 <View style={styles.layout.padding.out}>
@@ -265,6 +263,7 @@ const styles = {
     text: {
       color: '#fff',
       textAlign: 'center',
+      fontSize: 20
     },
     justifyCenter: {
       justifyContent: 'center',

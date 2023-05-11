@@ -31,7 +31,7 @@ const styles = {
     },
     line: {
         position: 'absolute',
-        width: 710,
+        width: '100%',
         left: 20, right: 0, bottom: 0, height: 1,
         backgroundColor: '#000',
         opacity: 0.2

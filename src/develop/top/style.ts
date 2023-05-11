@@ -23,7 +23,7 @@ const style = {
   box: {
     // height:700,
     minHeight:300,
-    width: 698,
+    width: '90%',
     position: 'relative',
     left: 26,
     marginTop: 80,
@@ -41,13 +41,15 @@ const style = {
     height: 67,
     position: 'absolute',
     top: -30,
-    width: '100%'
+    width: '100%',
+    mode: 'over'
   },
   boxBottom: {
     height: 76,
     position: 'absolute',
     bottom: -30,
-    width: '100%'
+    width: '100%',
+    mode: 'over'
   },
   boxTitle: {
     width: 368,

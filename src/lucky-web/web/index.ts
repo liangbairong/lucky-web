@@ -3,6 +3,12 @@ import { RevasCanvas } from '../core/Canvas';
 
 export * from './render';
 
+
+export function lpx(num:number){
+    return num * (window.screen.width / 750)
+}
+
+
 adapter.createOffscreenCanvas = (width: number, height: number,deviceRatio:number) => {
   const dom = document.createElement('canvas');
   const scale =deviceRatio|| window.devicePixelRatio;  //TODO:得修改为从外面传参

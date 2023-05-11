@@ -24,6 +24,14 @@ function createRevasTouchEvent(e: TouchEvent,dom:HTMLElement,option:any): RevasT
     e.stopPropagation();
     const touches: { [key: number]: RevasTouch } = {};
     const type: any = e.type === 'touchcancel' ? 'touchend' : e.type;
+    const input= document.querySelectorAll('input')
+    if(input.length>0){
+        input.forEach(item=>{
+            item.blur()
+        })
+    }
+
+
     Object.keys(e.changedTouches).forEach((key: any) => {
         const touch = e.changedTouches[key];
         if (touch && touch.target) {

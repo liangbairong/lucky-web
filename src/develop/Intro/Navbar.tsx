@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, Text, Image, Touchable } from '../../lucky-web';
+import { View, Text, Image, Touchable, lpx } from '../../lucky-web';
 import navback from './navback.png';
 
 export interface NavBarProps {
@@ -21,20 +21,20 @@ export default function NavBar(props: NavBarProps) {
 
 const styles = {
   container: {
-    height: 100,
-    backgroundColor: '#333',
+    height: 80,
+    backgroundColor: '#3f2e2e',
     justifyContent: 'center',
     zIndex: 100,
   },
   title: {
     textAlign: 'center',
     color: '#fff',
-    fontSize: 32,
+    fontSize: 26,
     fontWeight: '600',
   },
   icon: {
-    width: 22,
-    height: 40,
+    width: 15,
+    height: 32,
   },
   back: {
     position: 'absolute',
@@ -42,7 +42,7 @@ const styles = {
     top: 0,
     bottom: 0,
     width: 80,
-    height:100,
+    height:80,
     justifyContent: 'center',
     alignItems: 'center',
   },

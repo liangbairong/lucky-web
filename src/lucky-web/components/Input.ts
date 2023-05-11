@@ -96,6 +96,7 @@ export default function Input(props: IInput) {
                 oldY.current = node.frame.y
                 input.current.style.top = node.frame.y * (document.body.clientWidth / 750) + "px"
                 input.current.style.left = "-100%"
+
             }
 
         }
@@ -122,6 +123,7 @@ export default function Input(props: IInput) {
 
             },
         }, text),
+
     ]
 
     if (isShowLabel) {

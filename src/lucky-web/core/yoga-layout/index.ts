@@ -15,6 +15,7 @@ function isScrollIn(node: any,item:any) {
     }
 }
 
+
 function _updateLayout(node: Node): [Function, YogaNode] {
     const yoga = Yoga.Node.create();
     const children: Function[] = [];
