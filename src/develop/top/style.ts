@@ -1,3 +1,5 @@
+import {lpx} from "../../lucky-web";
+
 const style = {
   main: {
     flex: 1,
@@ -7,7 +9,7 @@ const style = {
     backgroundColor: 'rgba(49, 24, 124, 1)'
   },
   header: {
-    height: 760
+    height: lpx(760)
   },
   headerImg: {
     height: '100%',
@@ -15,19 +17,19 @@ const style = {
   },
 
   loading:{
-    fontSize:40,
+    fontSize: lpx(40),
     color:'#fff',
-    padding:40,
+    padding: lpx(40),
     textAlign:'center'
   },
   box: {
     // height:700,
-    minHeight:300,
-    width: '90%',
+    minHeight: lpx(300),
+    width: lpx(698),
     position: 'relative',
-    left: 26,
-    marginTop: 80,
-    marginBottom: 80
+    left:  lpx(26),
+    marginTop:  lpx(80),
+    marginBottom:  lpx(80)
   },
   boxCenter: {
     height: '100%',
@@ -38,35 +40,35 @@ const style = {
     mode: 'over'
   },
   boxTop: {
-    height: 67,
+    height:  lpx(67),
     position: 'absolute',
-    top: -30,
+    top:  lpx(-30),
     width: '100%',
     mode: 'over'
   },
   boxBottom: {
-    height: 76,
+    height:  lpx(76),
     position: 'absolute',
-    bottom: -30,
+    bottom:  lpx(-30),
     width: '100%',
     mode: 'over'
   },
   boxTitle: {
-    width: 368,
-    height: 68,
+    width:  lpx(368),
+    height:  lpx(68),
     position: 'absolute',
-    top: -70,
+    top:  lpx(-70),
     left: '50%',
-    translateX: -368 / 2,
+    translateX:  lpx(-368 / 2),
     justifyContent: 'center'
   },
   boxTitleBg: {
     position: 'absolute',
-    width: 368,
-    height: 68
+    width:  lpx(368),
+    height:  lpx(68)
   },
   boxTitleText: {
-    fontSize: 34,
+    fontSize:  lpx(34),
     fontWeight: 600,
     color: '#fff',
     textAlign: 'center'
@@ -84,36 +86,36 @@ const style = {
   list:{
   },
   anchor: {
-    width: 302,
-    marginBottom:30
+    width:  lpx(302),
+    marginBottom: lpx(30)
   },
   anchorTitle: {
     textAlign: 'center',
-    fontSize: 27,
+    fontSize:  lpx(27),
     fontWeight: 500,
     color: '#FFFFFF',
-    marginBottom: 10,
-    width:302
+    marginBottom:  lpx(10),
+    width: lpx(302)
   },
   anchorHeader:{
     width:'100%',
-    height:253,
+    height: lpx(253),
     // backgroundColor: 'rgba(49, 24, 124, 1)'
   },
   anchorHeaderBg:{
     width:'100%',
-    height:253,
+    height: lpx(253),
     position:'absolute',
     zIndex: 3,
   },
   anchorHeaderImg:{
-    width:119,
-    height:119,
+    width: lpx(119),
+    height: lpx(119),
     position:'absolute',
     left:'50%',
-    top:30,
-    translateX: -119 / 2,
-    borderRadius:119/2
+    top: lpx(30),
+    translateX:  lpx(-119 / 2),
+    borderRadius: lpx(119/2)
   }
 }
 
