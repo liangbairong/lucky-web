@@ -1,4 +1,5 @@
-使用canvas来布局dom的框架，支持react 17以上的hook
+
+## lucky-web是个使用Flexbox的布局引擎和React，来绘制canvas的渲染框架，支持react 17以上的hook
 
 ## Install
 
@@ -23,13 +24,17 @@ const style = {
 }
 const App = () => {
     return (
-        <ScrollView style = {style.main} > 
-            <Text>HELLO WORLD < /Text>
+        <ScrollView style={style.main}> 
+            <Text>HELLO WORLD </Text>
         </ScrollView >
 )
 }
-const app = render(<App />, document.getElementById('canvas')!, {});
+const app = render(<App />, document.getElementById('app')!, {});
 
+```
+
+```html
+<div id='app'}></div>
 ```
 
 
