@@ -94,6 +94,11 @@ class Handler {
       // TODO:做顺滑处理
       // this.velocity =this.velocity -0.5 > 0 ? this.velocity -0.5 : 0;
     }
+
+    if(this.offset===0){
+      //置顶了
+      this.velocity=0
+    }
   }
 }
 

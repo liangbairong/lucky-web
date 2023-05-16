@@ -71,7 +71,6 @@ export default class ScrollView extends React.Component<ScrollViewProps> {
             case 'scroll':
                 if (this._contentHeight - this._height === this.scrollY && this.loadState) {
                     this.loadState = false;
-
                     // this._scroller.init()
                     // this._scroller.cancel();
                     setTimeout(() => {
