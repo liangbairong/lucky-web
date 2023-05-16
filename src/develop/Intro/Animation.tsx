@@ -23,7 +23,7 @@ export default function Animation(props: any) {
         <AnimateTypeExample />
         <AnimateEaseExample />
         <Panel label="Animate组件用法">
-          <Animate initValue={1} afterValue={0.0001} loop={true} animateName={'opacity'}>
+          <Animate initValue={1} afterValue={0} loop={true} animateName={'opacity'}>
             <View style={{
               width: 500,
               height: 100,

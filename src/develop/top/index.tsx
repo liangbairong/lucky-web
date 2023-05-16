@@ -104,6 +104,7 @@ const App = (props: any) => {
         list.forEach((item: any) => {
             item.child.forEach((item2: any) => {
                 item2.img = `https://showme-livecdn.elelive.net/avatar/${item2?.anchorId}?1=1`
+                item2.img='https://showme-livecdn.elelive.net/medal/icon/20230505/abd8ed5ce2604336a67b5769ad7f0f3f.webp?1=1&width=330&type=webp&height=330'
             })
         })
         setNewList(JSON.parse(JSON.stringify(list)))
