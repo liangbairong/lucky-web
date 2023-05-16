@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Touchable, Text, View, Image} from '../../lucky-web';
+import {Touchable, Text, View, Image,lpx} from '../../lucky-web';
 
 export interface EntryProps {
     label: string;
@@ -20,19 +20,19 @@ export default function Entry(props: EntryProps) {
 
 const styles = {
     container: {
-        height: 108,
+        height: lpx(108),
         justifyContent: 'center',
-        paddingLeft: 40
+        paddingLeft: lpx(40)
     },
     label: {
         color: '#191919',
-        fontSize: 30,
+        fontSize: lpx(30),
         fontWeight: '600'
     },
     line: {
         position: 'absolute',
         width: '100%',
-        left: 20, right: 0, bottom: 0, height: 1,
+        left: lpx(20), right: 0, bottom: 0, height: 1,
         backgroundColor: '#000',
         opacity: 0.2
     },

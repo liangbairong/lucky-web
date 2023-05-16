@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, Text } from '../../lucky-web';
+import { View, Text,lpx } from '../../lucky-web';
 
 export interface PanelItemProps {
   label: string;
@@ -35,10 +35,10 @@ export default function Panel(props: PanelProps) {
 
 const styles = {
   container: {
-    padding: 20,
+    padding: lpx(20),
   },
   label: {
-    fontSize:32,
+    fontSize:lpx(32),
     fontWeight: '600',
     color: '#000',
   },
@@ -53,7 +53,7 @@ const styles = {
   },
   itemText: {
     textAlign: 'center',
-    fontSize: 25,
+    fontSize: lpx(25),
     marginTop: 2,
   },
 };

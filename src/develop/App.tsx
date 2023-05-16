@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {View, Text, AnimatedValue, timing, AnimatedTiming, Touchable, withContext} from '../lucky-web';
+import {View, Text, AnimatedValue, timing, AnimatedTiming, Touchable, withContext,lpx} from '../lucky-web';
 import Intro from './Intro';
 // import Timeline from './Timeline';
 // import MusicApp from './Music';
@@ -41,17 +41,17 @@ export default class App extends React.Component {
     };
 
     render() {
-        const cardHeight = 100;
+        const cardHeight = lpx(100);
         return (
             <SimpleRouter ref={this.router} width={this.context.clientWidth}>
                 <View style={styles.container}>
                     <Text style={{
-                        fontSize: 50, color: '#F759AB',
+                        fontSize: lpx(50), color: '#F759AB',
                         textShadowOffsetX: 8,  // 偏斜量x
                         textShadowOffsetY: 8,// 偏斜量x
                         textShadowBlur: 8,
                         textShadowColor: '#9254DE',  //颜色
-                        textAlign: 'center', marginBottom: 50
+                        textAlign: 'center', marginBottom: lpx(50)
                     }}>Lucky-web</Text>
                     <View style={styles.cards}>
                         <Card
@@ -170,19 +170,19 @@ const styles = {
     },
     cards: {
         alignItems: 'center',
-        height:400,
-        marginTop:20
+        height:lpx(400),
+        marginTop:lpx(20)
     },
     card: {
-        width: 280,
+        width:lpx(280),
         shadowOffsetX: 0,
-        borderRadius: 15,
+        borderRadius: lpx(15),
         justifyContent: 'center',
-        marginTop: 20,
+        marginTop: lpx(20),
     },
     text: {
         textAlign: 'center',
-        fontSize: 24,
+        fontSize: lpx(24),
         fontWeight: '500',
         color: '#fff',
         fontFamily:

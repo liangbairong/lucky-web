@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/lucky-web/static/css/main.73ed3d38.chunk.css",
-    "main.js": "/lucky-web/static/js/main.cd8bc940.chunk.js",
-    "main.js.map": "/lucky-web/static/js/main.cd8bc940.chunk.js.map",
+    "main.js": "/lucky-web/static/js/main.72f59cf8.chunk.js",
+    "main.js.map": "/lucky-web/static/js/main.72f59cf8.chunk.js.map",
     "runtime-main.js": "/lucky-web/static/js/runtime-main.605f45cc.js",
     "runtime-main.js.map": "/lucky-web/static/js/runtime-main.605f45cc.js.map",
     "static/js/2.de60b740.chunk.js": "/lucky-web/static/js/2.de60b740.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.605f45cc.js",
     "static/js/2.de60b740.chunk.js",
     "static/css/main.73ed3d38.chunk.css",
-    "static/js/main.cd8bc940.chunk.js"
+    "static/js/main.72f59cf8.chunk.js"
   ]
 }
