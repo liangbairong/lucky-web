@@ -5,7 +5,7 @@ import {RevasCanvas} from "../core/Canvas";
 import Click from "./common/click";
 import Text from "./Text";
 import canvasUtils from "./common/canvasUtils";
-import Animate from "./Animate";
+import {AnimatedValue} from "../core/Animated";
 
 export type IInput = {
     value?: string
@@ -16,7 +16,6 @@ const click = new Click()
 
 export default function Input(props: IInput) {
     const {style, value} = props;
-    const [op, setOp] = useState({opacity: 1})
     const [isShowLabel, setIsShowLabel] = useState<boolean>(false)
     const [text, setText] = useState<string>(value || '')
     //容器宽度
@@ -45,18 +44,19 @@ export default function Input(props: IInput) {
     }, [])
 
     // 定时器光标
-    // const intervalRef = useRef<any>(null)
-    // useEffect(() => {
-    //     if(isShowLabel){
-    //         // intervalRef.current = setInterval(() => {
-    //         //     setOp({opacity: op.opacity ? 0 : 1})
-    //         // }, 500)
-    //     }
-    //
-    //     return () => {
-    //         intervalRef?.current && clearInterval(intervalRef.current)
-    //     }
-    // }, [op,isShowLabel])
+    const intervalRef = useRef<any>(null)
+    const val = useRef<any>(new AnimatedValue(1))
+    useEffect(() => {
+        if (isShowLabel) {
+            intervalRef.current = setInterval(() => {
+                val.current.setValue(val.current._value ? 0 : 1)
+            }, 500)
+        }
+
+        return () => {
+            intervalRef?.current && clearInterval(intervalRef.current)
+        }
+    }, [isShowLabel])
 
     //计算光标位置
     useEffect(() => {
@@ -130,33 +130,19 @@ export default function Input(props: IInput) {
     if (isShowLabel) {
         //光标
         childList.push(
-            // React.createElement('InputLabel', {
-            //     key: 'InputLabel',
-            //     style: [{
-            //         width: 2,
-            //         height: '60%',
-            //         backgroundColor: '#000',
-            //         position: 'absolute',
-            //         left: textWidth ? textWidth + 10 : 10,
-            //         top: '20%',
-            //     }, op],
-            // }),
-
-            React.createElement(Animate, {
+            React.createElement('InputLabel', {
                 key: 'InputLabel',
-                style: {
+                style: [{
                     width: 2,
                     height: '60%',
                     backgroundColor: '#000',
                     position: 'absolute',
                     left: textWidth ? textWidth + 10 : 10,
                     top: '20%',
-                },
-                initValue:0,
-                afterValue:1,
-                animateName:'opacity',
-                duration:1000,
-                loop:true
+                    animated: true,
+                }, {
+                    opacity: val.current
+                }],
             }),
         )
     }
