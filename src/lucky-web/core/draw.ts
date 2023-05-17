@@ -63,7 +63,7 @@ export function drawNode(canvas: RevasCanvas, node: Node, container: Container) 
   } else if (hasTransform) {
     canvas.transform.save();
   }
-  // Area Range
+  // Area Range 2
 
   // Opacity:
   const popOpacity = pushOpacity(canvas, style.opacity);
