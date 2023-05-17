@@ -16,6 +16,51 @@ export type MeasureResult = [MeasureLine[], number];
 
 export const DEFAULT_MEASURE: MeasureResult = [[], 0];
 
+
+function highLightKeywords(text:string, words:string) {
+    //匹配每一个特殊字符 ，进行转义
+    var specialStr = ["*", ".", "?", "+", "$", "^", "[", "]", "{", "}", "|", "\\", "(", ")", "/", "%"];
+    specialStr.forEach((item,i)=>{
+        if(words.indexOf(item) != -1) {
+            words = words.replace(new RegExp("\\" + item, 'g'), "\\" + item);
+        }
+    })
+    //匹配整个关键词
+   const re = new RegExp(words, 'g');
+    if(re.test(text)) {
+        text = text.replace(re, (match:any)=>{
+            return '<small>'+match+'</small>'
+        });
+    }
+    return text;
+}
+// const aa=highLightKeywords('是的是的所多','是的')
+
+function zhObj(html:string,color:string,canvas:any){
+    const div=document.createElement('div')
+    div.innerHTML=html
+    const arr:any=[]
+    let x=0
+    div.childNodes.forEach((item:any)=>{
+        const w = canvas.context.measureText(item.textContent).width;
+        if(item.localName==='small'){
+            arr.push({
+                text:item.textContent,
+                color,
+                width:x
+            })
+        }else{
+            arr.push({
+                text:item.textContent,
+                width:x
+            })
+        }
+        x+=w
+    })
+    return arr
+}
+
+
 function measureLines(canvas: RevasCanvas, chars: readonly string[], boxWidth: number, numberOfLines: number, highlight: any) {
     const lines: MeasureLine[] = [];
     let width = 0;
@@ -24,30 +69,43 @@ function measureLines(canvas: RevasCanvas, chars: readonly string[], boxWidth: n
 
     function pushLine(charWidth = 0, char = '', force = false) {
         if (force || text) {
-            let c = null
+            let c:any = null
             //处理高亮属性
+            console.log(highlight)
             let textCon = highlight?.text
-            if (textCon && text.indexOf(textCon) !== -1) {
-                const arr = text.split(textCon)
-                const w1 = canvas.context.measureText(arr[0]).width;
-                const w2 = canvas.context.measureText(textCon).width;
-                c = [
-                    {
-                        text: arr[0],
-                        width: 0,
-                    },
-                    {
-                        text: textCon,
-                        width: w1,
-                        color: highlight?.color
-                    },
-                    {
-                        text: arr[1],
-                        width: w2 + w1,
-                    },
-                ]
+            if(textCon){
+                if(Array.isArray(textCon)){
+                    let tTemp=text
+                    textCon.forEach(item=>{
+                        tTemp = highLightKeywords(tTemp,item)
+                    })
+                    c=zhObj(tTemp,highlight?.color,canvas)
+                }else{
+                    c=zhObj(highLightKeywords(text,textCon),highlight?.color,canvas)
+                }
             }
+            // if (textCon && text.indexOf(textCon) !== -1) {
+            //     const arr = text.split(textCon)
+            //     const w1 = canvas.context.measureText(arr[0]).width;
+            //     const w2 = canvas.context.measureText(textCon).width;
+            //     c = [
+            //         {
+            //             text: arr[0],
+            //             width: 0,
+            //         },
+            //         {
+            //             text: textCon,
+            //             width: w1,
+            //             color: highlight?.color
+            //         },
+            //         {
+            //             text: arr[1],
+            //             width: w2 + w1,
+            //         },
+            //     ]
+            // }
             lines.push({width: width, text, child: c});
+
         }
         if (cursor < chars.length && numberOfLines > 0 && lines.length >= numberOfLines) {
             const lastLine = lines[lines.length - 1];

@@ -7,7 +7,7 @@ import { RevasCanvas } from '../core/Canvas';
 export type TextProps = {
   numberOfLines?: number;
   highlight?:{  //高亮属性
-    text?:string;
+    text?:string | Array<string>;
     color?:string
   }
 } & NodeProps;

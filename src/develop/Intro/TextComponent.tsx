@@ -80,6 +80,15 @@ const TextComponent = (props: any) => {
                         }
                     }
                     style={[styles.text.base]}>文字高亮</Text>
+
+                <Text
+                    highlight={
+                        {
+                            text: ['小','蚊子','方法'],
+                            color: 'red'
+                        }
+                    }
+                    style={[styles.text.base]}>小蚊子高亮方法</Text>
             </Panel>
 
             <Panel label="溢出显示...">
