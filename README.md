@@ -1,12 +1,13 @@
 
-## lucky-web是个使用Flexbox的布局引擎和React，来绘制canvas的渲染框架，支持react 17以上的hook
+## lucky-web
 
+lucky-web是个使用Flexbox的布局引擎和React，来绘制canvas的渲染框架，支持react 17以上的hook
 ## Install
 
 ``` bash
 $ npm i lucky-web -S
 ```
-## [demo](https://liangbairong.gitee.io/lucky-web/)
+### [demo](https://liangbairong.gitee.io/lucky-web/)
 
 
 ## 使用
