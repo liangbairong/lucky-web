@@ -9,11 +9,11 @@ const h = window.screen.height || document.body.clientHeight;
 
 
 const app = render(<App />, document.getElementById('canvas')!, {  });
-// window.addEventListener('resize', () => {
-//   requestAnimationFrame(() => {
-//     app.update({  width: 750, height: document.body.clientHeight / (document.body.clientWidth / 750) });
-//   });
-// });
+window.addEventListener('resize', () => {
+  requestAnimationFrame(() => {
+    app.update();
+  });
+});
 
 
 // @ts-ignore
