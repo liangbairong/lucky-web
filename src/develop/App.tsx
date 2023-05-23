@@ -184,9 +184,7 @@ const styles = {
         textAlign: 'center',
         fontSize: lpx(24),
         fontWeight: '500',
-        color: '#fff',
-        fontFamily:
-            "'Avenir Next', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue'",
+        color: '#fff'
     },
     extra: {
         width: 280,
