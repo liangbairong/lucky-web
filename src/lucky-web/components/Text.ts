@@ -72,7 +72,7 @@ const TEXT_STYLES_LIST = [
 
 const DEFAULT_TEXTSTYLE = {
   fontFamily:
-    "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue'",
+    "PingFang SC, 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB','Microsoft YaHei', SimSun, sans-serif",
   fontWeight: 'normal',
   fontSize: 14,
   color: '#000',
