@@ -120,7 +120,6 @@ export default class ScrollView extends React.Component<ScrollViewProps> {
     };
 
     private _checkLayout = () => {
-        console.log('_checkLayout')
         const maxX = this._contentWidth - this._width;
         const maxY = this._contentHeight - this._height;
         if ((maxX > 0 && maxX !== this._scroller.maxX) || (maxY > 0 && maxY !== this._scroller.maxY)) {
@@ -130,31 +129,10 @@ export default class ScrollView extends React.Component<ScrollViewProps> {
         }
     };
 
-    //预留距离 避免滑动太快 看到空白
-    // private previewDistance: number = 600
-    // private _dg = (node: Node,horizontal:boolean=false) => {
-    //     if (node) {
-    //         if(horizontal){
-    //             node.isNoRender = !(this.scrollX + this._width + this.previewDistance > node.frame.x && this.scrollX - this.previewDistance < node.frame.x + node.frame.width);
-    //         }else{
-    //             node.isNoRender = !(this.scrollY + this._height + this.previewDistance > node.frame.y && this.scrollY - this.previewDistance < node.frame.y + node.frame.height);
-    //         }
-    //
-    //         if (node?.children?.length > 0) {
-    //             for (let i = 0; i < node.children.length; i++) {
-    //                 this._dg(node.children[i],horizontal)
-    //             }
-    //         }
-    //     }
-    //
-    //     return node
-    // }
-
-
     private _customDrawer = (canvas: RevasCanvas, node: Node) => {
 
         //
-        if (this.props.virtualScrolling) {
+        // if (this.props.virtualScrolling) {
             if (node?.views?.scrollY !== this.scrollY) {
                 _requestIdleCallback(() => {
                     // console.log('node', node)
@@ -162,22 +140,10 @@ export default class ScrollView extends React.Component<ScrollViewProps> {
                         height: this._height,
                         scrollY: this.scrollY,
                     }
-
-                    // node = this._dg(node,this.props.horizontal)
                 })
             }
-            // else if (node?.views?.scrollX !== this.scrollX) {
-            //     _requestIdleCallback(() => {
-            //         // console.log('node', node)
-            //         node.views = {
-            //             contentHeight: this._contentHeight,
-            //             height: this._height,
-            //             scrollX: this.scrollX
-            //         }
-            //         node = this._dg(node,this.props.horizontal)
-            //     })
-            // }
-        }
+
+        // }
 
 
     }

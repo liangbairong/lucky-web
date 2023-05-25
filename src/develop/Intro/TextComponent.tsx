@@ -1,8 +1,8 @@
 import * as React from 'react';
-import {View, Text, Image, ScrollView, ListView, LinearGradient, Input, RevasCanvas, Node} from '../../lucky-web';
+import {View, Text, Image, Dom, ScrollView, ListView, LinearGradient, Input, RevasCanvas, Node} from '../../lucky-web';
 import NavBar from './Navbar';
 import Panel, {PanelItem} from './Panel';
-import logo from './logo.png'
+
 
 const style = {
     font: {
@@ -71,6 +71,8 @@ const TextComponent = (props: any) => {
                     fontWeight: '800',
                 }]}>文字描边</Text>
             </Panel>
+
+            <Dom html={'<div>s卡框架升级</div>'}/>
             <Panel label="文字高亮">
                 <Text
                     highlight={
