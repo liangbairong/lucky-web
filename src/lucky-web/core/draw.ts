@@ -10,7 +10,7 @@ import {
 import { Container } from './Container';
 import { getCache, createCache, autoCacheId } from './offscreen';
 import { RevasCanvas } from './Canvas';
-import DrawTextMain from "./drawText";
+import Debugging from "./debugging";
 function getRadius(style: any) {
   return {
     tl: style.borderTopLeftRadius || style.borderRadius || 0,
@@ -48,11 +48,18 @@ export function drawNode(canvas: RevasCanvas, node: Node, container: Container) 
     return;
   }
 
+
   const style = getMergedStyleFromNode(node, container.draw);  //从节点获得合并样式
   const frame = getFrameFromNode(node);
   if (style.opacity <= 0) {
     return;
   }
+
+
+  // if(node.type==='View'){
+  //   console.log(node)
+  //   new Debugging().draw(canvas,node)
+  // }
 
   // flags
   const hasTransform =
@@ -95,10 +102,7 @@ export function drawNode(canvas: RevasCanvas, node: Node, container: Container) 
   }
 
 
-  // if(node.type==='Text'){
-  //   // console.log(node)
-  //   new DrawTextMain().draw(canvas,node)
-  // }
+
 
   popOpacity();
 

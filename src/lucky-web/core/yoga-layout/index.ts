@@ -1,4 +1,3 @@
-import type {YogaNode} from 'yoga-layout-wasm/asm';
 import {yoga as Yoga} from './init';
 import {Node, Frame} from '../Node';
 import apply from './style';
@@ -16,7 +15,7 @@ function isScrollIn(node: any,item:any) {
 }
 
 
-function _updateLayout(node: Node): [Function, YogaNode] {
+function _updateLayout(node: Node): [Function, any] {
     const yoga = Yoga.Node.create();
     const children: Function[] = [];
     apply(yoga, node.props.style);
