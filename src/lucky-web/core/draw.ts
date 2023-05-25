@@ -10,7 +10,7 @@ import {
 import { Container } from './Container';
 import { getCache, createCache, autoCacheId } from './offscreen';
 import { RevasCanvas } from './Canvas';
-
+import DrawTextMain from "./drawText";
 function getRadius(style: any) {
   return {
     tl: style.borderTopLeftRadius || style.borderRadius || 0,
@@ -37,6 +37,7 @@ export function drawNode(canvas: RevasCanvas, node: Node, container: Container) 
     // console.log(node)
     scrollContent=node.views
   }
+
   // @ts-ignore
   if(node.inScroll){
     if(_dg(node)){
@@ -92,6 +93,12 @@ export function drawNode(canvas: RevasCanvas, node: Node, container: Container) 
   } else {
     drawContent(canvas, node, container, style, frame, hasClip);
   }
+
+
+  // if(node.type==='Text'){
+  //   // console.log(node)
+  //   new DrawTextMain().draw(canvas,node)
+  // }
 
   popOpacity();
 

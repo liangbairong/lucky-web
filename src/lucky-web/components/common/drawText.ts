@@ -71,7 +71,6 @@ function measureLines(canvas: RevasCanvas, chars: readonly string[], boxWidth: n
         if (force || text) {
             let c:any = null
             //处理高亮属性
-            console.log(highlight)
             let textCon = highlight?.text
             if(textCon){
                 if(Array.isArray(textCon)){

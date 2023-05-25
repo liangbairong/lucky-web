@@ -61,13 +61,8 @@ export class Container {
     }
     this._ready = false;
     const { _root, canvas } = this;
-    // console.log('_root--',_root)
-    // console.log('canvas--',canvas)
     if (canvas) {
-      // if not unmounted
       if (this._reflow) {
-        // console.log(this._reflow)
-
         _requestIdleCallback(()=>{
           console.log('canvas',canvas)
           updateLayout(_root!)();
@@ -76,8 +71,6 @@ export class Container {
           drawNode(canvas, _root!, this);
           requestAnimationFrame(this.ready);
         })
-
-
       }else{
         canvas.context.clearRect(0, 0, this.width, this.height);
         drawNode(canvas, _root!, this);
