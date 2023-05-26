@@ -8,13 +8,45 @@ import {_requestIdleCallback} from "../core/utils";
 export type ScrollViewOffset = { x?: number; y?: number };
 
 export type ScrollViewProps = {
+    /**
+     * @description x轴方向滚动或y轴方向滚动，默认y轴
+     * @default false
+     */
     horizontal?: boolean;
-    virtualScrolling?: boolean; //是否开启虚拟滚动
+    /**
+     * @description 虚拟滚动，开启性能优化
+     * @default true
+     */
+    virtualScrolling?: boolean;
+    /**
+     * @description 滚动监听
+     * @default
+     */
     onScroll?: (e: RevasScrollEvent) => any;
+    /**
+     * @description 滚动开始回调
+     * @default
+     */
     onScrollStart?: (e: RevasScrollEvent) => any;
+    /**
+     * @description 滚动结束回调
+     * @default
+     */
     onScrollEnd?: (e: RevasScrollEvent) => any;
+    /**
+     * @description 加载更多回调
+     * @default
+     */
     onLoadMove?: (e: RevasScrollEvent) => any;
+    /**
+     * @description paging长度
+     * @default
+     */
     paging?: boolean | number;
+    /**
+     * @description 相对偏移
+     * @default {x:0,y:0}
+     */
     offset?: ScrollViewOffset;
 } & NodeProps;
 
