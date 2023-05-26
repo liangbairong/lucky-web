@@ -5,8 +5,16 @@ import { getFrameFromNode, flatten, applyAnimated } from '../core/utils';
 import { RevasCanvas } from '../core/Canvas';
 
 export type TextProps = {
+  /**
+   * @description 最多多少行，溢出显示...
+   * @default
+   */
   numberOfLines?: number;
-  highlight?:{  //高亮属性
+  /**
+   * @description 文字高亮属性
+   * @default
+   */
+  highlight?:{
     text?:string | Array<string>;
     color?:string
   }
