@@ -4,7 +4,7 @@ import {RevasCanvas} from '../core/Canvas';
 export * from './render';
 
 
-export function lpx(num: number) {
+export function lpx(num: number):number {
     const w = document.documentElement.clientWidth || document.body.clientWidth || window.screen.width
     return num * (w / 750)
 }

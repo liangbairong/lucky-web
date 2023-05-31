@@ -15,7 +15,7 @@ $ npm i lucky-web -S
 ## 使用
 
 ```tsx
-import React from 'react';
+import React from 'react'; 
 import {render, View, ScrollView} from 'lucky-web';
 
 const style = {
