@@ -4,15 +4,15 @@ import {RevasCanvas} from '../core/Canvas';
 export * from './render';
 
 
-export function lpx(num: number):number {
+export function lpx(num: number,base:number=750):number {
     const w = document.documentElement.clientWidth || document.body.clientWidth || window.screen.width
-    return num * (w / 750)
+    return num * (w / base)
 }
 
 
 adapter.createOffscreenCanvas = (width: number, height: number, deviceRatio: number) => {
     const dom = document.createElement('canvas');
-    const scale = deviceRatio || window.devicePixelRatio;  //TODO:得修改为从外面传参
+    const scale = deviceRatio || window.devicePixelRatio;  
     dom.width = width * scale;
     dom.height = height * scale;
     const context = dom.getContext('2d')!;
@@ -23,7 +23,7 @@ adapter.createOffscreenCanvas = (width: number, height: number, deviceRatio: num
 
 adapter.resetOffscreenCanvas = (prev: RevasCanvas, width: number, height: number, deviceRatio: number) => {
     const {context, element} = prev;
-    const scale = deviceRatio || window.devicePixelRatio; //TODO:得修改为从外面传参
+    const scale = deviceRatio || window.devicePixelRatio; 
     element.width = width * scale;
     element.height = height * scale;
     const canvas = new RevasCanvas(context);

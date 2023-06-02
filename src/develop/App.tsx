@@ -1,31 +1,41 @@
 import * as React from 'react';
-import {View, Text, AnimatedValue, timing, AnimatedTiming, Touchable, withContext,lpx} from '../lucky-web';
+import {
+    View,
+    Text,
+    Image,
+    AnimatedValue,
+    timing,
+    AnimatedTiming,
+    Touchable,
+    withContext,
+    lpx,
+} from '../lucky-web';
 import Intro from './Intro';
 // import Timeline from './Timeline';
 // import MusicApp from './Music';
+import logo from './Intro/logo.png';
 
-
-import Top from './top'
+import Top from './top';
 
 import SimpleRouter from './common/simple-router';
-function randomInteger(max:number) {
-    return Math.floor(Math.random()*(max + 1));
+function randomInteger(max: number) {
+    return Math.floor(Math.random() * (max + 1));
 }
 function randomRgbColor() {
     let r = randomInteger(255);
     let g = randomInteger(255);
     let b = randomInteger(255);
-    return [r,g,b];
+    return [r, g, b];
 }
 
 function randomHexColor() {
-    let [r,g,b] =randomRgbColor();
+    let [r, g, b] = randomRgbColor();
 
     let hr = r.toString(16).padStart(2, '0');
     let hg = g.toString(16).padStart(2, '0');
     let hb = b.toString(16).padStart(2, '0');
 
-    return "#" + hr + hg + hb;
+    return '#' + hr + hg + hb;
 }
 
 @withContext
@@ -45,14 +55,41 @@ export default class App extends React.Component {
         return (
             <SimpleRouter ref={this.router} width={this.context.clientWidth}>
                 <View style={styles.container}>
-                    <Text style={{
-                        fontSize: lpx(50), color: '#F759AB',
-                        textShadowOffsetX: 8,  // 偏斜量x
-                        textShadowOffsetY: 8,// 偏斜量x
-                        textShadowBlur: 8,
-                        textShadowColor: '#9254DE',  //颜色
-                        textAlign: 'center', marginBottom: lpx(50)
-                    }}>Lucky-web</Text>
+                    <View
+                        style={{
+                            justifyContent: 'center',
+                            marginBottom: lpx(50),
+                            height: lpx(100),
+                            alignItems: 'center',
+                            flexDirection: 'row',
+                        }}
+                    >
+                        <View style={{flex:1,position: 'relative', height: lpx(60),}}>
+                            <Image
+                                src={logo}
+                                style={{
+                                    width: lpx(60),
+                                    height: lpx(60),
+                                    position:'absolute',
+                                    right:lpx(20),
+                                    top:0
+                                }}
+                            />
+                        </View>
+                        <Text
+                            style={{
+                                fontSize: lpx(50),
+                                color: '#F759AB',
+                                textShadowOffsetX: 8, // 偏斜量x
+                                textShadowOffsetY: 8, // 偏斜量x
+                                textShadowBlur: 8,
+                                textShadowColor: '#9254DE', //颜色
+                                width:lpx(460)
+                            }}
+                        >
+                            Lucky-web
+                        </Text>
+                    </View>
                     <View style={styles.cards}>
                         <Card
                             color="#9254DE"
@@ -150,9 +187,7 @@ class Card extends React.Component<CardProps> {
         );
     }
 }
-function jx(num:number){
-    return num * (window.screen.width / 750)
-}
+
 const styles = {
     container: {
         justifyContent: 'center',
@@ -170,11 +205,11 @@ const styles = {
     },
     cards: {
         alignItems: 'center',
-        height:lpx(400),
-        marginTop:lpx(20)
+        height: lpx(400),
+        marginTop: lpx(20),
     },
     card: {
-        width:lpx(280),
+        width: lpx(280),
         shadowOffsetX: 0,
         borderRadius: lpx(15),
         justifyContent: 'center',
@@ -184,7 +219,7 @@ const styles = {
         textAlign: 'center',
         fontSize: lpx(24),
         fontWeight: '500',
-        color: '#fff'
+        color: '#fff',
     },
     extra: {
         width: 280,
