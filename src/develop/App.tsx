@@ -11,8 +11,6 @@ import {
     lpx,
 } from '../lucky-web';
 import Intro from './Intro';
-// import Timeline from './Timeline';
-// import MusicApp from './Music';
 import logo from './Intro/logo.png';
 
 import Top from './top';
@@ -105,24 +103,7 @@ export default class App extends React.Component {
                             text="ScrollView 性能测试"
                             tap={this.push(Top)}
                         />
-                        {/*<Card*/}
-                        {/*  color="#F759AB"*/}
-                        {/*  shadowColor="rgba(247, 89, 171, 0.5)"*/}
-                        {/*  height={cardHeight}*/}
-                        {/*  text="Timeline App"*/}
-                        {/*  tap={this.push(Timeline)}*/}
-                        {/*/>*/}
-                        {/*<Card*/}
-                        {/*  color="#597EF7"*/}
-                        {/*  shadowColor="rgba(89, 126, 247, 0.5)"*/}
-                        {/*  height={cardHeight}*/}
-                        {/*  text="Music App"*/}
-                        {/*  tap={this.push(MusicApp)}*/}
-                        {/*/>*/}
-                        {/*@ts-ignore */}
-                        {/*<Touchable style={styles.extra} onPress={this.open}>*/}
-                        {/*    <Text style={styles.extraText}>Revas + THREE.js</Text>*/}
-                        {/*</Touchable>*/}
+        
                     </View>
                 </View>
             </SimpleRouter>
