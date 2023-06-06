@@ -193,11 +193,6 @@ export default class Scroller {
       this.horizontal ? this._x.onMove(x, duration) : this._y.onMove(y, duration);
       this.emit('scroll');
       this._sign(e);
-
-      // if(this._x.isBase || this._y.isBase){
-      //   console.log('233')
-      //   this.emit('loadMove');
-      // }
     }
   };
 

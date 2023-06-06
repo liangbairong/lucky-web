@@ -2,22 +2,12 @@ import * as React from 'react'
 import {Node, BaseProps, RevasTouchEvent} from '../core/Node'
 import {useCallback, useEffect, useRef, useState} from "react";
 import {RevasCanvas} from "../core/Canvas";
-
-
+import { lpx } from '../web';
+import { hasScrollContent } from '../common';
 export type IDom = {
     html?: string
 } & BaseProps;
 
-function hasScrollContent(node: any, func: (obj: any) => void) {
-    if (node.type === 'ScrollContent') {
-        func(node.views)
-    } else {
-        if (node.parent) {
-            hasScrollContent(node.parent, func)
-        }
-    }
-
-}
 
 export default function Dom(props: IDom) {
     const {style, html} = props;
@@ -28,7 +18,8 @@ export default function Dom(props: IDom) {
         dom.current = document.createElement('div');
         dom.current.id = 'div-' + Date.now()
         dom.current.innerHTML = html
-        dom.current.style.pointerEvents = 'none'
+        // dom.current.style=style
+        // dom.current.style.pointerEvents = 'none'
         dom.current.style.position = "absolute";
         const app: any = document.querySelector('#canvas')
 
@@ -46,7 +37,7 @@ export default function Dom(props: IDom) {
         if (dom?.current) {
             if (node?.frame?.y !== oldY?.current) {
                 oldY.current = node.frame.y
-                dom.current.style.top = node.frame.y  + "px"
+                dom.current.style.top = node.frame.y+ lpx(100) + "px"
                 dom.current.style.left = node.frame.x  + "px"
             }
             hasScrollContent(node, (scroll) => {

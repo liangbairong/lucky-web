@@ -143,10 +143,6 @@ const RevasReconciler = ReactReconciler({
 
   resetAfterCommit(container: Container) {
     container.draw(true);
-
-    // console.log('93993')
-    // container.draw(true);
-
   },
 
   resetTextContent: noop,

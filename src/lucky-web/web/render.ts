@@ -99,8 +99,6 @@ export function render(app: React.ReactNode, parent: HTMLElement, option: IOptio
     canvas.transform.scale(scale, scale);
     renderer.updateContainer(createRoot(app, dom, canvas, option.width, option.height, option.devicePixelRatio), fiber, parentComponent, callback);
 
-    console.log('打包log')
-
     return {
         get $() {
             return dom;

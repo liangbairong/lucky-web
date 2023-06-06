@@ -162,12 +162,9 @@ export default class ScrollView extends React.Component<ScrollViewProps> {
     };
 
     private _customDrawer = (canvas: RevasCanvas, node: Node) => {
-
-        //
         // if (this.props.virtualScrolling) {
             if (node?.views?.scrollY !== this.scrollY) {
                 _requestIdleCallback(() => {
-                    // console.log('node', node)
                     node.views = {
                         height: this._height,
                         scrollY: this.scrollY,
@@ -176,14 +173,10 @@ export default class ScrollView extends React.Component<ScrollViewProps> {
             }
 
         // }
-
-
     }
 
     render() {
         const {children, horizontal, offset, ...others} = this.props;
-
-        // console.log(children)
         this._scroller.horizontal = horizontal;
 
         if (offset) {

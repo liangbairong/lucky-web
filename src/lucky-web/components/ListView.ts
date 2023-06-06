@@ -54,7 +54,6 @@ export default class ListView extends React.Component<ListViewProps<any>> {
   render() {
     const { data, itemHeight } = this.props;
     const { start, end } = this.state;
-    // console.log(start, end, this._height);
     return React.createElement(
       ScrollView,
       {

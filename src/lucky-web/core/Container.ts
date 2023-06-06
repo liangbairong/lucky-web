@@ -64,7 +64,7 @@ export class Container {
     if (canvas) {
       if (this._reflow) {
         _requestIdleCallback(()=>{
-          console.log('canvas',canvas)
+          console.log('计算布局')
           updateLayout(_root!)();
           this._reflow = false;
           canvas.context.clearRect(0, 0, this.width, this.height);

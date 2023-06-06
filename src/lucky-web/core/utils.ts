@@ -140,3 +140,14 @@ export const _requestIdleCallback = (callback: Function) => {
     }
   })
 }
+
+export function hasScrollContent(node: any, func: (obj: any) => void) {
+  if (node.type === 'ScrollContent') {
+      func(node.views)
+  } else {
+      if (node.parent) {
+          hasScrollContent(node.parent, func)
+      }
+  }
+
+}

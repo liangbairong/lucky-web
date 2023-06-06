@@ -4,9 +4,7 @@ import {useCallback, useEffect, useRef, useState} from "react";
 import {RevasCanvas} from "../core/Canvas";
 import Click from "./common/click";
 import Text from "./Text";
-import canvasUtils from "./common/canvasUtils";
-import {AnimatedValue} from "../core/Animated";
-
+import { hasScrollContent } from '../common';
 export type IInput = {
     value?: string
     onGetValue?: Function;
@@ -18,18 +16,21 @@ export default function Input(props: IInput) {
     const {style, value} = props;
     const [isShowLabel, setIsShowLabel] = useState<boolean>(false)
     const [text, setText] = useState<string>(value || '')
-    //容器宽度
-    const [boxWidth, setBoxWidth] = useState<number>(style?.width || 400)
-    const [textWidth, setTextWidth] = useState<number>(0)
-    const [textLeft, setTextLeft] = useState<number>(0)
+
     const oldY = useRef(0);
-    const oldW = useRef(0);
     const input = useRef<any>(null)
 
     useEffect(() => {
         input.current = document.createElement('input');
         input.current.id = 'input-' + Date.now()
         input.current.value = text
+
+        input.current.style.cssText=`position:fixed;border:none;background:transparent;box-sizing:border-box;outline:none;font-family:"PingFang SC, 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB','Microsoft YaHei', SimSun, sans-serif";`
+        input.current.style.visibility = 'hidden'
+        input.current.style.fontSize=(style?.fontSize || 30)+'px'
+        input.current.style.paddingLeft=(style?.paddingLeft || 10)+'px'
+        input.current.style.paddingRight=(style?.paddingRight || 10)+'px'
+        input.current.style.color=(style?.color || '#000')
         document.body.appendChild(input.current)
         input.current.addEventListener('input', getValue)
         input.current.addEventListener('focus', showLabel)
@@ -43,37 +44,15 @@ export default function Input(props: IInput) {
         }
     }, [])
 
-    // 定时器光标
-    const intervalRef = useRef<any>(null)
-    const val = useRef<any>(new AnimatedValue(1))
     useEffect(() => {
         if (isShowLabel) {
-            intervalRef.current = setInterval(() => {
-                val.current.setValue(val.current._value ? 0 : 1)
-            }, 500)
-        }
-
-        return () => {
-            intervalRef?.current && clearInterval(intervalRef.current)
+            input.current.style.visibility = 'inherit'
+        }else{
+            input.current.style.visibility = 'hidden'
         }
     }, [isShowLabel])
 
-    //计算光标位置
-    useEffect(() => {
-        const charWidth = canvasUtils.getActualWidthOfChars(text, {
-            size: style.fontSize || 30
-        })
-        if (oldW.current !== charWidth) {
-            if (boxWidth - 20 < charWidth) {
-                setTextLeft(charWidth - boxWidth + 20 + 2)
-                setTextWidth(boxWidth - 20)
-            } else {
-                setTextLeft(0)
-                setTextWidth(charWidth)
-            }
-            oldW.current = charWidth
-        }
-    }, [text])
+ 
 
 
     const getValue = (e: any) => {
@@ -93,18 +72,23 @@ export default function Input(props: IInput) {
         //有动画会一直执行，需要做新旧数据判断处理
         if (input?.current) {
             if (node?.frame?.y !== oldY?.current) {
-                input.current.style.position = "fixed";
                 oldY.current = node.frame.y
-                input.current.style.top = node.frame.y * (document.body.clientWidth / 750) + "px"
-                input.current.style.left = "-100%"
-
+                input.current.style.width = node.frame.width  + "px"
+                input.current.style.height = node.frame.height  + "px"
+                input.current.style.top = node.frame.y  + "px"
+                input.current.style.left = node.frame.x  + "px"
             }
-
+            hasScrollContent(node, (scroll) => {
+                if(scroll){
+                    input.current.style.transform = `translate3d(0,-${scroll.scrollY}px,0)`
+                }
+            })
         }
     }
 
 
     const onPress = () => {
+        input.current.style.visibility = 'inherit'
         input.current.focus()
     };
 
@@ -112,40 +96,21 @@ export default function Input(props: IInput) {
     const childList: any = [
         React.createElement(Text, {
             key: 'InputText',
-            style: {
+            style: [{
                 width: '100%',
-                // backgroundColor: '#ccc',
                 paddingLeft: 10,
                 paddingRight: 10,
+                color:style?.color || '#000',
                 fontSize: style?.fontSize || 30,
                 wordBreak: 'keep-all',
                 position: 'absolute',
-                left: -textLeft,
-
-            },
+            },{
+                opacity: !isShowLabel
+            }],
         }, text),
 
     ]
 
-    if (isShowLabel) {
-        //光标
-        childList.push(
-            React.createElement('InputLabel', {
-                key: 'InputLabel',
-                style: [{
-                    width: 2,
-                    height: '60%',
-                    backgroundColor: '#000',
-                    position: 'absolute',
-                    left: textWidth ? textWidth + 10 : 10,
-                    top: '20%',
-                    animated: true,
-                }, {
-                    opacity: val.current
-                }],
-            }),
-        )
-    }
 
     return React.createElement('Input', {
             onTouchStart: (e: RevasTouchEvent) => {
@@ -157,8 +122,7 @@ export default function Input(props: IInput) {
             },
             ...props,
             customDrawer: _customDrawer,
-            style: {
-                width: boxWidth,
+            style: [{
                 height: 60,
                 borderWidth: 1,
                 borderColor: '#999',
@@ -167,8 +131,8 @@ export default function Input(props: IInput) {
                 flexDirection: 'row',
                 alignItems: 'center',
                 position: 'relative',
-                ...style
-            },
+        
+            },style],
         },
         childList
     )

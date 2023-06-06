@@ -34,7 +34,6 @@ const _dg = (node: Node,horizontal:boolean=false) => {
 
 export function drawNode(canvas: RevasCanvas, node: Node, container: Container) {
   if(node.type==='ScrollContent'){
-    // console.log(node)
     scrollContent=node.views
   }
 
