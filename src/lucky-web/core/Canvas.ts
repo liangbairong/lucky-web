@@ -1,4 +1,4 @@
-export class RevasCanvas {
+export class LuckCanvas {
   public readonly transform: Transform;
   constructor(context: CanvasRenderingContext2D) {
     this.transform = new Transform(context);

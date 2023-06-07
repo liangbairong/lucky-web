@@ -2,7 +2,7 @@ import * as React from 'react';
 import { drawText, measureText, applyTextStyle, DrawTextOptions, DEFAULT_MEASURE } from './common/drawText';
 import { NodeProps, Node } from '../core/Node';
 import { getFrameFromNode, flatten, applyAnimated } from '../core/utils';
-import { RevasCanvas } from '../core/Canvas';
+import { LuckCanvas } from '../core/Canvas';
 
 export type TextProps = {
   /**
@@ -27,7 +27,7 @@ export default class Text extends React.Component<TextProps> {
 
   _drawed?: DrawTextOptions;
 
-  drawText = (canvas: RevasCanvas, node: Node) => {
+  drawText = (canvas: LuckCanvas, node: Node) => {
     const content = getTextFromNode(node);
     if (content) {
       const options = {

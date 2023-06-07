@@ -1,4 +1,4 @@
-import {View, ScrollView, Image, Text, RevasTouchEvent} from '../../lucky-web';
+import {View, ScrollView, Image, Text, LuckyTouchEvent} from '../../lucky-web';
 import {useRef, useState} from "react";
 
 const Carousel = () => {
@@ -9,7 +9,7 @@ const Carousel = () => {
     const [sty, setSty] = useState<any>({
         left: 0
     })
-    const start = (e: RevasTouchEvent) => {
+    const start = (e: LuckyTouchEvent) => {
         // console.log(e)
         console.log('33')
         if (!_tid?.current) {
@@ -19,7 +19,7 @@ const Carousel = () => {
         }
     }
 
-    const move = (e: RevasTouchEvent) => {
+    const move = (e: LuckyTouchEvent) => {
         if (_tid?.current && e.touches[_tid?.current]) {
             const {x, y} = e.touches[_tid.current];
             console.log(x - startX.current)
@@ -28,7 +28,7 @@ const Carousel = () => {
         }
     }
 
-    const end = (e: RevasTouchEvent) => {
+    const end = (e: LuckyTouchEvent) => {
         console.log(e)
         _tid.current=null
     }

@@ -1,4 +1,4 @@
-import {RevasCanvas} from "./Canvas";
+import {LuckCanvas} from "./Canvas";
 import {Node} from "./Node";
 
 export default class Debugging{
@@ -25,7 +25,7 @@ export default class Debugging{
         }
 
     }
-    draw(canvas: RevasCanvas, node: Node){
+    draw(canvas: LuckCanvas, node: Node){
         if (this.dom) {
             if (node?.frame?.y !== this.oldY) {
                 this.oldY = node.frame.y

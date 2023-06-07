@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {BaseProps, RevasTouchEvent, RevasTouch} from '../core/Node';
+import {BaseProps, LuckyTouchEvent, RevasTouch} from '../core/Node';
 import {AnimatedValue} from '../core/Animated';
 import Click from "./common/click";
 
@@ -37,10 +37,10 @@ export default class Touchable extends React.Component<TouchableProps> {
 
     render() {
         return React.createElement('Touchable', {
-            onTouchStart: (e:RevasTouchEvent) => {
+            onTouchStart: (e:LuckyTouchEvent) => {
                 click.touchStart(e, this._onTouchStart)
             },
-            onTouchEnd: (e: RevasTouchEvent) => {
+            onTouchEnd: (e: LuckyTouchEvent) => {
                 click.touchEnd(e, () => {
                     this.props.onPress && this.props.onPress();
                 }, this._onTouchEnd)

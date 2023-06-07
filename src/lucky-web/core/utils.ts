@@ -1,5 +1,5 @@
 import { Node } from './Node';
-import { RevasCanvas } from './Canvas';
+import { LuckCanvas } from './Canvas';
 
 export function noop(): any {}
 export const EMPTY_OBJECT: any = Object.freeze({});
@@ -75,7 +75,7 @@ export function getWords(str: string): readonly string[] {
   return str.match(WORD_RANGE) || EMPTY_ARRAY;
 }
 
-export function setShadow(canvas: RevasCanvas, color: string, x = 0, y = 0, blur = 0) {
+export function setShadow(canvas: LuckCanvas, color: string, x = 0, y = 0, blur = 0) {
   if (color && (x || y || blur)) {
     const { context: ctx } = canvas;
     const { shadowBlur, shadowColor, shadowOffsetX, shadowOffsetY } = ctx;
@@ -94,7 +94,7 @@ export function setShadow(canvas: RevasCanvas, color: string, x = 0, y = 0, blur
 }
 
 
-export function setTextBorder(canvas: RevasCanvas, textBorderWidth=1, textBorderColor:string) {
+export function setTextBorder(canvas: LuckCanvas, textBorderWidth=1, textBorderColor:string) {
   if (textBorderColor) {
     const { context: ctx } = canvas;
     const { lineWidth,strokeStyle } = ctx;
@@ -108,7 +108,7 @@ export function setTextBorder(canvas: RevasCanvas, textBorderWidth=1, textBorder
   return noop;
 }
 
-export function pushOpacity(canvas: RevasCanvas, opacity: number) {
+export function pushOpacity(canvas: LuckCanvas, opacity: number) {
   if (opacity !== null && opacity < 1 && opacity >= 0) {
     const cachedOpacity = canvas.context.globalAlpha || 1;
     canvas.context.globalAlpha = cachedOpacity * opacity;
@@ -121,8 +121,8 @@ export function pushOpacity(canvas: RevasCanvas, opacity: number) {
 
 export type RevasAdapter = {
   createImage: () => HTMLImageElement;
-  createOffscreenCanvas?: (width: number, height: number,deviceRatio:number) => RevasCanvas;
-  resetOffscreenCanvas?: (ctx: RevasCanvas, width: number, height: number,deviceRatio:number) => RevasCanvas;
+  createOffscreenCanvas?: (width: number, height: number,deviceRatio:number) => LuckCanvas;
+  resetOffscreenCanvas?: (ctx: LuckCanvas, width: number, height: number,deviceRatio:number) => LuckCanvas;
 };
 
 export const adapter: RevasAdapter = {

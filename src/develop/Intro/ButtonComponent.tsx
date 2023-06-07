@@ -7,7 +7,6 @@ import {
     ListView,
     LinearGradient,
     Input,
-    RevasCanvas,
     Node,
     Touchable
 } from '../../lucky-web';

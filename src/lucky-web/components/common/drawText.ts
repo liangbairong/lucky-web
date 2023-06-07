@@ -1,6 +1,6 @@
 import {Frame} from '../../core/Node';
 import {getChars, getWords, setTextBorder, setShadow} from '../../core/utils';
-import {RevasCanvas} from '../../core/Canvas';
+import {LuckCanvas} from '../../core/Canvas';
 
 export interface DrawTextOptions {
     textStyle: any;
@@ -61,7 +61,7 @@ function zhObj(html:string,color:string,canvas:any){
 }
 
 
-function measureLines(canvas: RevasCanvas, chars: readonly string[], boxWidth: number, numberOfLines: number, highlight: any) {
+function measureLines(canvas: LuckCanvas, chars: readonly string[], boxWidth: number, numberOfLines: number, highlight: any) {
     const lines: MeasureLine[] = [];
     let width = 0;
     let text: any = '';
@@ -150,7 +150,7 @@ function splitContent(content: string, wordBreak: string) {
     }
 }
 
-export function applyTextStyle(canvas: RevasCanvas, options: DrawTextOptions) {
+export function applyTextStyle(canvas: LuckCanvas, options: DrawTextOptions) {
     const {fontStyle, fontWeight, fontSize, fontFamily, textBaseline, color} = options.textStyle;
     // Apply Styles
     // console.log(canvas.context)
@@ -159,7 +159,7 @@ export function applyTextStyle(canvas: RevasCanvas, options: DrawTextOptions) {
     canvas.context.textBaseline = textBaseline;
 }
 
-export function measureText(canvas: RevasCanvas, options: DrawTextOptions): MeasureResult {
+export function measureText(canvas: LuckCanvas, options: DrawTextOptions): MeasureResult {
     const lines = measureLines(
         canvas,
         splitContent(options.content, options.textStyle.wordBreak),
@@ -170,7 +170,7 @@ export function measureText(canvas: RevasCanvas, options: DrawTextOptions): Meas
     return [lines, options.textStyle.lineHeight * lines.length];
 }
 
-export function drawText(canvas: RevasCanvas, options: DrawTextOptions, lines: MeasureLine[]) {
+export function drawText(canvas: LuckCanvas, options: DrawTextOptions, lines: MeasureLine[]) {
     const {textStyle: style, frame} = options;
 
     // Shadow:文字阴影

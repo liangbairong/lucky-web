@@ -1,7 +1,7 @@
 import * as React from 'react'
-import {Node, BaseProps, RevasTouchEvent} from '../core/Node'
+import {Node, BaseProps, LuckyTouchEvent} from '../core/Node'
 import {useCallback, useEffect, useRef, useState} from "react";
-import {RevasCanvas} from "../core/Canvas";
+import {LuckCanvas} from "../core/Canvas";
 import { lpx } from '../web';
 import { hasScrollContent } from '../common';
 export type IDom = {
@@ -32,7 +32,7 @@ export default function Dom(props: IDom) {
     }, [])
 
 
-    const _customDrawer = (canvas: RevasCanvas, node: Node) => {
+    const _customDrawer = (canvas: LuckCanvas, node: Node) => {
         //有动画会一直执行，需要做新旧数据判断处理
         if (dom?.current) {
             if (node?.frame?.y !== oldY?.current) {

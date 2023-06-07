@@ -1,11 +1,11 @@
 import { createContext, createElement } from 'react';
-import { RevasCanvas } from '../core/Canvas';
+import { LuckCanvas } from '../core/Canvas';
 
 export interface AppContextType {
   clientWidth: number;
   clientHeight: number;
   deviceRatio: number;
-  canvas?: RevasCanvas;
+  canvas?: LuckCanvas;
   RTL?: boolean;
 }
 

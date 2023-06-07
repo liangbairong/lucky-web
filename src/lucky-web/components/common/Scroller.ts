@@ -1,4 +1,4 @@
-import { RevasTouchEvent } from '../../core/Node';
+import { LuckyTouchEvent } from '../../core/Node';
 import { clamp, noop } from '../../core/utils';
 
 export type RevasScrollEventType = 'start' | 'scroll' | 'end' | 'none' | 'loadMove';
@@ -137,7 +137,7 @@ export default class Scroller {
     this._y.paging = value;
   }
 
-  private _sign(e: RevasTouchEvent) {
+  private _sign(e: LuckyTouchEvent) {
     e.scroll = { ...e.scroll, x: true, y: true };
     const stopPropagation = e.scroll.stopPropagation || noop;
     if (this.horizontal) {
@@ -164,7 +164,7 @@ export default class Scroller {
     };
   }
 
-  private _check(e: RevasTouchEvent) {
+  private _check(e: LuckyTouchEvent) {
     if (this.horizontal && e.scroll && e.scroll.x === false) {
       return this.touchEnd();
     }
@@ -174,7 +174,7 @@ export default class Scroller {
     return true;
   }
 
-  touchStart = (e: RevasTouchEvent) => {
+  touchStart = (e: LuckyTouchEvent) => {
     if (!this._tid) {
       this.cancel()
       this._tid = Object.keys(e.touches)[0];
@@ -185,7 +185,7 @@ export default class Scroller {
     }
   };
 
-  touchMove = (e: RevasTouchEvent) => {
+  touchMove = (e: LuckyTouchEvent) => {
     if (this._tid && e.touches[this._tid] && this._check(e)) {
       const { x, y } = e.touches[this._tid];
       const duration = e.timestamp - this._timestamp;

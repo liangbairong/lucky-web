@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { NodeProps, Node } from '../core/Node';
 import { getFrameFromNode } from '../core/utils';
-import { RevasCanvas } from '../core/Canvas';
+import { LuckCanvas } from '../core/Canvas';
 
 export type LinearGradientProps = {
   start?: { x: number; y: number };
@@ -19,7 +19,7 @@ export default function LinearGradient(props: LinearGradientProps) {
   });
 }
 
-function drawGradient(canvas: RevasCanvas, node: Node) {
+function drawGradient(canvas: LuckCanvas, node: Node) {
   const { colors } = node.props as LinearGradientProps;
   if (colors && colors.length > 0) {
     const { start = { x: 0, y: 0 }, end = { x: 1, y: 0 } } = node.props as LinearGradientProps;

@@ -2,8 +2,8 @@ import {Component, createElement} from 'react';
 import renderer from '../core/reconciler';
 import {noop} from '../core/utils';
 import {Container} from '../core/Container';
-import {RevasTouch, RevasTouchEvent} from '../core/Node';
-import {RevasCanvas} from '../core/Canvas';
+import {RevasTouch, LuckyTouchEvent} from '../core/Node';
+import {LuckCanvas} from '../core/Canvas';
 import {clearCache} from '../core/offscreen';
 import {Root} from '../components/Context';
 
@@ -19,7 +19,7 @@ function getNodePosition(node: any): [number, number] {
     return [top, left];
 }
 
-function createRevasTouchEvent(e: TouchEvent,dom:HTMLElement,option:any): RevasTouchEvent {
+function createRevasTouchEvent(e: TouchEvent,dom:HTMLElement,option:any): LuckyTouchEvent {
     e.preventDefault();
     e.stopPropagation();
     const touches: { [key: number]: RevasTouch } = {};
@@ -57,7 +57,7 @@ function createCanvas(parent: HTMLElement, scale: number, w: number, h: number,)
     return canvas;
 }
 
-function createRoot(app: React.ReactNode, dom: HTMLElement, canvas: RevasCanvas, w: number, h: number, scale: number) {
+function createRoot(app: React.ReactNode, dom: HTMLElement, canvas: LuckCanvas, w: number, h: number, scale: number) {
     return createElement(
         Root,
         {
@@ -92,7 +92,7 @@ interface IOption {
 export function render(app: React.ReactNode, parent: HTMLElement, option: IOption | any = {}, parentComponent?: Component<any>| any, callback = noop) {
     const scale = option.devicePixelRatio || window.devicePixelRatio;
     const dom = createCanvas(parent, scale, option.width, option.height);
-    const canvas = new RevasCanvas(dom.getContext('2d')!);
+    const canvas = new LuckCanvas(dom.getContext('2d')!);
     const container = new Container();
     const destroyTouch = initTouch(dom, e => container.handleTouch(createRevasTouchEvent(e,dom,option)));
     const fiber = renderer.createContainer(container, false, false);

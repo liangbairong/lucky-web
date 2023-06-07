@@ -1,10 +1,10 @@
 import { adapter } from './utils';
 import { Node } from './Node';
-import { RevasCanvas } from './Canvas';
+import { LuckCanvas } from './Canvas';
 
 export interface CachedCanvas {
   id: string;
-  canvas: RevasCanvas;
+  canvas: LuckCanvas;
   style: any;
 }
 

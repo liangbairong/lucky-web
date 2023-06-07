@@ -1,9 +1,9 @@
 import { Node } from '../../core/Node';
 import * as imageLoader from './imageLoader';
 import { clamp, getMergedStyleFromNode, getFrameFromNode } from '../../core/utils';
-import { RevasCanvas } from '../../core/Canvas';
+import { LuckCanvas } from '../../core/Canvas';
 
-export default function drawImage(canvas: RevasCanvas, node: Node, flags: any) {
+export default function drawImage(canvas: LuckCanvas, node: Node, flags: any) {
   const image = imageLoader.get(node.props.src);
   if (image.height <= 0) {
     return;

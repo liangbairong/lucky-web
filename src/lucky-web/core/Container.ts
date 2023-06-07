@@ -1,10 +1,10 @@
-import { Node, RevasTouchEvent } from './Node';
+import { Node, LuckyTouchEvent } from './Node';
 // import { updateLayout } from './css-layout'
 import { updateLayout } from './yoga-layout';
 import { promise } from './yoga-layout/init';
 import { drawNode } from './draw';
 import { getNodeByTouch, emitTouch } from './touch';
-import { RevasCanvas } from './Canvas';
+import { LuckCanvas } from './Canvas';
 import { AppContextType } from '../components/Context';
 import {_requestIdleCallback} from "./utils";
 
@@ -14,7 +14,7 @@ export class Container {
   private _reflow = false;
   private _root?: Node<AppContextType>;
 
-  get canvas(): RevasCanvas | void {
+  get canvas(): LuckCanvas | void {
     return this._root?.props.canvas;
   }
 
@@ -38,7 +38,7 @@ export class Container {
     this._root = root;
   }
 
-  public handleTouch = (evt: RevasTouchEvent) => {
+  public handleTouch = (evt: LuckyTouchEvent) => {
     const { _root } = this;
     if (_root) {
       const emitted = new WeakSet<Node>();

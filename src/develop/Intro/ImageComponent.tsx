@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {View, Text, Image, ScrollView, Touchable, LinearGradient, Input, RevasCanvas, Node} from '../../lucky-web';
+import {View, Text, Image, ScrollView, Touchable, LinearGradient, Input, Node} from '../../lucky-web';
 import NavBar from './Navbar';
 import Panel, {PanelItem} from './Panel';
 import logo from './logo.png'

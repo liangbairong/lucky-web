@@ -1,7 +1,7 @@
 import * as React from 'react'
-import {Node, BaseProps, RevasTouchEvent} from '../core/Node'
+import {Node, BaseProps, LuckyTouchEvent} from '../core/Node'
 import {useCallback, useEffect, useRef, useState} from "react";
-import {RevasCanvas} from "../core/Canvas";
+import {LuckCanvas} from "../core/Canvas";
 import Click from "./common/click";
 import Text from "./Text";
 import { hasScrollContent } from '../common';
@@ -68,7 +68,7 @@ export default function Input(props: IInput) {
     }, [])
 
 
-    const _customDrawer = (canvas: RevasCanvas, node: Node) => {
+    const _customDrawer = (canvas: LuckCanvas, node: Node) => {
         //有动画会一直执行，需要做新旧数据判断处理
         if (input?.current) {
             if (node?.frame?.y !== oldY?.current) {
@@ -113,11 +113,11 @@ export default function Input(props: IInput) {
 
 
     return React.createElement('Input', {
-            onTouchStart: (e: RevasTouchEvent) => {
+            onTouchStart: (e: LuckyTouchEvent) => {
                 click.touchStart(e, () => {
                 })
             },
-            onTouchEnd: (e: RevasTouchEvent) => {
+            onTouchEnd: (e: LuckyTouchEvent) => {
                 click.touchEnd(e, onPress)
             },
             ...props,

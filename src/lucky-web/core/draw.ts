@@ -9,7 +9,7 @@ import {
 } from './utils';
 import { Container } from './Container';
 import { getCache, createCache, autoCacheId } from './offscreen';
-import { RevasCanvas } from './Canvas';
+import { LuckCanvas } from './Canvas';
 import Debugging from "./debugging";
 function getRadius(style: any) {
   return {
@@ -32,7 +32,7 @@ const _dg = (node: Node,horizontal:boolean=false) => {
   return false
 }
 
-export function drawNode(canvas: RevasCanvas, node: Node, container: Container) {
+export function drawNode(canvas: LuckCanvas, node: Node, container: Container) {
   if(node.type==='ScrollContent'){
     scrollContent=node.views
   }
@@ -112,7 +112,7 @@ export function drawNode(canvas: RevasCanvas, node: Node, container: Container) 
   }
 }
 
-function drawCache(canvas: RevasCanvas, node: Node, container: Container, style: any, frame: Frame, hasClip: boolean) {
+function drawCache(canvas: LuckCanvas, node: Node, container: Container, style: any, frame: Frame, hasClip: boolean) {
   const cachedId = node.props.cache === true ? autoCacheId(node) : node.props.cache;
   let cached = getCache(cachedId);
   const { shadowBlur = 0, shadowOffsetX = 0, shadowOffsetY = 0 } = cached ? cached.style : style;
@@ -135,7 +135,7 @@ function drawCache(canvas: RevasCanvas, node: Node, container: Container, style:
 }
 
 function drawContent(
-  canvas: RevasCanvas,
+  canvas: LuckCanvas,
   node: Node,
   container: Container,
   style: any,

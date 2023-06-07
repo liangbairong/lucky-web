@@ -2,7 +2,7 @@ import * as React from 'react';
 import {NodeProps, Frame, Node} from '../core/Node';
 import Scroller, {RevasScrollEvent} from './common/Scroller';
 import {AnimatedValue} from '../core/Animated';
-import {RevasCanvas} from "../core/Canvas";
+import {LuckCanvas} from "../core/Canvas";
 import {_requestIdleCallback} from "../core/utils";
 
 export type ScrollViewOffset = { x?: number; y?: number };
@@ -161,7 +161,7 @@ export default class ScrollView extends React.Component<ScrollViewProps> {
         }
     };
 
-    private _customDrawer = (canvas: RevasCanvas, node: Node) => {
+    private _customDrawer = (canvas: LuckCanvas, node: Node) => {
         // if (this.props.virtualScrolling) {
             if (node?.views?.scrollY !== this.scrollY) {
                 _requestIdleCallback(() => {

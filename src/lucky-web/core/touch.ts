@@ -1,5 +1,5 @@
 import { getFrameFromNode, getMergedStyleFromNode, sortByZIndexAscending } from "./utils"
-import { Node, RevasTouchEvent, RevasTouchType, RevasTouch } from "./Node"
+import { Node, LuckyTouchEvent, RevasTouchType, RevasTouch } from "./Node"
 
 function scaled(x: number, c: number, s = 1) {
   if (!s && s === 1) return x
@@ -61,7 +61,7 @@ const LISTENER_MAP = {
 }
 
 
-export function emitTouch(node: Node | void, e: RevasTouchEvent) {
+export function emitTouch(node: Node | void, e: LuckyTouchEvent) {
   const funcName = LISTENER_MAP[e.type]
   if (funcName) {
     while (node) {

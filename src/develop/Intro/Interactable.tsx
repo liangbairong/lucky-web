@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, RevasTouchEvent, AnimatedValue } from '../../lucky-web'
+import { View, LuckyTouchEvent, AnimatedValue } from '../../lucky-web'
 
 export default class Interactable extends React.Component<any, any> {
 
@@ -14,14 +14,14 @@ export default class Interactable extends React.Component<any, any> {
     animated: true
   }
 
-  touchStart = (e: RevasTouchEvent) => {
+  touchStart = (e: LuckyTouchEvent) => {
     this._tid = Object.keys(e.touches)[0]
     const start = e.touches[this._tid]
     this._start.x = start.x - this._style.translateX.getValue()
     this._start.y = start.y - this._style.translateY.getValue()
   }
 
-  touchMove = (e: RevasTouchEvent) => {
+  touchMove = (e: LuckyTouchEvent) => {
     if (this._start && e.touches[this._tid]) {
       const { x, y } = e.touches[this._tid]
       this._style.translateX.setValue(x - this._start.x)

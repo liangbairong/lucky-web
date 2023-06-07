@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import {RevasCanvas} from "./Canvas";
+import {LuckCanvas} from "./Canvas";
 
 export class Frame {
   constructor(public x = 0, public y = 0, public width = 0, public height = 0) {}
@@ -35,14 +35,14 @@ export interface RevasTouch {
 
 export type RevasTouchType = 'touchstart' | 'touchmove' | 'touchend';
 
-export interface RevasTouchEvent {
+export interface LuckyTouchEvent {
   type: RevasTouchType;
   touches: { [key: string]: RevasTouch };
   timestamp: number;
   [key: string]: any;
 }
 
-export type RevasTouchEventListener = (event: RevasTouchEvent) => any;
+export type LuckyTouchEventListener = (event: LuckyTouchEvent) => any;
 
 export interface BaseProps {
   children?: ReactNode;
@@ -68,17 +68,17 @@ export interface NodeProps extends BaseProps {
    * @description 开始触碰回调
    * @default
    */
-  onTouchStart?: RevasTouchEventListener;
+  onTouchStart?: LuckyTouchEventListener;
   /**
    * @description 触摸滑动回调
    * @default
    */
-  onTouchMove?: RevasTouchEventListener;
+  onTouchMove?: LuckyTouchEventListener;
   /**
    * @description 触摸结束回调
    * @default
    */
-  onTouchEnd?: RevasTouchEventListener;
+  onTouchEnd?: LuckyTouchEventListener;
   /**
    * @description 获取当前布局
    * @default
@@ -88,7 +88,7 @@ export interface NodeProps extends BaseProps {
    * @description 自定义canvas绘制
    * @default
    */
-  customDrawer?:(canvas: RevasCanvas, node: Node)=>void;
+  customDrawer?:(canvas: LuckCanvas, node: Node)=>void;
   /**
    * @description 点击事件接受类型
    * @default
