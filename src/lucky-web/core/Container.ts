@@ -63,14 +63,12 @@ export class Container {
     const { _root, canvas } = this;
     if (canvas) {
       if (this._reflow) {
-        _requestIdleCallback(()=>{
-          console.log('计算布局')
-          updateLayout(_root!)();
-          this._reflow = false;
-          canvas.context.clearRect(0, 0, this.width, this.height);
-          drawNode(canvas, _root!, this);
-          requestAnimationFrame(this.ready);
-        })
+        console.log('计算布局')
+        updateLayout(_root!)();
+        this._reflow = false;
+        canvas.context.clearRect(0, 0, this.width, this.height);
+        drawNode(canvas, _root!, this);
+        requestAnimationFrame(this.ready);
       }else{
         canvas.context.clearRect(0, 0, this.width, this.height);
         drawNode(canvas, _root!, this);
