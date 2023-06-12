@@ -1,6 +1,6 @@
 {
   "name": "lucky-web",
-  "version": "1.0.14",
+  "version": "1.0.15",
   "description": "lucky-web是个使用yoga的布局引擎和React，来绘制canvas的渲染框架，支持react 17以上的hook",
   "repository": "https://github.com/903529487/lucky-web",
   "homepage": "https://liangbairong.gitee.io/lucky-web",
