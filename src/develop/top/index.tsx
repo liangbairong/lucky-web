@@ -2,21 +2,13 @@ import React, {useEffect, useState, memo, useCallback} from 'react'
 import {
     View,
     ScrollView,
-    Image,
     Text,
-    withContext,
-    AnimatedValue,
-    RevasScrollEvent,
-    LinearGradient
 } from '../../lucky-web';
 import style from './style'
 import Box from './box'
 import Anchor from './anchor'
 import NavBar from "../Intro/Navbar";
-import {MusicItemData, MUSICS} from "../Music/data";
-import {ABS_FULL} from "../Music/styles";
-import Back from "../common/back";
-import Player from "../Music/Player";
+
 
 let list: any = [
     // {
