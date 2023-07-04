@@ -37,7 +37,7 @@ const app = render(<App />, document.getElementById('app')!, {});
 ```
 
 ```html
-<div id='app'}></div>
+<div id='app'></div>
 ```
 
 
